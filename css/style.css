@@ -1,0 +1,173 @@
+body {
+	background-color: #F2F2F2 !important;
+	margin: 0;
+	color: #5d727c;
+}
+
+a {
+	color: inherit;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+.header {
+	width: 100%;
+	float: left;
+	position:fixed;top:0;left:0;
+	z-index:999;
+}
+
+.layui-nav {
+	float: right;
+}
+
+.layui-nav {
+	padding-right: 0;
+}
+
+.logo-box {
+	float: left;
+	line-height: 60px;
+	color: #fff;
+	font-weight: 800;
+	font-size: 17px;
+}
+
+.logo-box:hover {
+	color: #fff;
+}
+
+.layui-nav-bar {
+	display: none;
+}
+
+.layui-nav .layui-this:after {
+	display: none;
+}
+.layui-card-header{
+	color: #5d727c;
+	font-weight: 800;
+}
+.perfree-content {
+	clear: both;
+	padding-top: 63px;
+}
+
+.perfree-content-left,
+.perfree-content-right {
+}
+
+.perfree-content-right {
+	padding-left: 10px;
+}
+
+.carousel-box {
+	margin-top: 10px;
+}
+
+.article-box {
+	margin-top: 10px;
+}
+
+.layui-card {
+	margin-top: 10px;
+	margin-bottom: 0px;
+}
+
+.layui-card-body {
+	padding: 0;
+}
+
+.article-box-content {
+	padding: 20px;
+}
+.layui-btn-normal {
+    background-color: #23b7e5;
+}
+.article-img {
+	width: 100%;
+	overflow: hidden;
+}
+
+.article-title {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	font-size: 1.3em;
+}
+#saying{
+	font-size: .7em;
+	color: #98a6ad;
+	margin-top: 5px;
+}
+.page-title-body{
+	padding: 16px;
+}
+.article-content {
+	margin-top: 8px;
+	color: #98a6ad;
+	font-size: .8em;
+}
+.search-body{
+	padding: 10px;
+}
+.layui-form-item{
+	margin-bottom: 0px;
+}
+.search-input{
+	width: 80%;
+	float: left;
+}
+.search-btn{
+	width: 20%;
+	float: right;
+}
+.layui-input, .layui-select, .layui-textarea,.layui-btn{
+	border-radius: inherit;
+}
+
+.layui-footer{
+	clear: both;
+	height: 50px;
+	line-height: 50px;
+	padding-top: 15px;
+}
+.footer-left{
+	float: left;
+}
+.footer-right{
+	float: right;
+}
+.footer-right a{
+	font-size: 18px;
+	margin-left: 6px;
+}
+.hot-article-list{
+	font-size: 1em;
+	padding-left: 10px;
+	padding-right:10px;
+}
+.hot-article-list a{
+	height: 33px;
+	line-height: 33px;
+}
+.hot-article-list:hover{
+	background-color: #e6e6e6;
+}
+.tag-body{
+	padding: 4px 10px 10px 6px;
+}
+.tag{
+	height: 24px;
+    line-height: 18px;
+    font-size: .6em;
+    font-weight: 600;
+    padding: 3px 6px 3px 6px;
+	margin-left: 4px!important;
+	margin-top: 6px!important;
+}
+@media screen and (max-width:768px) {
+	.perfree-content-right {
+		display: none;
+	}
+}

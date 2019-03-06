@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link rel="stylesheet" href="layui/css/layui.css">
+		<link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+		<link rel="stylesheet" href="css/style.css">
+		<link rel="stylesheet" href="css/time.css">
+		<script type="text/javascript" src="https://api.guoch.xyz/?code=js&charset=utf-8"></script>
+	</head>
+	<body>
+		<!-- 顶部导航栏start -->
+		<div class="header layui-bg-cyan">
+			<div class="layui-container">
+				<a class="logo-box" href="index.html">
+					<i class="fa fa-lemon-o fa-lg"></i>
+					<span> 测试</span>
+				</a>
+				<ul class="layui-nav layui-bg-cyan" lay-filter="">
+					<li class="layui-nav-item" lay-unselect><a href="index.html">首页</a></li>
+					<li class="layui-nav-item" lay-unselect><a href="time.html">时间轴</a></li>
+					<li class="layui-nav-item" lay-unselect><a href="">关于</a></li>
+					<li class="layui-nav-item">
+						<a href=""><img src="//t.cn/RCzsdCq" class="layui-nav-img">张三</a>
+						<dl class="layui-nav-child">
+							<dd><a href="javascript:;">修改信息</a></dd>
+							<dd><a href="javascript:;">安全管理</a></dd>
+							<dd><a href="javascript:;">退了</a></dd>
+						</dl>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<!-- 顶部导航栏end -->
+
+		<!-- 内容部分start -->
+		<div class="layui-container perfree-content layui-anim-up">
+			<div class="layui-col-xs12 layui-col-sm7 layui-col-md8 perfree-content-left">
+				<div class="layui-card">
+					<div class="layui-card-header time-line-header"><i class="fa fa-volume-up"></i> 已经发布了xx篇文章了,继续努力~</div>
+					<div class="layui-card-body time-line-body">
+						<ul class="layui-timeline">
+							<li class="layui-timeline-item">
+								<i class="layui-icon layui-timeline-axis">&#xe643;</i>
+								<div class="layui-timeline-content layui-text">
+									<h3 class="layui-timeline-title">8月18日</h3>
+									<span class="time-box-top"><i class="fa fa-caret-up"></i></span>
+									<a href="#" class="perfree-timeline-title">Nginx开启Gzip压缩提高页面加载速度</a>
+								</div>
+							</li>
+							<li class="layui-timeline-item">
+								<i class="layui-icon layui-timeline-axis">&#xe643;</i>
+								<div class="layui-timeline-content layui-text">
+									<h3 class="layui-timeline-title">8月17日</h3>
+									<span class="time-box-top"><i class="fa fa-caret-up"></i></span>
+									<a href="#" class="perfree-timeline-title">解决shiro会话过期跳转登录页面只有iframe跳转问题</a>
+								</div>
+							</li>
+							<li class="layui-timeline-item">
+								<i class="layui-icon layui-timeline-axis">&#xe643;</i>
+								<div class="layui-timeline-content layui-text">
+									<h3 class="layui-timeline-title">8月16日</h3>
+									<span class="time-box-top"><i class="fa fa-caret-up"></i></span>
+									<a href="#" class="perfree-timeline-title">安卓性能不够用？这一切都是手机厂商的骗局！</a>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+
+			<div class="layui-col-sm5 layui-col-md4 perfree-content-right">
+				<div class="layui-card">
+					<div class="layui-card-body page-title-body">
+						<h2>Perfree</h2>
+						<div id="saying">
+							<script>saying()</script>
+						</div>
+					</div>
+				</div>
+				<!-- 搜索start -->
+				<div class="layui-card">
+					<div class="layui-card-header">
+						<i class="fa fa-search"></i>
+						<span style="margin-left: 3px;">搜索</span>
+					</div>
+					<div class="layui-card-body search-body">
+						<form class="layui-form" action="">
+							<div class="layui-form-item">
+								<input type="text" name="title" required lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input search-input">
+								<button class="layui-btn layui-btn-normal search-btn" type="submit"><i class="fa fa-search"></i></button>
+							</div>
+						</form>
+					</div>
+				</div>
+				<!-- 搜索end -->
+				<!-- 热门start -->
+				<div class="layui-card">
+					<div class="layui-card-header">
+						<i class="fa fa-fire"></i>
+						<span style="margin-left: 3px;">热门文章</span>
+					</div>
+					<div class="layui-card-body hot-article-body">
+						<ul>
+							<li class="hot-article-list"><a href="#"><i class="fa fa-angle-double-right"></i>&nbsp;Jfinal+Shiro+Jwt权限认证简单Demo</a></li>
+							<li class="hot-article-list"><a href="#"><i class="fa fa-angle-double-right"></i>&nbsp;Jfinal+Shiro+Jwt权限认证简单Demo</a></li>
+							<li class="hot-article-list"><a href="#"><i class="fa fa-angle-double-right"></i>&nbsp;Jfinal+Shiro+Jwt权限认证简单Demo</a></li>
+							<li class="hot-article-list"><a href="#"><i class="fa fa-angle-double-right"></i>&nbsp;Jfinal+Shiro+Jwt权限认证简单Demo</a></li>
+							<li class="hot-article-list"><a href="#"><i class="fa fa-angle-double-right"></i>&nbsp;Jfinal+Shiro+Jwt权限认证简单Demo</a></li>
+						</ul>
+					</div>
+				</div>
+				<!-- 热门end -->
+				<!-- 标签start -->
+				<div class="layui-card">
+					<div class="layui-card-header">
+						<i class="fa fa-tags"></i>
+						<span style="margin-left: 3px;">标签</span>
+					</div>
+					<div class="layui-card-body tag-body">
+						<a href="http://www.layui.com" class="layui-btn layui-btn-normal tag">测试</a>
+						<a href="http://www.layui.com" class="layui-btn layui-btn-normal tag">Jfinal</a>
+						<a href="http://www.layui.com" class="layui-btn layui-btn-normal tag">Jpress</a>
+						<a href="http://www.layui.com" class="layui-btn layui-btn-normal tag">服务器</a>
+						<a href="http://www.layui.com" class="layui-btn layui-btn-normal tag">生活杂记</a>
+						<a href="http://www.layui.com" class="layui-btn layui-btn-normal tag">SpringBoot</a>
+						<a href="http://www.layui.com" class="layui-btn layui-btn-normal tag">前端</a>
+						<a href="http://www.layui.com" class="layui-btn layui-btn-normal tag">模板</a>
+						<a href="http://www.layui.com" class="layui-btn layui-btn-normal tag">Python</a>
+						<a href="http://www.layui.com" class="layui-btn layui-btn-normal tag">相册</a>
+					</div>
+				</div>
+				<!-- 标签end -->
+			</div>
+			<div class="layui-footer">
+				<div class="footer-left">
+					<span>© 2019 xxxxx.com 版权所有 豫ICP备xxxxxxxxxxxx号</span>
+				</div>
+				<div class="footer-right">
+					联系我:
+					<a href="#" title="GitHub"><i class="fa fa-github"></i></a>
+					<a href="#" title="微博"><i class="fa fa-weibo"></i></a>
+					<a href="#" title="QQ"><i class="fa fa-qq"></i></a>
+				</div>
+			</div>
+		</div>
+		<!-- 内容部分end -->
+		<script src="layui/layui.js"></script>
+		<script>
+			layui.use(['element', 'carousel', 'laypage', 'flow'], function() {
+				var element = layui.element,
+					flow = layui.flow;
+				flow.lazyimg();
+			});
+		</script>
+	</body>
+</html>
