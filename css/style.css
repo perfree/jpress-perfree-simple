@@ -24,11 +24,10 @@ a {
 .layui-nav {
 	padding-right: 0;
 }
-
 .logo-box {
 	float: left;
 	line-height: 60px;
-	color: #fff;
+	color: rgba(255,255,255,.7);
 	font-weight: 800;
 	font-size: 17px;
 }
@@ -79,10 +78,14 @@ a {
 }
 
 .article-box-content {
-	padding: 20px;
+	padding: 20px 20px 14px 20px;
 }
 .layui-btn-normal {
     background-color: #23b7e5;
+}
+.article-msg{
+	font-size: .7em;
+	color: #98a6ad;
 }
 .article-img {
 	width: 100%;
@@ -95,6 +98,12 @@ a {
 	white-space: nowrap;
 	font-size: 1.3em;
 }
+#page{
+	margin-left: 10px;
+}
+.layui-laypage a, .layui-laypage span{
+	margin: 0 -1px 0px 0;
+}
 #saying{
 	font-size: .7em;
 	color: #98a6ad;
@@ -106,10 +115,10 @@ a {
 .article-content {
 	margin-top: 8px;
 	color: #98a6ad;
-	font-size: .8em;
+	font-size: .9em;
 }
 .search-body{
-	padding: 10px;
+	padding: 12px;
 }
 .layui-form-item{
 	margin-bottom: 0px;
@@ -142,20 +151,41 @@ a {
 	font-size: 18px;
 	margin-left: 6px;
 }
-.hot-article-list{
-	font-size: 1em;
-	padding-left: 10px;
-	padding-right:10px;
+.hot-article-body{
+	padding: 7px 15px 15px 15px;
 }
-.hot-article-list a{
-	height: 33px;
-	line-height: 33px;
+.hot-article-box{
+	height: 50px;
+    width: 100%;
+    display: block;
+	margin-top: 8px;
 }
-.hot-article-list:hover{
-	background-color: #e6e6e6;
+.hot-article-box:hover{
+	background-color: #eeeeee;
+}
+.hot-article-img{
+	float: left;
+}
+.hot-article-title{
+	line-height: 14px;
+    float: left;
+    margin-left: 6px;
+    font-size: 1em;
+    color: #5d727c;
+    margin-top: 10px;
+}
+.hot-article-msg{
+	float: left;
+    margin-top: 6px;
+    margin-left: 6px;
+    font-size: .6em;
+    color: #98a6ad;
+    line-height: 12px;
+    height: 12px;
+    display: block;
 }
 .tag-body{
-	padding: 4px 10px 10px 6px;
+	padding: 9px 15px 15px 11px;
 }
 .tag{
 	height: 24px;
@@ -165,6 +195,12 @@ a {
     padding: 3px 6px 3px 6px;
 	margin-left: 4px!important;
 	margin-top: 6px!important;
+}
+.layui-laypage a:hover {
+    color: #23b7e5;
+}
+.layui-laypage a, .layui-laypage span{
+	color: #98a6ad;	
 }
 @media screen and (max-width:768px) {
 	.perfree-content-right {

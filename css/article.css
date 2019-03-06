@@ -2,7 +2,7 @@
 	font-weight: initial;
 	height: 56px;
 	font-size: 1.1em;
-	padding-top: 16px;
+	padding: 14px 20px 4px 20px;
 }
 .article-title h2{
 	line-height: 30px;
@@ -13,7 +13,7 @@
 	color: #98a6ad;
 }
 .article-body{
-	padding: 10px;
+	padding: 10px 20px 20px 20px;
 }
 .perfree-article-content{
 	color: #5d727c;
@@ -29,7 +29,7 @@
 	float: right;
 }
 .revert-body{
-	padding: 10px;
+	padding: 10px 20px 20px 20px;
 }
 .revert-submit{
 	margin-top: 10px;
