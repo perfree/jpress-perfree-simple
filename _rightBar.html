@@ -1,0 +1,58 @@
+<div class="layui-col-sm5 layui-col-md4 perfree-content-right">
+    <div class="layui-card">
+        <div class="layui-card-body page-title-body">
+            <h2>Perfree</h2>
+            <div id="saying"><script>saying()</script></div>
+        </div>
+    </div>
+    <!-- 搜索start -->
+    <div class="layui-card">
+        <div class="layui-card-header">
+            <i class="fa fa-search"></i>
+            <span style="margin-left: 3px;">搜索</span>
+        </div>
+        <div class="layui-card-body search-body">
+            <form class="layui-form" action="">
+                <div class="layui-form-item">
+                    <input type="text" name="title" required  lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input search-input">
+                    <button class="layui-btn layui-btn-normal search-btn" type="submit"><i class="fa fa-search"></i></button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- 搜索end -->
+    <!-- 热门start -->
+    <div class="layui-card">
+        <div class="layui-card-header">
+            <i class="fa fa-fire"></i>
+            <span style="margin-left: 3px;">热门文章</span>
+        </div>
+        <div class="layui-card-body hot-article-body">
+            #articles(hasThumbnail="true",orderBy="view_count",count=10)
+                #for(article : articles)
+                    <a class="hot-article-box" href="#(article.url)">
+                        <img src="#(article.showImage ?? 'img/1.jpg')" width="70px" height="50px" class="hot-article-img"/>
+                        <span class="hot-article-title">#(article.title)</span><br>
+                        <span class="hot-article-msg"><i class="fa fa-clock-o"></i> #date(article.created, "yyyy-MM-dd")&nbsp;&nbsp;<i class="fa fa-eye"></i> #(article.view_count ??)</span>
+                    </a>
+                #end
+            #end
+        </div>
+    </div>
+    <!-- 热门end -->
+    <!-- 标签start -->
+    <div class="layui-card">
+        <div class="layui-card-header">
+            <i class="fa fa-tags"></i>
+            <span style="margin-left: 3px;">标签</span>
+        </div>
+        <div class="layui-card-body tag-body">
+            #tags()
+                #for(tag : tags)
+                    <a href="#(tag.url)" class="layui-btn layui-btn-normal tag" title="#(tag.title)">#(tag.title)</a>
+                #end
+            #end
+        </div>
+    </div>
+    <!-- 标签end -->
+</div>
