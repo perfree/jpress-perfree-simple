@@ -1,52 +1,53 @@
 #include("./_layout.html")
 #@mylaout()
 #define content()
-<div class="layui-col-xs12 layui-col-sm7 layui-col-md8 perfree-content-left">
-    <!-- 文章start -->
-    <div class="article-box">
-        #articlePage()
-            #for(article : articlePage.list)
+    <div class="layui-col-xs12 layui-col-sm7 layui-col-md8 perfree-content-left">
+        <!-- 文章start -->
+        <div class="article-box">
+            #articlePage()
+                #for(article : articlePage.list)
+                    <div class="layui-card">
+                        <div class="layui-card-body">
+                            #if(article.showImage != null)
+                                <div class="article-img">
+                                    <img src="#(article.showImage ?? 'img/1.jpg')" alt="#(article.title ??)" width="100%" height="300px"/>
+                                </div>
+                            #end
+                            <div class="article-box-content">
+                                <h2 class="article-title">
+                                    <a href="#(article.url ??)">#(article.title ??)</a>
+                                </h2>
+                                <p class="article-content">#maxLength(article.text,100)</p>
+                                <hr class="layui-bg-gray">
+                                <span class="article-msg">
+                                    <i class="fa fa-user-o"></i> #(article.user.nickname ??)&nbsp;
+                                    <i class="fa fa-eye"></i> #(article.view_count ??)&nbsp;
+                                    <i class="fa fa-comment-o"></i> #(article.comment_count ??)&nbsp;
+                                    <i class="fa fa-clock-o"></i> #date(article.created, "yyyy-MM-dd")
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                #end
                 <div class="layui-card">
                     <div class="layui-card-body">
-                        #if(article.showImage != null)
-                            <div class="article-img">
-                                <img src="#(article.showImage ?? 'img/1.jpg')" alt="#(article.title ??)" width="100%" height="300px"/>
-                            </div>
+                        #articlePaginate()
+                            <ul class="page-box">
+                                #for(page : pages)
+                                    <li class="page-item #(page.style)"><a class="page-link" href="#(page.url ??)">#(page.text ??)</a></li>
+                                #end
+                            </ul>
                         #end
-                        <div class="article-box-content">
-                            <h2 class="article-title">
-                                <a href="#(article.url ??)">#(article.title ??)</a>
-                            </h2>
-                            <p class="article-content">#maxLength(article.text,100)</p>
-                            <hr class="layui-bg-gray">
-                            <span class="article-msg">
-                                <i class="fa fa-user-o"></i> #(article.user.nickname ??)&nbsp;
-                                <i class="fa fa-eye"></i> #(article.view_count ??)&nbsp;
-                                <i class="fa fa-comment-o"></i> #(article.comment_count ??)&nbsp;
-                                <i class="fa fa-clock-o"></i> #date(article.created, "yyyy-MM-dd")
-                            </span>
-                        </div>
                     </div>
                 </div>
             #end
-        #end
-    </div>
-    <div class="layui-card">
-        <div class="layui-card-body">
-            <div id="page"></div>
         </div>
+        <!-- 文章end -->
     </div>
-    <!-- 文章end -->
-</div>
-<script>
-    layui.use(['element', 'carousel', 'laypage', 'flow'], function () {
-        var element = layui.element, laypage = layui.laypage, flow = layui.flow;
-        laypage.render({
-            elem: 'page',
-            count: 50,
-            theme: '#23b7e5'
+    <script>
+        layui.use(['element', 'carousel', 'laypage', 'flow'], function () {
+            var element = layui.element, flow = layui.flow;
+            flow.lazyimg();
         });
-        flow.lazyimg();
-    });
-</script>
+    </script>
 #end
