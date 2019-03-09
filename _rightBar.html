@@ -28,10 +28,10 @@
             <span style="margin-left: 3px;">热门文章</span>
         </div>
         <div class="layui-card-body hot-article-body">
-            #articles(hasThumbnail="true",orderBy="view_count",count=10)
+            #articles(orderBy="view_count DESC",count=6)
                 #for(article : articles)
                     <a class="hot-article-box" href="#(article.url)">
-                        <img src="#(article.showImage ?? 'img/1.jpg')" width="70px" height="50px" class="hot-article-img"/>
+                        <img src="#(article.thumbnail ?? 'img/1.jpg')" width="20%" height="50px" class="hot-article-img"/>
                         <span class="hot-article-title">#(article.title)</span><br>
                         <span class="hot-article-msg"><i class="fa fa-clock-o"></i> #date(article.created, "yyyy-MM-dd")&nbsp;&nbsp;<i class="fa fa-eye"></i> #(article.view_count ??)</span>
                     </a>
@@ -44,10 +44,10 @@
     <div class="layui-card">
         <div class="layui-card-header">
             <i class="fa fa-tags"></i>
-            <span style="margin-left: 3px;">标签</span>
+            <span style="margin-left: 3px;">热门标签</span>
         </div>
         <div class="layui-card-body tag-body">
-            #tags()
+            #tags(orderBy="count DESC")
                 #for(tag : tags)
                     <a href="#(tag.url)" class="layui-btn layui-btn-normal tag" title="#(tag.title)">#(tag.title)</a>
                 #end

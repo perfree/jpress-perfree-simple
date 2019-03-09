@@ -1,5 +1,5 @@
 #include("./_layout.html")
-#@mylaout()
+#@layout()
 #define content()
 <link rel="stylesheet" href="css/article.css" media="all">
 <div class="layui-col-xs12 layui-col-sm7 layui-col-md8 perfree-content-left">
@@ -7,8 +7,9 @@
 			<div class="layui-card-header article-title">
 				<h2>#(article.title ??)</h2>
 				<p>
-					<i class="fa fa-eye"></i> #(article.view_count ??)次浏览&nbsp;
-					<i class="fa fa-comment-o"></i> #(article.comment_count ??)个评论&nbsp;
+					<i class="fa fa-user-o"></i> #(article.user.nickname ??)&nbsp;
+					<i class="fa fa-eye"></i> #(article.view_count ??)浏览&nbsp;
+					<i class="fa fa-comment-o"></i> #(article.comment_count ??)评论&nbsp;
 					<i class="fa fa-clock-o"></i> #date(article.created, "yyyy-MM-dd")
 				</p>
 			</div>
@@ -27,62 +28,94 @@
 		  <div class="layui-card-header" style="padding: 0 20px;">发表评论</div>
 		  <div class="layui-card-body revert-body">
 			<div class="revert-box">
-				<textarea id="revert" style="display: none;"></textarea>
-				<button class="layui-btn layui-btn-normal revert-submit">发表评论</button>
+				<form class="layui-form" action="#(CPATH)/article/postComment" id="commentForm" method="post">
+					<input type="hidden" name="articleId" value="#(article.id)">
+					<input type="hidden" name="pid" id="pid">
+					<textarea id="revert" style="display: none;" name="content" lay-verify="content"></textarea>
+					<button class="layui-btn layui-btn-normal revert-submit" lay-submit lay-filter="*">发表评论</button>
+				</form>
 			</div>
 			<div class="revert-list">
-				<div class="revert-content-box">
-					<div class="revert-user">
-						<img src="img/2.jpg" width="50px" height="50px"/>
-						<span class="revert-user-msg">
-							<span class="revert-user-name">Perfree</span>
-							<br>
-							<span class="revert-user-time">2019-03-06 00:00:00</span>
-						</span>
-					</div>
-					<div class="revert-content">
-						发表评论发表评论发表评论发表评论发表评论发表评论发表评论发表评论发表评论发表评论发表评论发表评论发表评论发表评论发表评论发表评论
-					</div>
-				</div>
-				<hr class="layui-bg-gray">
-				<div class="revert-content-box">
-					<div class="revert-user">
-						<img src="img/2.jpg" width="50px" height="50px"/>
-						<span class="revert-user-msg">
-							<span class="revert-user-name">Perfree</span>
-							<br>
-							<span class="revert-user-time">2019-03-06 00:00:00</span>
-						</span>
-					</div>
-					<div class="revert-content">
-						发表评论发表评论发表评论发表评论发表评论发表评论发表评论发表评论发表评论发表评论发表评论发表评论发表评论发表评论发表评论发表评论
-					</div>
-					<div class="revert-comment-content-box">
-						<div class="revert-user">
-							<img src="img/2.jpg" width="50px" height="50px"/>
-							<span class="revert-user-msg">
-								<span class="revert-user-name">Perfree</span>
-								<br>
-								<span class="revert-user-time">2019-03-06 00:00:00</span>
-							</span>
+				#commentPage()
+					#for(comment : commentPage.list)
+						<div class="revert-content-box">
+							<div class="revert-user">
+								<!--#(comment.user.avatar)-->
+								<img src="img/1.jpg" width="40px" height="40px"/>
+								<span class="revert-user-msg">
+										<span class="revert-user-name">#(comment.author ??)</span>
+										<br>
+										<span class="revert-user-time">#date(comment.created, "yyyy-MM-dd HH:mm:ss")</span>
+									</span>
+							</div>
+							<div class="revert-content">
+								#(comment.text ??)
+							</div>
+							#if(comment.parent)
+								<div class="revert-comment-content-box">
+									<div class="revert-user">
+										<!--#(comment.parent.user.avatar)-->
+										<img src="img/2.jpg" width="40px" height="40px"/>
+										<span class="revert-user-msg">
+											<span class="revert-user-name">#(comment.parent.author)</span>
+											<br>
+											<span class="revert-user-time">#date(comment.parent.created, "yyyy-MM-dd HH:mm:ss")</span>
+										</span>
+									</div>
+									<div class="revert-content">
+										#(comment.parent.text ??)
+									</div>
+								</div>
+							#end
 						</div>
-						<div class="revert-content">
-							发表评论发表评论发表评论发表评论发表评论发表评论发表评论发表评论发表评论发表评论发表评论发表评论发表评论发表评论发表评论发表评论
-						</div>
-					</div>
-					<hr class="layui-bg-gray">
-
-				</div>
+						<hr class="layui-bg-gray">
+					#end
+				#end
 			</div>
 		  </div>
 		</div>
 	</div>
+<script src="js/jquery-3.2.1.min.js"></script>
+<script src="/static/components/jquery/jquery.form.min.js"></script>
 <script>
-	layui.use(['element','layedit'], function() {
-		var element = layui.element,layedit = layui.layedit;
-		layedit.build('revert', {
+	layui.use(['element','layedit','form','layer'], function() {
+		var element = layui.element,layedit = layui.layedit,form=layui.form,layer=layui.layer;
+		var edit = layedit.build('revert', {
 			tool: ['strong','italic','underline','del','link', 'face'],
 			height: 100
+		});
+		form.verify({
+			content: function(value, item) {
+				layedit.sync(edit);
+			}
+		});
+		form.on('submit(*)', function(data){
+			var content = layedit.getContent(edit);
+			if(content == null || content == "" || content == undefined){
+				layer.msg('请填写评论内容', {icon: 2,offset: [$(window).height()/2+'px', $(window).width()/2+'px']});
+				return false;
+			}
+			$.post({
+				url:"#(CPATH)/article/postComment",
+				data: data.field,
+				success:function(result){
+					console.log(result);
+					if(result.state == "ok"){
+						layedit.clearContent(edit);
+					}else{
+						layer.msg('评论失败:' + result.message, {icon: 5});
+						if (data.errorCode == 9) {
+							location.href = '#(CPATH)/user/login';
+						}
+					}
+					return false;
+				},
+				error:function () {
+					layer.msg('网络错误，请稍后重试', {icon: 2});
+					return false;
+				}
+			});
+			return false;
 		});
 	});
 </script>

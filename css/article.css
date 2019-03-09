@@ -1,3 +1,7 @@
+@font-face{
+　　font-family: fontello;
+　　src: url("../font/fontello.ttf");
+}
 .article-title{
 	font-weight: initial;
 	height: 56px;
@@ -16,7 +20,43 @@
 	padding: 10px 20px 20px 20px;
 }
 .perfree-article-content{
-	color: #5d727c;
+	color: #61696d;
+	overflow: hidden;
+	font-family: "fontello";
+}
+.perfree-article-content img{
+	width: 100%!important;
+	margin-top: 8px;
+	margin-bottom: 8px;
+}
+.perfree-article-content pre{
+	width: 100%;
+	white-space: pre;
+	margin-top: 8px;
+	margin-bottom: 8px;
+}
+.perfree-article-content h1{
+	font-size: 1.6em;
+	font-weight: 600;
+	line-height: 40px;
+}
+.perfree-article-content h2{
+	font-size: 1.4em;
+	font-weight: 600;
+	line-height: 40px;
+}
+.perfree-article-content h3{
+	font-size: 1.3em;
+	font-weight: 500;
+	line-height: 35px;
+}
+.perfree-article-content h4{
+	font-size: 1.2em;
+	font-weight: 500;
+	line-height: 35px;
+}
+.perfree-article-content pre code{
+	font-family: "fontello";
 }
 .article-content-bottom{
 	height: 60px;
@@ -36,7 +76,7 @@
 }
 .revert-user{
 	width: 100%;
-	height: 50px;
+	height: 40px;
 }
 .revert-user img{
 	border-radius: 50%;
@@ -49,21 +89,22 @@
 	display: block;
 	float: left;
 	line-height: initial;
-	margin-top: 5px;
     margin-left: 8px;
 }
 .revert-user-name{
 	font-weight: 600;
 	line-height: 20px;
 	margin-top: 10px;
+	font-size: .8em;
 }
 .revert-user-time{
-	font-size: .7em;
+	font-size: .5em;
 	line-height: 15px;
 	color: #949494;
 }
 .revert-content,.revert-comment-content-box{
 	margin-left: 58px;
+	font-size: .9em;
 }
 .revert-comment-content-box{
 	margin-top: 10px;

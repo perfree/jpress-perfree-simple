@@ -1,14 +1,21 @@
+@font-face{
+　　font-family: fontello;
+　　src: url("../font/fontello.ttf");
+}
 body {
 	background-color: #F2F2F2 !important;
 	margin: 0;
 	color: #5d727c;
+	font-family: "fontello";
 }
 
 a {
 	color: inherit;
 	text-decoration: none;
 	cursor: pointer;
+	font-family: "fontello";
 }
+
 
 .header {
 	width: 100%;
@@ -59,7 +66,9 @@ a {
 .perfree-content-right {
 	padding-left: 10px;
 }
-
+.layui-bg-gray{
+	margin-bottom: 3px;
+}
 .carousel-box {
 	margin-top: 10px;
 }
@@ -69,7 +78,7 @@ a {
 }
 
 .layui-card {
-	margin-top: 10px;
+	margin-top: 10px!important;
 	margin-bottom: 0px;
 }
 
@@ -78,7 +87,7 @@ a {
 }
 
 .article-box-content {
-	padding: 20px 20px 14px 20px;
+	padding: 20px 20px 8px 20px!important;
 }
 .layui-btn-normal {
     background-color: #23b7e5;
@@ -86,10 +95,6 @@ a {
 .article-msg{
 	font-size: .7em;
 	color: #98a6ad;
-}
-.article-img {
-	width: 100%;
-	overflow: hidden;
 }
 
 .article-title {
@@ -173,6 +178,10 @@ a {
     font-size: 1em;
     color: #5d727c;
     margin-top: 10px;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	width: 75%;
 }
 .hot-article-msg{
 	float: left;
@@ -201,6 +210,42 @@ a {
 }
 .layui-laypage a, .layui-laypage span{
 	color: #98a6ad;	
+}
+.perfree-page-box{
+	float: none;
+	line-height: 50px;
+	margin-left: 15px;
+}
+.page-item{
+	list-style: none;
+	line-height: 20px;
+	padding: 3px 8px 3px 8px;
+	min-width: 30px;
+	margin-left: -5px;
+	border: 1px solid #c3c2c2;
+	text-align: center;
+	color: #7e7f80;
+	font-size: .7em;
+}
+.page-item:hover{
+	color: #23b7e5;
+	cursor: pointer;
+}
+.active{
+	background-color: #23b7e5;
+	border: 1px solid #23b7e5;
+	color: #fff!important;
+}
+.active:hover{
+	color: #fff!important;
+}
+.disabled{
+	border: 1px solid #c3c2c2;
+	color: #b0b1b3!important;
+}
+.disabled:hover{
+	cursor:not-allowed!important;
+	color: #b0b1b3!important;
 }
 @media screen and (max-width:768px) {
 	.perfree-content-right {

@@ -1,4 +1,4 @@
-#define mylaout()
+#define layout()
 <html>
 <head>
     <meta charset="UTF-8">
@@ -6,11 +6,12 @@
     <meta name="keywords" content="#(SEO_KEYWORDS ??)">
     <meta name="description" content="#(SEO_DESCRIPTION ??)">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-    <link rel="stylesheet" href="layui/css/layui.css" media="all">
-    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css" media="all">
+    <link rel="stylesheet" href="plugin/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="plugin/font-awesome/css/font-awesome.min.css" media="all">
     <link rel="stylesheet" href="css/style.css" media="all">
+    <link rel="stylesheet" href="plugin/highlight/styles/railscasts.css" media="all">
     <script type="text/javascript" src="https://api.guoch.xyz/?code=js&charset=utf-8"></script>
-    <script src="layui/layui.js"></script>
+    <script src="plugin/layui/layui.js"></script>
 </head>
 <body>
 <!-- 顶部导航栏start -->
@@ -24,9 +25,14 @@
     #include("./_footBar.html")
 </div>
 <!-- 内容部分end -->
-<link rel="stylesheet" href="highlight/styles/vs.css">
-<script src="highlight/highlight.pack.js"></script>
-<script>hljs.initHighlightingOnLoad();</script>
+<script src="plugin/highlight/highlight.pack.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+    layui.use(['element','flow'], function(){
+        var element = layui.element,flow = layui.flow;
+        flow.lazyimg();
+    });
+</script>
 </body>
 </html>
 #end
