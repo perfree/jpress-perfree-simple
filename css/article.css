@@ -109,3 +109,13 @@
 .revert-comment-content-box{
 	margin-top: 10px;
 }
+.toReply{
+	display: -webkit-inline-box;
+	margin-left: 50px;
+	color: #ffffff;
+	background: #23b7e5;
+	padding: 0px 5px 0px 5px;
+	border-radius: 4px;
+	font-size: .7em;
+	margin-top: 4px;
+}

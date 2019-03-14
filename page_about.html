@@ -1,0 +1,13 @@
+#include("./_layout.html")
+#@layout()
+#define content()
+    <div class="layui-col-xs12 layui-col-sm7 layui-col-md8 perfree-content-left">
+        <div class="layui-card">
+            <div class="layui-card-body" style="padding: 8px">
+                #page(slug="about")
+                #(page.content ??)
+                #end
+            </div>
+        </div>
+    </div>
+#end
