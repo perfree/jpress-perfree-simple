@@ -9,7 +9,7 @@
 
 [模板下载](https://github.com/perfree/jpress-perfree-simple/releases)
 
-使用文档书写中...
+[使用文档](https://www.yinpengfei.com/archives/168/)
 ## 简单预览
 首页
 ![简单预览](https://www.img.yinpengfei.com/group1/default/20190314/16/57/1/686c50868b6a4d92a75bef85f05f3c96_1.png "截图")
