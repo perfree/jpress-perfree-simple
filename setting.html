@@ -1,17 +1,20 @@
 #@layout()
 
 #define content()
+<style>
+    .panel-title a{display: block;width: 100%;height: 40px;line-height: 40px;padding-left: 10px;font-weight: 500;font-size: .9em;}
+    .panel-heading{padding: 0px!important;}
+    .panel-group{margin-top: 20px;}
+    label{font-weight: 500!important;font-size: 1em!important;}
+</style>
 <div class="content-wrapper">
-
     <section class="content-header">
         <h1>
             模板设置
             <small>Template Setting</small>
         </h1>
     </section>
-
     <section class="content">
-
         <div class="row">
             <div class="col-xs-12">
                 <div class="box box-primary">
@@ -20,33 +23,158 @@
                         <div class="box-body ">
                             <a href="https://www.img.yinpengfei.com/group1/default/20190217/11/24/1/Screenshot_2019-02-17-11-21-42-557_com.eg.android.png" target="_blank">支付宝捐赠</a>
                             <a href="https://www.img.yinpengfei.com/group1/default/20190217/11/26/1/Screenshot_2019-02-17-11-21-29-388_com.tencent.mm.png" target="_blank">微信捐赠</a>
-                            <h4 class="page-header">网站配置</h4>
-                            <div class="form-group">
-                                <label class="col-sm-2 control-label">logo图标</label>
-                                <div class="col-sm-6">
-                                    <input type="input" class="form-control" placeholder="网站左侧顶部logo图标"
-                                           name="page_logo_icon" value="#option('page_logo_icon')">
-                                    <span style="color: #999">请使用Font Awesome图标,直接写图标名称就行可,如fa fa-user-o只需写user-o即可</span>
+
+                            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading" role="tab" id="headingOne">
+                                        <h4 class="panel-title">
+                                            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                                <span class="glyphicon glyphicon-send"></span> 初始配置
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                                        <div class="panel-body">
+                                            <!-- ico配置start -->
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label">网页ico图标:</label>
+                                                <div class="col-sm-6">
+                                                    <button type="button"
+                                                            for-src="perfree_logo"
+                                                            for-input="perfree_logo_input"
+                                                            class="jp-image-browser btn btn-flat btn-default btn-xs">
+                                                        <i class="fa fa-fw fa-image"></i> 选择图片
+                                                    </button>
+                                                    <br/>
+                                                    <img src="#(CPATH)#option('perfree_logo','/templates/perfree-simple/img/logo.png')"
+                                                         id="perfree_logo">
+                                                    <input type="hidden" id="perfree_logo_input" name="perfree_logo"
+                                                           value="#option('perfree_logo' ??)">
+                                                </div>
+                                            </div>
+                                            <!-- ico配置end -->
+
+                                            <!-- 导航栏logo图标start -->
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label">导航栏logo图标:</label>
+                                                <div class="col-sm-6">
+                                                    <input type="input" class="form-control" placeholder="网站左侧顶部logo图标"
+                                                           name="page_logo_icon" value="#option('page_logo_icon' ??)">
+                                                    <span style="color: #999">请使用Font Awesome图标,直接写图标名称就行可,如fa fa-user-o只需写user-o即可</span>
+                                                </div>
+                                            </div>
+                                            <!-- 导航栏logo图标end -->
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading" role="tab" id="headingTwo">
+                                        <h4 class="panel-title">
+                                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                                <span class="glyphicon glyphicon-cloud"></span> 外观设置
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                                        <div class="panel-body">
+                                            <!-- 代码样式start -->
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label">代码样式:</label>
+                                                <div class="col-sm-6">
+                                                    <select class="form-control" name="page_code_style">
+                                                        <option value="#option('page_code_style' ??)" style="display: none">#option('page_code_style','请选择')</option>
+                                                        #include("./_codeStyle.html")
+                                                    </select>
+                                                    <span style="color: #999">前台解析代码的高亮样式</span>
+                                                </div>
+                                            </div>
+                                            <!-- 代码样式end -->
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading" role="tab" id="headingThree">
+                                        <h4 class="panel-title">
+                                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                                <span class="glyphicon glyphicon-cog"></span> 高级设置
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                                        <div class="panel-body">
+
+                                            <!-- 自定义输出head 头部的HTML代码start -->
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label">head头部HTML代码:</label>
+                                                <div class="col-sm-6">
+                                                    <textarea class="form-control" placeholder="随意发挥..."
+                                                              name="page_head_code" value="#option('page_head_code' ??)" ></textarea>
+                                                    <span style="color: #999">这里填写的是html代码，会输入到head内,你可以填写网站统计代码等其他信息。</span>
+                                                </div>
+                                            </div>
+                                            <!-- 自定义输出head 头部的HTML代码end -->
+
+                                            <!-- 自定义css样式start -->
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label">自定义css代码:</label>
+                                                <div class="col-sm-6">
+                                                    <textarea class="form-control" placeholder="随意发挥..."
+                                                              name="page_css_code" value="#option('page_css_code' ??)" ></textarea>
+                                                    <span style="color: #999">这里填写的是css代码，会自动输出到head标签内,记得加上style标签</span>
+                                                </div>
+                                            </div>
+                                            <!-- 自定义css样式end -->
+
+                                            <!-- 底部左侧信息start -->
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label">底部左侧信息:</label>
+                                                <div class="col-sm-6">
+                                                    <input type="input" class="form-control" placeholder="可以写一下备案信息什么的..."
+                                                           name="page_footer_left" value="#option('page_footer_left' ??)">
+                                                    <span style="color: #999">如:© 2019 Perfree版权所有 豫ICP备xxxxxxxxxxxx号</span>
+                                                </div>
+                                            </div>
+                                            <!-- 底部左侧信息end -->
+
+                                            <!-- 底部右侧信息start -->
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label">底部右侧信息:</label>
+                                                <div class="col-sm-6">
+                                                    <textarea class="form-control" placeholder="随意发挥..."
+                                                              name="page_footer_right" value="#option('page_footer_right' ??)" ></textarea>
+                                                    <span style="color: #999">随意发挥,支持html</span>
+                                                </div>
+                                            </div>
+                                            <!-- 底部右侧信息end -->
+
+                                            <!-- 自定义js代码start -->
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label">自定义js代码:</label>
+                                                <div class="col-sm-6">
+                                                    <textarea class="form-control" placeholder="随意发挥,支持jquery..."
+                                                              name="page_js_code" value="#option('page_js_code' ??)" ></textarea>
+                                                    <span style="color: #999">这里填写的是Js代码，会自动输出到body标签内,记得加上script标签</span>
+                                                </div>
+                                            </div>
+                                            <!-- 自定义js代码end -->
+
+                                            <!-- 全局右侧广告代码start -->
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label">全局右侧广告:</label>
+                                                <div class="col-sm-6">
+                                                    <textarea class="form-control" placeholder="随意发挥..."
+                                                              name="page_ad_code" value="#option('page_ad_code' ??)" ></textarea>
+                                                    <span style="color: #999">这里可以填写谷歌,百度等广告代码</span>
+                                                </div>
+                                            </div>
+                                            <!-- 全局右侧广告代码end -->
+
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
 
-                            <div class="form-group">
-                                <label class="col-sm-2 control-label">底部左侧信息</label>
-                                <div class="col-sm-6">
-                                    <input type="input" class="form-control" placeholder="可以写一下备案信息什么的..."
-                                           name="page_footer_left" value="#option('page_footer_left')">
-                                    <span style="color: #999">如:© 2019 Perfree版权所有 豫ICP备xxxxxxxxxxxx号</span>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label class="col-sm-2 control-label">底部右侧信息</label>
-                                <div class="col-sm-6">
-                                    <input type="input" class="form-control" placeholder="随意发挥..."
-                                           name="page_footer_right" value="#option('page_footer_right')">
-                                    <span style="color: #999">随意发挥,支持html</span>
-                                </div>
-                            </div>
                             <div class="form-group">
                                 <label class="col-sm-2 control-label" style="color: #999">更多功能正在开发中...</label>
                             </div>

@@ -96,12 +96,11 @@ a {
 	font-size: .7em;
 	color: #98a6ad;
 }
-
 .article-title {
 	overflow: hidden;
 	text-overflow: ellipsis;
 	white-space: nowrap;
-	font-size: 1.3em;
+	font-size: 1.2em;
 }
 #page{
 	margin-left: 10px;
@@ -139,7 +138,6 @@ a {
 .layui-input, .layui-select, .layui-textarea,.layui-btn{
 	border-radius: inherit;
 }
-
 .layui-footer{
 	clear: both;
 	height: 50px;
@@ -175,7 +173,7 @@ a {
 	line-height: 14px;
     float: left;
     margin-left: 6px;
-    font-size: 1em;
+    font-size: .92em;
     color: #5d727c;
     margin-top: 10px;
 	overflow: hidden;
@@ -254,6 +252,25 @@ a {
 .register-btn{
 	float: right;
 	padding: 0 6px!important;
+}
+.perfree-hide{
+	display: none;
+}
+.layui-fixbar li {
+	width: 40px;
+	height: 40px;
+	line-height: 40px;
+	margin-bottom: 1px;
+	text-align: center;
+	cursor: pointer;
+	font-size: 30px;
+	background-color: #ffffff;
+	color: #000000;
+	border-radius:0px;
+	opacity: .95;
+}
+.layui-fixbar .layui-fixbar-top{
+	font-size: 38px;
 }
 @media screen and (max-width:768px) {
 	.perfree-content-right {

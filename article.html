@@ -2,95 +2,6 @@
 #@layout()
 #define content()
 <link rel="stylesheet" href="css/article.css" media="all">
-<div class="layui-col-xs12 layui-col-sm7 layui-col-md8 perfree-content-left">
-		<div class="layui-card">
-			<div class="layui-card-header article-title">
-				<h2>#(article.title ??)</h2>
-				<p>
-					<i class="fa fa-user-o"></i> #(article.user.nickname ??)&nbsp;
-					<i class="fa fa-eye"></i> #(article.view_count ??)浏览&nbsp;
-					<i class="fa fa-comment-o"></i> #(article.comment_count ??)评论&nbsp;
-					<i class="fa fa-clock-o"></i> #date(article.created, "yyyy-MM-dd")
-				</p>
-			</div>
-			<div class="layui-card-body article-body">
-				<div class="perfree-article-content">
-					#(article.content ??)
-				</div>
-				<div class="article-content-bottom">
-					<span class="article-content-bottom-left"><i class="fa fa-clock-o"></i> 最后修改于 #date(article.created, "yyyy-MM-dd HH:mm:ss")</span>
-					<span class="article-content-bottom-right" title="转载需注明出处">© 著作权归作者所有</span>
-				</div>
-			</div>
-		</div>
-
-		<div class="layui-card">
-		  <div class="layui-card-header" style="padding: 0 20px;">发表评论</div>
-		  <div class="layui-card-body revert-body">
-			<div class="revert-box">
-				<form class="layui-form" action="#(CPATH)/article/postComment" id="commentForm" method="post">
-					<input type="hidden" name="articleId" value="#(article.id)" id="articleId">
-					<input type="hidden" name="pid" id="pid">
-					<textarea id="revert" style="display: none;" name="content" lay-verify="content"></textarea>
-					<button class="layui-btn layui-btn-normal revert-submit" lay-submit lay-filter="*">发表评论</button>
-				</form>
-			</div>
-			<div class="revert-list" id="allComment">
-				<input type="hidden" id="pRevertContent">
-				<input type="hidden" id="pRevertAuthor">
-				<input type="hidden" id="pRevertCreated">
-				<input type="hidden" id="pRevertAvatar">
-				#commentPage(pageSize=5)
-					#for(comment : commentPage.list)
-						<div class="revert-content-box">
-							<div class="revert-user">
-								<!--#(comment.user.avatar)-->
-								<img src="#(comment.user.avatar)" width="40px" height="40px"/>
-								<span class="revert-user-msg">
-										<span class="revert-user-name">#(comment.author ??)</span>
-										<br>
-										<span class="revert-user-time">#date(comment.created, "yyyy-MM-dd HH:mm:ss")</span>
-									</span>
-							</div>
-							<div class="revert-content">
-								#(comment.text ??)
-							</div>
-							#if(comment.parent)
-								<div class="revert-comment-content-box">
-									<div class="revert-user">
-										<!--#(comment.parent.user.avatar)-->
-										<img src="#(comment.parent.user.avatar)" width="40px" height="40px"/>
-										<span class="revert-user-msg">
-											<span class="revert-user-name">#(comment.parent.author)</span>
-											<br>
-											<span class="revert-user-time">#date(comment.parent.created, "yyyy-MM-dd HH:mm:ss")</span>
-										</span>
-									</div>
-									<div class="revert-content">
-										#(comment.parent.text ??)
-									</div>
-								</div>
-							#end
-							<a class="toReply" href="javascript:;" data-cid="#(comment.id)" data-author="#(comment.author ??)">回复</a>
-						</div>
-						<hr class="layui-bg-gray">
-					#end
-					#commentPaginate(anchor="allComment")
-					<div class="layui-card">
-						<div class="layui-card-body">
-							<div class="perfree-page-box">
-								#for(page : pages)
-								<a class="page-item #(page.style)" href="#(page.url ??)">#(page.text ??)</a>
-								#end
-							</div>
-						</div>
-					</div>
-					#end
-				#end
-			</div>
-		  </div>
-		</div>
-	</div>
 <script src="js/jquery-3.2.1.min.js"></script>
 <script src="/static/components/jquery/jquery.form.min.js"></script>
 <script>
@@ -109,7 +20,7 @@
 				layedit.sync(edit);
 			}
 		});
-
+		var pRevertContent,pRevertAuthor,pRevertCreated,pRevertAvatar;
 		//监听回复按钮点击事件
 		$('#allComment').on('click','.toReply', function () {
 			$('#pid').val($(this).attr('data-cid'));
@@ -119,10 +30,10 @@
 				height: 100
 			});
 			//记录父级评论内容
-			$("#pRevertContent").val($(this).siblings(".revert-content").text());
-			$("#pRevertAuthor").val($(this).siblings(".revert-user").children(".revert-user-msg").children(".revert-user-name").text());
-			$("#pRevertCreated").val($(this).siblings(".revert-user").children(".revert-user-msg").children(".revert-user-time").text());
-			$("#pRevertAvatar").val($(this).siblings(".revert-user").children("img").attr("src"));
+			pRevertContent = $(this).siblings(".revert-content").text();
+			pRevertAuthor = $(this).siblings(".revert-user").children(".revert-user-msg").children(".revert-user-name").text();
+			pRevertCreated = $(this).siblings(".revert-user").children(".revert-user-msg").children(".revert-user-time").text();
+			pRevertAvatar = $(this).siblings(".revert-user").children("img").attr("src");
 			$('#revert').focus();
 		});
 
@@ -163,14 +74,14 @@
 						if(pid != ''){
 							html += '<div class="revert-comment-content-box">' +
 									'<div class="revert-user">' +
-									'<img src="'+$("#pRevertAvatar").val()+'" width="40px" height="40px"/>' +
+									'<img src="'+pRevertAvatar+'" width="40px" height="40px"/>' +
 									'<span class="revert-user-msg">' +
-									'<span class="revert-user-name">'+$("#pRevertAuthor").val()+'</span>' +
+									'<span class="revert-user-name">'+pRevertAuthor+'</span>' +
 									'<br>' +
-									'<span class="revert-user-time">'+$("#pRevertCreated").val()+'</span>' +
+									'<span class="revert-user-time">'+pRevertCreated+'</span>' +
 									'</span>' +
 									'</div>' +
-									'<div class="revert-content">'+$("#pRevertContent").val()+'</div>' +
+									'<div class="revert-content">'+pRevertContent+'</div>' +
 									'</div>';
 						}
 						html += '<a class="toReply" href="javascript:;" data-cid="'+result.comment.id+'" data-author="'+result.comment.author+'">回复</a>'+
@@ -193,4 +104,92 @@
 		});
 	});
 </script>
+<div class="layui-col-xs12 layui-col-sm7 layui-col-md8 perfree-content-left">
+	<!-- 文章start -->
+	<div class="layui-card">
+		<div class="layui-card-header article-title">
+			<h2>#(article.title ??)</h2>
+			<p>
+				<i class="fa fa-user-o"></i> #(article.user.nickname ??)&nbsp;
+				<i class="fa fa-eye"></i> #(article.view_count ??)浏览&nbsp;
+				<i class="fa fa-comment-o"></i> #(article.comment_count ??)评论&nbsp;
+				<i class="fa fa-clock-o"></i> #date(article.created, "yyyy-MM-dd")
+			</p>
+		</div>
+		<div class="layui-card-body article-body">
+			<div class="perfree-article-content">
+				#(article.content ??)
+			</div>
+			<div class="article-content-bottom">
+				<span class="article-content-bottom-left"><i class="fa fa-clock-o"></i> 最后修改于 #date(article.created, "yyyy-MM-dd HH:mm:ss")</span>
+			</div>
+		</div>
+	</div>
+	<!-- 文章end -->
+
+	<div class="layui-card">
+		<div class="layui-card-header" style="padding: 0 20px;">发表评论</div>
+		<div class="layui-card-body revert-body">
+			<!-- 评论框start -->
+			<div class="revert-box">
+				<form class="layui-form" action="#(CPATH)/article/postComment" id="commentForm" method="post">
+					<input type="hidden" name="articleId" value="#(article.id)" id="articleId">
+					<input type="hidden" name="pid" id="pid">
+					<textarea id="revert" style="display: none;" name="content" lay-verify="content"></textarea>
+					<button class="layui-btn layui-btn-normal revert-submit" lay-submit lay-filter="*">发表评论</button>
+				</form>
+			</div>
+			<!-- 评论框end -->
+			<!-- 评论列表start -->
+			<div class="revert-list" id="allComment">
+				#commentPage(pageSize=5)
+					#for(comment : commentPage.list)
+					<div class="revert-content-box">
+						<div class="revert-user">
+							<img src="#(comment.user.avatar)" width="40px" height="40px"/>
+							<span class="revert-user-msg">
+								<span class="revert-user-name">#(comment.author ??)</span>
+								<br>
+								<span class="revert-user-time">#date(comment.created, "yyyy-MM-dd HH:mm:ss")</span>
+							</span>
+						</div>
+						<div class="revert-content">
+							#(comment.text ??)
+						</div>
+						#if(comment.parent)
+						<div class="revert-comment-content-box">
+							<div class="revert-user">
+								<img src="#(comment.parent.user.avatar)" width="40px" height="40px"/>
+								<span class="revert-user-msg">
+									<span class="revert-user-name">#(comment.parent.author)</span>
+									<br>
+									<span class="revert-user-time">#date(comment.parent.created, "yyyy-MM-dd HH:mm:ss")</span>
+								</span>
+							</div>
+							<div class="revert-content">
+								#(comment.parent.text ??)
+							</div>
+						</div>
+						#end
+						<a class="toReply" href="javascript:;" data-cid="#(comment.id)" data-author="#(comment.author ??)">回复</a>
+					</div>
+					<hr class="layui-bg-gray">
+					#end
+					#commentPaginate(anchor="allComment")
+						<div class="layui-card">
+							<div class="layui-card-body">
+								<div class="perfree-page-box">
+									#for(page : pages)
+									<a class="page-item #(page.style)" href="#(page.url ??)">#(page.text ??)</a>
+									#end
+								</div>
+							</div>
+						</div>
+					#end
+				#end
+			</div>
+			<!-- 评论列表end -->
+		</div>
+	</div>
+</div>
 #end

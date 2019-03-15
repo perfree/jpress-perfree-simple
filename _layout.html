@@ -5,18 +5,28 @@
     <title>#(SEO_TITLE ?? (WEB_TITLE + '-' + WEB_SUBTITLE))</title>
     <meta name="keywords" content="#(SEO_KEYWORDS ??)">
     <meta name="description" content="#(SEO_DESCRIPTION ??)">
+    <meta name="template" content="Perfree-Simple">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <!-- ico -->
+    <link rel="icon" type="image/ico" href="#option('perfree_logo' ??)">
     <link rel="stylesheet" href="plugin/layui/css/layui.css" media="all">
     <link rel="stylesheet" href="plugin/font-awesome/css/font-awesome.min.css" media="all">
     <link rel="stylesheet" href="css/style.css" media="all">
-    <link rel="stylesheet" href="plugin/highlight/styles/railscasts.css" media="all">
+    <!-- 代码样式 -->
+    <link rel="stylesheet" href="plugin/highlight/styles/#option('page_code_style','railscasts').css" media="all">
+    <!-- 一言api组件 -->
     <script type="text/javascript" src="https://api.guoch.xyz/?code=js&charset=utf-8"></script>
+    <script src="js/jquery-3.2.1.min.js"></script>
     <script src="plugin/layui/layui.js"></script>
+    <!-- 自定义网页头部代码 -->
+    #option('page_head_code' ??)
+    <!-- 自定义css代码 -->
+    #option('page_css_code' ??)
 </head>
 <body>
-<!-- 顶部导航栏start -->
+
+<!-- 引入导航栏 -->
 #include("./_headerBar.html")
-<!-- 顶部导航栏end -->
 
 <!-- 内容部分start -->
 <div class="layui-container perfree-content layui-anim-up">
@@ -25,14 +35,17 @@
     #include("./_footBar.html")
 </div>
 <!-- 内容部分end -->
+
 <script src="plugin/highlight/highlight.pack.js"></script>
 <script>
     hljs.initHighlightingOnLoad();
-    layui.use(['element','flow'], function(){
-        var element = layui.element,flow = layui.flow;
-        flow.lazyimg();
+    layui.use('util', function(){
+        var util = layui.util;
+        util.fixbar({});
     });
 </script>
+<!-- 自定义js代码 -->
+#option('page_js_code' ??)
 </body>
 </html>
 #end

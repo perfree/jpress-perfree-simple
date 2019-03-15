@@ -1,26 +1,32 @@
 <div class="layui-col-sm5 layui-col-md4 perfree-content-right">
+    <!-- 一言组件 -->
     <div class="layui-card">
         <div class="layui-card-body page-title-body">
-            <h2>Perfree</h2>
+            <h2>#(WEB_NAME ??)</h2>
             <div id="saying"><script>saying()</script></div>
         </div>
     </div>
+    <!-- 一言组件 -->
+
     <!-- 搜索start -->
-    <div class="layui-card">
+   <!-- <div class="layui-card">
         <div class="layui-card-header">
             <i class="fa fa-search"></i>
             <span style="margin-left: 3px;">搜索</span>
         </div>
         <div class="layui-card-body search-body">
-            <form class="layui-form" action="">
+            <form class="layui-form" action="/article/search">
                 <div class="layui-form-item">
-                    <input type="text" name="title" required  lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input search-input">
+                    <input type="text" name="keyword" required  lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input search-input">
+                    <input type="hidden" name="pageNum" value="1">
+                    <input type="hidden" name="pageSize" value="6">
                     <button class="layui-btn layui-btn-normal search-btn" type="submit"><i class="fa fa-search"></i></button>
                 </div>
             </form>
         </div>
-    </div>
+    </div>-->
     <!-- 搜索end -->
+
     <!-- 热门start -->
     <div class="layui-card">
         <div class="layui-card-header">
@@ -40,6 +46,7 @@
         </div>
     </div>
     <!-- 热门end -->
+
     <!-- 标签start -->
     <div class="layui-card">
         <div class="layui-card-header">
@@ -55,4 +62,17 @@
         </div>
     </div>
     <!-- 标签end -->
+
+    <!-- 标签start -->
+    <div class="layui-card #if(option('page_ad_code') == null) perfree-hide #end">
+        <div class="layui-card-header">
+            <i class="fa fa-bullhorn"></i>
+            <span style="margin-left: 3px;">广告</span>
+        </div>
+        <div class="layui-card-body tag-body">
+            #option('page_ad_code' ??)
+        </div>
+    </div>
+    <!-- 标签end -->
+
 </div>

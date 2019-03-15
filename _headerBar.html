@@ -1,9 +1,15 @@
+<!-- 导航栏部分 -->
 <div class="header layui-bg-cyan">
     <div class="layui-container">
+
+        <!-- 导航栏logo及文字start -->
         <a class="logo-box" href="/">
             <i class="fa fa-#option('page_logo_icon' ??) fa-lg"></i>
             <span> #(WEB_NAME ??)</span>
         </a>
+        <!-- 导航栏logo及文字end -->
+
+        <!-- 导航栏菜单start -->
         <ul class="layui-nav layui-bg-cyan" lay-filter="">
             #for(menu : MENUS)
                 <li class="layui-nav-item" lay-unselect><a href="#(menu.url ??)"><i class="fa fa-#(menu.icon ??)"></i> #(menu.text ??)</a></li>
@@ -19,5 +25,7 @@
                 </li>
             #end
         </ul>
+        <!-- 导航栏菜单end -->
+
     </div>
 </div>

@@ -13,7 +13,7 @@
 }
 .article-title p{
 	font-size: .8em;
-	line-height: 26px;
+	line-height: 30px;
 	color: #98a6ad;
 }
 .article-body{
@@ -26,34 +26,34 @@
 }
 .perfree-article-content img{
 	width: 100%!important;
-	margin-top: 8px;
-	margin-bottom: 8px;
+	margin-top: 14px;
+	margin-bottom: 14px;
 }
 .perfree-article-content pre{
 	width: 100%;
 	white-space: pre;
-	margin-top: 8px;
-	margin-bottom: 8px;
+	margin-top: 14px;
+	margin-bottom: 14px;
 }
 .perfree-article-content h1{
 	font-size: 1.6em;
 	font-weight: 600;
-	line-height: 40px;
+	line-height: 55px;
 }
 .perfree-article-content h2{
 	font-size: 1.4em;
 	font-weight: 600;
-	line-height: 40px;
+	line-height: 50px;
 }
 .perfree-article-content h3{
 	font-size: 1.3em;
-	font-weight: 500;
-	line-height: 35px;
+	font-weight: 600;
+	line-height: 46px;
 }
 .perfree-article-content h4{
 	font-size: 1.2em;
-	font-weight: 500;
-	line-height: 35px;
+	font-weight: 600;
+	line-height: 42px;
 }
 .perfree-article-content pre code{
 	font-family: "fontello";
@@ -64,6 +64,7 @@
 }
 .article-content-bottom-left{
 	float: left;
+	font-size: .7em;
 }
 .article-content-bottom-right{
 	float: right;
