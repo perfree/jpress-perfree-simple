@@ -45,19 +45,19 @@ body::-webkit-scrollbar-track {
 	z-index:999;
 	box-shadow: 0 2px 2px rgba(0,0,0,.05), 0 1px 0 rgba(0,0,0,.05);
 }
-.layui-nav {
+.header .layui-nav {
 	float: right;
 }
-.layui-nav {
+.header .layui-nav {
 	padding-right: 0;
 }
-.layui-nav .layui-nav-item{
+.header .layui-nav .layui-nav-item{
 	line-height: 50px;
 }
-.layui-nav-child{
+.header .layui-nav-child{
 	top:50px;
 }
-.logo-box {
+.header .logo-box {
 	float: left;
 	line-height: 50px;
 	color: rgba(255,255,255,.7);
@@ -65,18 +65,18 @@ body::-webkit-scrollbar-track {
 	font-size: 1.5em;
 }
 
-.logo-box:hover {
+.header .logo-box:hover {
 	color: #fff;
 }
 
-.layui-nav-bar {
+.header .layui-nav-bar {
 	display: none;
 }
 
-.layui-nav .layui-this:after {
+.header .layui-nav .layui-this:after {
 	display: none;
 }
-.layui-card-header{
+.header .layui-card-header{
 	color: #5d727c;
 	font-weight: 800;
 }
@@ -270,11 +270,11 @@ body::-webkit-scrollbar-track {
 	cursor:not-allowed!important;
 	color: #b0b1b3!important;
 }
-.login-btn{
+.header .login-btn{
 	float: left;
 	padding: 0 6px!important;
 }
-.register-btn{
+.header .register-btn{
 	float: right;
 	padding: 0 6px!important;
 }
@@ -306,6 +306,66 @@ body::-webkit-scrollbar-track {
 .article-box-content{
 	padding: 20px!important;
 }
+
+/*移动端导航*/
+.phone-header{
+	display: none;
+	width: 100%;
+	height: 50px;
+	position: sticky;
+	top:0;
+	left:0;
+	z-index:999;
+	text-align: center;
+	box-shadow: 0 2px 2px rgba(0,0,0,.05), 0 1px 0 rgba(0,0,0,.05);
+}
+.phone-header .logo-box{
+	height: 50px;
+	line-height: 50px;
+	color: rgba(255,255,255,.7);
+	font-weight: 600;
+	font-size: 1.5em;
+}
+.phone-header .phone-open-nav-btn{
+	display: block;
+	height: 50px;
+	width: auto;
+	font-size: 1.6em;
+	color: rgba(255,255,255,.7);
+	line-height: 50px;
+	position: absolute;
+	left: 15px;
+	top: 0;
+}
+.phone-header .phone-open-nav-btn i{
+	line-height: 50px;
+}
+.phone-header .login-box{
+	position: absolute;
+	right: 15px;
+	top: 0;
+}
+.phone-header .login-box .login-btn{
+	margin-right: 5px;
+}
+.phone-header .login-box .register-btn{
+	margin-left: 5px;
+}
+.phone-header .login-box a{
+	line-height: 50px;
+	font-size: 1.2em;
+	color: rgba(255,255,255,.7);
+}
+.phone-nav-box{
+	display: none;
+	height: 100%;
+	width: 200px;
+	background-color: #0c6b9c;
+	z-index: 998;
+	position: absolute;
+	left: 0px;
+	top: 50px;
+}
 @media screen and (max-width:768px) {
 	.perfree-content-right,.perfree-content-left {
 		float: none;
@@ -315,5 +375,11 @@ body::-webkit-scrollbar-track {
 	}
 	.music-card{
 		display: none;
+	}
+	.header{
+		display: none;
+	}
+	.phone-header{
+		display: block;
 	}
 }

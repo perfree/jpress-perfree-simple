@@ -38,3 +38,28 @@
 
     </div>
 </div>
+<!--移动端header-->
+<div class="phone-header layui-bg-cyan">
+    <a href="javascript:;" class="phone-open-nav-btn">
+        <i class="fa fa-bars" aria-hidden="true"></i>
+    </a>
+    <!-- 导航栏logo及文字start -->
+    <a class="logo-box" href="/">
+        <i class="fa fa-#option('page_logo_icon' ??) fa-lg"></i>
+        <span> #(WEB_NAME ??)</span>
+    </a>
+    <!-- 导航栏logo及文字end -->
+
+    <div class="login-box">
+        #if(USER == null)
+        <a href="/user/login" class="login-btn"> 登录</a>|
+        <a href="/user/register" class="register-btn"> 注册</a>
+        #else
+        <a href="/ucenter"><img src="#(USER.avatar??)" class="layui-nav-img">#(USER.nickname??)</a>
+        #end
+    </div>
+</div>
+<!--移动端菜单-->
+<div class="phone-nav-box">
+
+</div>
