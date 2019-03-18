@@ -1,43 +1,68 @@
-@font-face{
-　　font-family: fontello;
-　　src: url("../font/fontello.ttf");
-}
-body {
-	background-color: #F2F2F2 !important;
+/* 清除margin,定义高度 */
+html,body{
 	margin: 0;
-	color: #5d727c;
-	font-family: "fontello";
+	height: auto;
+	min-height: 100%;
+	font-size: 12px;
+	line-height: 1.5;
+	color: #657180;
+	background-color: #f5f7f9!important;
+	-webkit-font-smoothing: antialiased;
+	-webkit-text-size-adjust: 100%;
+	font-family: Helvetica,PingFang SC,Hiragino Sans GB,Microsoft YaHei,微软雅黑,Arial,sans-serif;
 }
-
+/*全局a标签样式*/
 a {
-	color: inherit;
-	text-decoration: none;
+	-webkit-text-decoration-skip: objects;
+	color: #39f;
+	background: 0 0;
 	cursor: pointer;
-	font-family: "fontello";
+	-webkit-transition: color .2s ease;
+	transition: color .2s ease;
 }
-
-
+/*滚动条整体样式*/
+body::-webkit-scrollbar {
+	width: 6px;
+	height: 1px;
+}
+/*滚动条里面小方块*/
+body::-webkit-scrollbar-thumb {
+	border-radius: 10px;
+	background: #9ea7b4;
+}
+/*滚动条里面轨道*/
+body::-webkit-scrollbar-track {
+	border-radius: 10px;
+	background: #d7dde4;
+}
+/*顶部导航容器*/
 .header {
 	width: 100%;
 	float: left;
 	position: sticky;
-	top:0;left:0;
+	top:0;
+	left:0;
 	z-index:999;
+	box-shadow: 0 2px 2px rgba(0,0,0,.05), 0 1px 0 rgba(0,0,0,.05);
 }
-
 .layui-nav {
 	float: right;
 }
-
 .layui-nav {
 	padding-right: 0;
 }
+.layui-nav .layui-nav-item{
+	line-height: 50px;
+}
+.layui-nav-child{
+	top:50px;
+}
 .logo-box {
 	float: left;
-	line-height: 60px;
+	line-height: 50px;
 	color: rgba(255,255,255,.7);
-	font-weight: 800;
-	font-size: 17px;
+	font-weight: 600;
+	font-size: 1.5em;
 }
 
 .logo-box:hover {
@@ -72,20 +97,17 @@ a {
 .carousel-box {
 	margin-top: 10px;
 }
-
 .article-box {
 	margin-top: 10px;
 }
-
 .layui-card {
 	margin-top: 10px!important;
 	margin-bottom: 0px;
+	box-shadow: 0 2px 2px rgba(0,0,0,.02), 0 1px 0 rgba(0,0,0,.02);
 }
-
 .layui-card-body {
 	padding: 0;
 }
-
 .article-box-content {
 	padding: 20px 20px 8px 20px!important;
 }
@@ -100,7 +122,9 @@ a {
 	overflow: hidden;
 	text-overflow: ellipsis;
 	white-space: nowrap;
-	font-size: 1.2em;
+}
+.article-title a{
+	color: #657180;
 }
 #page{
 	margin-left: 10px;
@@ -117,9 +141,9 @@ a {
 	padding: 16px;
 }
 .article-content {
-	margin-top: 8px;
+	margin-top: 5px;
 	color: #98a6ad;
-	font-size: .9em;
+	font-size: 1.1em;
 }
 .search-body{
 	padding: 12px;
@@ -173,7 +197,7 @@ a {
 	line-height: 14px;
     float: left;
     margin-left: 6px;
-    font-size: .92em;
+    font-size: 1.05em;
     color: #5d727c;
     margin-top: 10px;
 	overflow: hidden;
@@ -219,10 +243,10 @@ a {
 	line-height: 20px;
 	padding: 3px 8px 3px 8px;
 	min-width: 30px;
-	margin-left: -5px;
-	border: 1px solid #c3c2c2;
+	margin-left: -4px;
+	border: 1px solid #dee2e6;
 	text-align: center;
-	color: #7e7f80;
+	color: #98a6ad;
 	font-size: .7em;
 }
 .page-item:hover{
@@ -238,7 +262,7 @@ a {
 	color: #fff!important;
 }
 .disabled{
-	border: 1px solid #c3c2c2;
+	border: 1px solid #dee2e6;
 	color: #b0b1b3!important;
 }
 .disabled:hover{

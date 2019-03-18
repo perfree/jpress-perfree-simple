@@ -1,0 +1,45 @@
+#include("./_layout.html")
+#@layout()
+#define content()
+    <div class="layui-col-xs12 layui-col-sm7 layui-col-md8 perfree-content-left">
+        <div class="article-box">
+            #articleSearchPage(pageSize=2)
+                #for(article : articlePage.list)
+                    <div class="layui-card">
+                        <div class="layui-card-body">
+                            #if(article.thumbnail != null)
+                            <div class="article-img">
+                                <img src="#(article.thumbnail ?? 'img/1.jpg')" alt="#(article.title ??)" width="100%" height="300px"/>
+                            </div>
+                            #end
+                            <div class="article-box-content">
+                                <h2 class="article-title">
+                                    <a href="#(article.url ??)">#(article.title ??)</a>
+                                </h2>
+                                <p class="article-content">#maxLength(article.text,100)</p>
+                                <hr class="layui-bg-gray">
+                                <span class="article-msg">
+                                    <i class="fa fa-user-o"></i> #(article.user.nickname ??)&nbsp;
+                                    <i class="fa fa-eye"></i> #(article.view_count ??)&nbsp;
+                                    <i class="fa fa-comment-o"></i> #(article.comment_count ??)&nbsp;
+                                    <i class="fa fa-clock-o"></i> #date(article.created, "yyyy-MM-dd")
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                #end
+                #articleSearchPaginate(firstGotoIndex=true)
+                    <div class="layui-card">
+                        <div class="layui-card-body">
+                            <div class="perfree-page-box">
+                                #for(page : pages)
+                                <a class="page-item #(page.style)" href="#(page.url ??)">#(page.text ??)</a>
+                                #end
+                            </div>
+                        </div>
+                    </div>
+                #end
+            #end
+        </div>
+    </div>
+#end
