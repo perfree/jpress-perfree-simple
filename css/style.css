@@ -144,6 +144,7 @@ body::-webkit-scrollbar-track {
 	margin-top: 5px;
 	color: #98a6ad;
 	font-size: 1.1em;
+	overflow: hidden;
 }
 .search-body{
 	padding: 12px;
@@ -296,8 +297,23 @@ body::-webkit-scrollbar-track {
 .layui-fixbar .layui-fixbar-top{
 	font-size: 38px;
 }
+.aplayer{
+	margin: 0px;
+}
+.music-body{
+	padding: 0px;
+}
+.article-box-content{
+	padding: 20px!important;
+}
 @media screen and (max-width:768px) {
-	.perfree-content-right {
+	.perfree-content-right,.perfree-content-left {
+		float: none;
+		width: 100%;
+		padding: 0px;
+		margin: 0px;
+	}
+	.music-card{
 		display: none;
 	}
 }
