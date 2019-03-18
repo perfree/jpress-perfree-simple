@@ -5,9 +5,12 @@
 <script src="js/jquery-3.2.1.min.js"></script>
 <script src="/static/components/jquery/jquery.form.min.js"></script>
 <script>
-	layui.use(['element','layedit','form','layer'], function() {
-		var element = layui.element,layedit = layui.layedit,form=layui.form,layer=layui.layer;
+	layui.use(['element','layedit','form','layer','jquery'], function() {
+		var element = layui.element,layedit = layui.layedit,form=layui.form,layer=layui.layer,$=layui.jquery;
 
+		$("code").each(function(){
+			$(this).html("<ul><li>" + $(this).html().replace(/\n/g,"\n</li><li>") +"\n</li></ul>");
+		});
 		//实例化编辑器
 		var edit = layedit.build('revert', {
 			tool: ['strong','italic','underline','del','link', 'face'],

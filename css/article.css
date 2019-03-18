@@ -1,6 +1,17 @@
-@font-face{
-　　font-family: fontello;
-　　src: url("../font/fontello.ttf");
+/*滚动条整体样式*/
+.perfree-article-content pre code::-webkit-scrollbar {
+	width: 6px;
+	height: 6px;
+}
+/*滚动条里面小方块*/
+.perfree-article-content pre code::-webkit-scrollbar-thumb {
+	border-radius: 10px;
+	background: #9ea7b4;
+}
+/*滚动条里面轨道*/
+.perfree-article-content pre code::-webkit-scrollbar-track {
+	border-radius: 10px;
+	background: #d7dde4;
 }
 .article-title{
 	font-weight: initial;
@@ -22,18 +33,43 @@
 .perfree-article-content{
 	color: #61696d;
 	overflow: hidden;
-	font-family: "fontello";
+	font-size: 1.1em;
 }
 .perfree-article-content img{
 	width: 100%!important;
 	margin-top: 14px;
 	margin-bottom: 14px;
 }
+.hljs ul {
+	list-style: decimal;
+	margin: 0px 0px 0 40px !important;
+	padding: 0px;
+}
+.hljs ul li {
+	list-style: decimal-leading-zero;
+	border-left: 1px solid rgb(222, 229, 231) !important;
+	padding: 5px!important;
+	margin: 0 !important;
+	line-height: 14px;
+	word-break: break-all;
+	word-wrap: break-word;
+}
+.hljs ul li:nth-of-type(even) {
+	color: inherit;
+}
 .perfree-article-content pre{
+	font-size: 13px;
+	line-height: 1.42857143;
+	word-break: break-all;
+	word-wrap: break-word;
+	background-color: #f5f5f5;
 	width: 100%;
 	white-space: pre;
 	margin-top: 14px;
 	margin-bottom: 14px;
+}
+.perfree-article-content pre code{
+	font-family: Menlo,Monaco,Consolas,"Courier New",monospace;
 }
 .perfree-article-content h1{
 	font-size: 1.6em;
@@ -56,7 +92,6 @@
 	line-height: 42px;
 }
 .perfree-article-content pre code{
-	font-family: "fontello";
 }
 .article-content-bottom{
 	height: 60px;

@@ -12,7 +12,16 @@
         <!-- 导航栏菜单start -->
         <ul class="layui-nav layui-bg-cyan" lay-filter="">
             #for(menu : MENUS)
-                <li class="layui-nav-item" lay-unselect><a href="#(menu.url ??)"><i class="fa fa-#(menu.icon ??)"></i> #(menu.text ??)</a></li>
+                <li class="layui-nav-item" lay-unselect>
+                    <a href="#(menu.url ??)"><i class="fa fa-#(menu.icon ??)"></i> #(menu.text ??)</a>
+                    #if(menu.hasChild())
+                        <dl class="layui-nav-child">
+                            #for(childMenu : menu.getChilds())
+                                <dd><a href="#(childMenu.url ??)"> #(childMenu.text ??)</a></dd>
+                            #end
+                        </dl>
+                    #end
+                </li>
             #end
             #if(USER == null)
                 <li class="layui-nav-item" lay-unselect>
@@ -21,7 +30,7 @@
                 </li>
             #else
                 <li class="layui-nav-item">
-                    <a href="/ucenter"><img src="#(USER.avatar??)" class="layui-nav-img">#(USER.username??)</a>
+                    <a href="/ucenter"><img src="#(USER.avatar??)" class="layui-nav-img">#(USER.nickname??)</a>
                 </li>
             #end
         </ul>
