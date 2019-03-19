@@ -10,6 +10,7 @@ html,body{
 	-webkit-font-smoothing: antialiased;
 	-webkit-text-size-adjust: 100%;
 	font-family: Helvetica,PingFang SC,Hiragino Sans GB,Microsoft YaHei,微软雅黑,Arial,sans-serif;
+	overflow-x: hidden!important;
 }
 /*全局a标签样式*/
 a {
@@ -37,9 +38,9 @@ body::-webkit-scrollbar-track {
 }
 /*顶部导航容器*/
 .header {
-	width: 100%;
+	width: 100%!important;
 	float: left;
-	position: sticky;
+	position: fixed;
 	top:0;
 	left:0;
 	z-index:999;
@@ -82,8 +83,8 @@ body::-webkit-scrollbar-track {
 }
 .perfree-content {
 	clear: both;
+	margin-top: 50px;
 }
-
 .perfree-content-left,
 .perfree-content-right {
 }
@@ -312,7 +313,7 @@ body::-webkit-scrollbar-track {
 	display: none;
 	width: 100%;
 	height: 50px;
-	position: sticky;
+	position: fixed;
 	top:0;
 	left:0;
 	z-index:999;
@@ -324,7 +325,7 @@ body::-webkit-scrollbar-track {
 	line-height: 50px;
 	color: rgba(255,255,255,.7);
 	font-weight: 600;
-	font-size: 1.5em;
+	font-size: 1.38em;
 }
 .phone-header .phone-open-nav-btn{
 	display: block;
@@ -337,34 +338,141 @@ body::-webkit-scrollbar-track {
 	left: 15px;
 	top: 0;
 }
-.phone-header .phone-open-nav-btn i{
+.phone-header .phone-open-nav-btn i,.phone-header .phone-setting-btn i{
 	line-height: 50px;
 }
-.phone-header .login-box{
+.phone-header .phone-setting-btn{
+	display: block;
+	height: 50px;
+	width: auto;
+	font-size: 1.6em;
+	color: rgba(255,255,255,.7);
+	line-height: 50px;
 	position: absolute;
 	right: 15px;
 	top: 0;
 }
-.phone-header .login-box .login-btn{
-	margin-right: 5px;
+.phone-setting-box{
+	display: none;
+	border-top: 1px solid #27364a;
+	width: 100%;
+	z-index: 999;
+	position: absolute;
+	left: 0;
+	top: 50px;
+	background-color: #2F4056!important;
 }
-.phone-header .login-box .register-btn{
-	margin-left: 5px;
+.phone-search-form{
+	padding: 10px 10px 5px 10px;
+	text-align: left;
+	height: 50px;
 }
-.phone-header .login-box a{
-	line-height: 50px;
+.phone-search-form form{
+	height: 30px;
+	line-height: 30px;
+	margin-top: 10px;
+	border-radius: 50px;
+	background-color: #edf1f2;
+	overflow: hidden;
+}
+.phone-search-form form input{
+	border-radius: 50px 0px 0px 50px;
+	outline: none;
+	border: none;
+	height: 101%;
+	padding: 0;
+	background-color: #edf1f2;
+	padding-left: 10px;
+	width: 90%;
+	font-size: .7em;
+}
+.phone-search-form form button{
+	border-radius: 50px 0px 0px 50px;
+	outline: none;
+	border: none;
+	height: 101%;
+	padding: 0;
+	background-color: #edf1f2;
+	width: 9%;
+	font-size: .7em;
+	cursor: pointer;
+}
+.phone-search-form form input:focus{
+	background-color: #ffffff;
+	border: none!important;
+	outline: none;
+}
+.phone-search-form form button:focus{
+	border: none;
+	outline: none;
+	color: #3a3f51;
+}
+.phone-my-message-box{
+	padding: 5px 10px 10px 10px;
+	text-align: left;
+	border-top: 1px solid #27364a;
+	height: 30px;
+	line-height: 30px;
+}
+.phone-my-message-box .my-name-img{
+	color: rgba(255,255,255,.7)!important;
+	font-size: 1.1em!important;
+	font-weight: 600!important;
+}
+.phone-my-message-box .register-btn,.phone-my-message-box .login-btn{
+	display: block;
+	height: 30px;
+	line-height: 30px;
+	float: left;
+	color: rgba(255,255,255,.7);
 	font-size: 1.2em;
+}
+.phone-my-message-box .my-message-tarde{
+	width: 15px;
+	height: 30px;
+	line-height: 30px;
+	display: block;
+	float: left;
+	text-align: center;
 	color: rgba(255,255,255,.7);
 }
 .phone-nav-box{
-	display: none;
 	height: 100%;
 	width: 200px;
-	background-color: #0c6b9c;
+	background-color: #edf1f2;
 	z-index: 998;
-	position: absolute;
-	left: 0px;
+	position: fixed;
 	top: 50px;
+	left: -200px;
+	bottom: 0;
+	overflow: auto;
+}
+.phone-nav-box .layui-nav-side{
+	position: unset;
+	background-color: #edf1f2!important;
+	border-radius: 0px!important;
+}
+.phone-nav-box .layui-nav-side .layui-nav-bar{
+	display: none;
+}
+.phone-nav-box .layui-nav-side .layui-nav-item,
+.phone-nav-box .layui-nav-side .layui-nav-item a{
+	color: #657180!important;
+}
+.phone-nav-box .layui-nav-side .layui-nav-item a:hover{
+	background-color: #d9dbdc;
+}
+.phone-nav-box .layui-nav-itemed>.layui-nav-child{
+	background-color: rgb(225, 229, 230)!important;
+}
+.phone-nav-box .layui-nav .layui-nav-more{
+	border-color: #657180 transparent transparent;
+}
+.phone-nav-box .layui-nav .layui-nav-mored, .layui-nav-itemed>a .layui-nav-more{
+	border-color: transparent transparent #657180!important;
+}
+.phone-yiyan-box{
+	display: none;
 }
 @media screen and (max-width:768px) {
 	.perfree-content-right,.perfree-content-left {
@@ -372,6 +480,9 @@ body::-webkit-scrollbar-track {
 		width: 100%;
 		padding: 0px;
 		margin: 0px;
+	}
+	.perfree-content{
+		padding: 0 6px;
 	}
 	.music-card{
 		display: none;
@@ -381,5 +492,17 @@ body::-webkit-scrollbar-track {
 	}
 	.phone-header{
 		display: block;
+	}
+	.search-box{
+		display: none;
+	}
+	.yiyan-box{
+		display: none;
+	}
+	.phone-yiyan-box{
+		display: block;
+		margin-left: -6px;
+		margin-right: -6px;
+		margin-top: -10px!important;
 	}
 }
