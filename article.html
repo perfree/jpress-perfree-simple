@@ -44,7 +44,7 @@
 		form.on('submit(*)', function(data){
 			var content = layedit.getContent(edit);
 			if(content == null || content == "" || content == undefined){
-				layer.msg('请填写评论内容', {icon: 2,offset: [$(window).height()/2+'px', $(window).width()/2+'px']});
+				alert('请填写评论内容');
 				return false;
 			}
 			var str = '回复 @' + $(".toReply").attr('data-author') + " ：";
@@ -91,7 +91,7 @@
 								'</div> <hr class="layui-bg-gray">';
 						$("#allComment").prepend(html);
 					}else{
-						layer.msg('评论失败:' + result.message, {icon: 5,offset: [$(window).height()/2+'px', $(window).width()/2+'px']});
+						alert('评论失败:' + result.message);
 						if (data.errorCode == 9) {
 							location.href = '#(CPATH)/user/login';
 						}
@@ -99,7 +99,7 @@
 					return false;
 				},
 				error:function () {
-					layer.msg('网络错误，请稍后重试', {icon: 2,offset: [$(window).height()/2+'px', $(window).width()/2+'px']});
+					alert('网络错误，请稍后重试');
 					return false;
 				}
 			});
