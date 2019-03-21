@@ -1,8 +1,8 @@
 #include("./_layout.html")
 #@layout()
 #define content()
-<link rel="stylesheet" href="css/time.min.css" media="all">
 <div class="layui-col-xs12 layui-col-sm7 layui-col-md8 perfree-content-left">
+	<link rel="stylesheet" href="css/time.css" media="all">
 	<div class="layui-card">
 		#articles(count=99999999)
 		<div class="layui-card-header time-line-header"><i class="fa fa-volume-up"></i> 已经发布了#(articles.size()??0)篇文章了,继续努力~</div>

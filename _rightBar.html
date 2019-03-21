@@ -3,7 +3,7 @@
     <div class="layui-card yiyan-box">
         <div class="layui-card-body page-title-body">
             <h2>#(WEB_NAME ??)</h2>
-            <div id="saying"><script>saying()</script></div>
+            <div id="hitokoto">获取中...</div>
         </div>
     </div>
     <!-- 一言组件 -->
@@ -24,6 +24,19 @@
         </div>
     </div>
     <!-- 搜索end -->
+    <!-- 音乐start -->
+    #if(option('music_server') != null && option('music_type') != null && option('music_id') != null)
+    <div class="layui-card music-card">
+        <div class="layui-card-header">
+            <i class="fa fa-music"></i>
+            <span style="margin-left: 3px;">音乐推荐</span>
+        </div>
+        <div class="layui-card-body music-body">
+            <meting-js server="#option('music_server' ??)" type="#option('music_type' ??)" id="#option('music_id' ??)"></meting-js>
+        </div>
+    </div>
+    #end
+    <!-- 音乐end -->
 
     <!-- 热门start -->
     <div class="layui-card">
@@ -73,17 +86,4 @@
     </div>
     <!-- 标签end -->
 
-    <!-- 音乐start -->
-    #if(option('music_server') != null && option('music_type') != null && option('music_id') != null)
-    <div class="layui-card music-card">
-        <div class="layui-card-header">
-            <i class="fa fa-music"></i>
-            <span style="margin-left: 3px;">音乐推荐</span>
-        </div>
-        <div class="layui-card-body music-body">
-            <meting-js server="#option('music_server' ??)" type="#option('music_type' ??)" id="#option('music_id' ??)"></meting-js>
-        </div>
-    </div>
-    #end
-    <!-- 音乐end -->
 </div>
