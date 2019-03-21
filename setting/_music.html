@@ -1,0 +1,40 @@
+<div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingThree">
+        <h4 class="panel-title">
+            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                <span class="glyphicon glyphicon-music"></span> 音乐设置
+            </a>
+        </h4>
+    </div>
+    <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+        <div class="panel-body">
+            <!-- 侧边栏音乐控件start -->
+            <div class="form-group">
+                <label class="col-sm-2 control-label">音乐服务:</label>
+                <div class="col-sm-6">
+                    <input type="input" class="form-control" placeholder="音乐提供商"
+                           name="music_server" value="#option('music_server' ??)">
+                    <span style="color: #999">音乐来源可填(netease, tencent, kugou, xiami, baidu)任意一个</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">播放类型:</label>
+                <div class="col-sm-6">
+                    <input type="input" class="form-control" placeholder="播放类型"
+                           name="music_type" value="#option('music_type' ??)">
+                    <span style="color: #999">song, playlist, album, search, artist</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">播放ID:</label>
+                <div class="col-sm-6">
+                    <input type="input" class="form-control" placeholder="播放ID"
+                           name="music_id" value="#option('music_id' ??)">
+                    <span style="color: #999">song id / playlist id / album id / search keyword</span>
+                </div>
+            </div>
+            <!-- 侧边栏音乐控件end -->
+
+        </div>
+    </div>
+</div>

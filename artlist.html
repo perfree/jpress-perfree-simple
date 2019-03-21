@@ -3,6 +3,14 @@
 #define content()
     <div class="layui-col-xs12 layui-col-sm7 layui-col-md8 perfree-content-left">
         <div class="article-box">
+            <!-- 一言组件 -->
+            <div class="layui-card phone-yiyan-box">
+                <div class="layui-card-body page-title-body">
+                    <h2>#(WEB_NAME ??)</h2>
+                    <div id="hitokoto">获取中...</div>
+                </div>
+            </div>
+            <!-- 一言组件 -->
            #articlePage(pageSize=6)
                 #for(article : articlePage.list)
                     <div class="layui-card">

@@ -10,6 +10,7 @@ html,body{
 	-webkit-font-smoothing: antialiased;
 	-webkit-text-size-adjust: 100%;
 	font-family: Helvetica,PingFang SC,Hiragino Sans GB,Microsoft YaHei,微软雅黑,Arial,sans-serif;
+	overflow-x: hidden!important;
 }
 /*全局a标签样式*/
 a {
@@ -37,27 +38,27 @@ body::-webkit-scrollbar-track {
 }
 /*顶部导航容器*/
 .header {
-	width: 100%;
+	width: 100%!important;
 	float: left;
-	position: sticky;
+	position: fixed;
 	top:0;
 	left:0;
 	z-index:999;
 	box-shadow: 0 2px 2px rgba(0,0,0,.05), 0 1px 0 rgba(0,0,0,.05);
 }
-.layui-nav {
+.header .layui-nav {
 	float: right;
 }
-.layui-nav {
+.header .layui-nav {
 	padding-right: 0;
 }
-.layui-nav .layui-nav-item{
+.header .layui-nav .layui-nav-item{
 	line-height: 50px;
 }
-.layui-nav-child{
+.header .layui-nav-child{
 	top:50px;
 }
-.logo-box {
+.header .logo-box {
 	float: left;
 	line-height: 50px;
 	color: rgba(255,255,255,.7);
@@ -65,25 +66,25 @@ body::-webkit-scrollbar-track {
 	font-size: 1.5em;
 }
 
-.logo-box:hover {
+.header .logo-box:hover {
 	color: #fff;
 }
 
-.layui-nav-bar {
+.header .layui-nav-bar {
 	display: none;
 }
 
-.layui-nav .layui-this:after {
+.header .layui-nav .layui-this:after {
 	display: none;
 }
-.layui-card-header{
+.header .layui-card-header{
 	color: #5d727c;
 	font-weight: 800;
 }
 .perfree-content {
 	clear: both;
+	margin-top: 50px;
 }
-
 .perfree-content-left,
 .perfree-content-right {
 }
@@ -144,6 +145,7 @@ body::-webkit-scrollbar-track {
 	margin-top: 5px;
 	color: #98a6ad;
 	font-size: 1.1em;
+	overflow: hidden;
 }
 .search-body{
 	padding: 12px;
@@ -269,11 +271,11 @@ body::-webkit-scrollbar-track {
 	cursor:not-allowed!important;
 	color: #b0b1b3!important;
 }
-.login-btn{
+.header .login-btn{
 	float: left;
 	padding: 0 6px!important;
 }
-.register-btn{
+.header .register-btn{
 	float: right;
 	padding: 0 6px!important;
 }
@@ -296,8 +298,211 @@ body::-webkit-scrollbar-track {
 .layui-fixbar .layui-fixbar-top{
 	font-size: 38px;
 }
+.aplayer{
+	margin: 0px;
+}
+.music-body{
+	padding: 0px;
+}
+.article-box-content{
+	padding: 20px!important;
+}
+
+/*移动端导航*/
+.phone-header{
+	display: none;
+	width: 100%;
+	height: 50px;
+	position: fixed;
+	top:0;
+	left:0;
+	z-index:999;
+	text-align: center;
+	box-shadow: 0 2px 2px rgba(0,0,0,.05), 0 1px 0 rgba(0,0,0,.05);
+}
+.phone-header .logo-box{
+	height: 50px;
+	line-height: 50px;
+	color: rgba(255,255,255,.7);
+	font-weight: 600;
+	font-size: 1.38em;
+}
+.phone-header .phone-open-nav-btn{
+	display: block;
+	height: 50px;
+	width: auto;
+	font-size: 1.6em;
+	color: rgba(255,255,255,.7);
+	line-height: 50px;
+	position: absolute;
+	left: 15px;
+	top: 0;
+}
+.phone-header .phone-open-nav-btn i,.phone-header .phone-setting-btn i{
+	line-height: 50px;
+}
+.phone-header .phone-setting-btn{
+	display: block;
+	height: 50px;
+	width: auto;
+	font-size: 1.6em;
+	color: rgba(255,255,255,.7);
+	line-height: 50px;
+	position: absolute;
+	right: 15px;
+	top: 0;
+}
+.phone-setting-box{
+	display: none;
+	border-top: 1px solid #27364a;
+	width: 100%;
+	z-index: 999;
+	position: absolute;
+	left: 0;
+	top: 50px;
+	background-color: #2F4056!important;
+}
+.phone-search-form{
+	padding: 10px 10px 5px 10px;
+	text-align: left;
+	height: 50px;
+}
+.phone-search-form form{
+	height: 30px;
+	line-height: 30px;
+	margin-top: 10px;
+	border-radius: 50px;
+	background-color: #edf1f2;
+	overflow: hidden;
+}
+.phone-search-form form input{
+	border-radius: 50px 0px 0px 50px;
+	outline: none;
+	border: none;
+	height: 101%;
+	padding: 0;
+	background-color: #edf1f2;
+	padding-left: 10px;
+	width: 90%;
+	font-size: .7em;
+}
+.phone-search-form form button{
+	border-radius: 50px 0px 0px 50px;
+	outline: none;
+	border: none;
+	height: 101%;
+	padding: 0;
+	background-color: #edf1f2;
+	width: 9%;
+	font-size: .7em;
+	cursor: pointer;
+}
+.phone-search-form form input:focus{
+	background-color: #ffffff;
+	border: none!important;
+	outline: none;
+}
+.phone-search-form form button:focus{
+	border: none;
+	outline: none;
+	color: #3a3f51;
+}
+.phone-my-message-box{
+	padding: 5px 10px 10px 10px;
+	text-align: left;
+	border-top: 1px solid #27364a;
+	height: 30px;
+	line-height: 30px;
+}
+.phone-my-message-box .my-name-img{
+	color: rgba(255,255,255,.7)!important;
+	font-size: 1.1em!important;
+	font-weight: 600!important;
+}
+.phone-my-message-box .register-btn,.phone-my-message-box .login-btn{
+	display: block;
+	height: 30px;
+	line-height: 30px;
+	float: left;
+	color: rgba(255,255,255,.7);
+	font-size: 1.2em;
+}
+.phone-my-message-box .my-message-tarde{
+	width: 15px;
+	height: 30px;
+	line-height: 30px;
+	display: block;
+	float: left;
+	text-align: center;
+	color: rgba(255,255,255,.7);
+}
+.phone-nav-box{
+	height: 100%;
+	width: 200px;
+	background-color: #edf1f2;
+	z-index: 998;
+	position: fixed;
+	top: 50px;
+	left: -200px;
+	bottom: 0;
+	overflow: auto;
+}
+.phone-nav-box .layui-nav-side{
+	position: unset;
+	background-color: #edf1f2!important;
+	border-radius: 0px!important;
+}
+.phone-nav-box .layui-nav-side .layui-nav-bar{
+	display: none;
+}
+.phone-nav-box .layui-nav-side .layui-nav-item,
+.phone-nav-box .layui-nav-side .layui-nav-item a{
+	color: #657180!important;
+}
+.phone-nav-box .layui-nav-side .layui-nav-item a:hover{
+	background-color: #d9dbdc;
+}
+.phone-nav-box .layui-nav-itemed>.layui-nav-child{
+	background-color: rgb(225, 229, 230)!important;
+}
+.phone-nav-box .layui-nav .layui-nav-more{
+	border-color: #657180 transparent transparent;
+}
+.phone-nav-box .layui-nav .layui-nav-mored, .layui-nav-itemed>a .layui-nav-more{
+	border-color: transparent transparent #657180!important;
+}
+.phone-yiyan-box{
+	display: none;
+}
 @media screen and (max-width:768px) {
-	.perfree-content-right {
+	.perfree-content-right,.perfree-content-left {
+		float: none;
+		width: 100%;
+		padding: 0px;
+		margin: 0px;
+	}
+	.perfree-content{
+		padding: 0 6px;
+	}
+	.music-card{
 		display: none;
+	}
+	.header{
+		display: none;
+	}
+	.phone-header{
+		display: block;
+	}
+	.search-box{
+		display: none;
+	}
+	.yiyan-box{
+		display: none;
+	}
+	.phone-yiyan-box{
+		display: block;
+		margin-left: -6px;
+		margin-right: -6px;
+		margin-top: -10px!important;
 	}
 }
