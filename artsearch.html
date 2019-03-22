@@ -27,6 +27,14 @@
                             </div>
                         </div>
                     </div>
+                #else
+                    <div class="layui-card">
+                        <div class="layui-card-body">
+                            <div class="no-article">
+                                <i class="fa fa-bug" aria-hidden="true"></i> 没找到关于 #(keyword) 的文章，换个关键词试试~
+                            </div>
+                        </div>
+                    </div>
                 #end
                 #articleSearchPaginate()
                     <div class="layui-card">

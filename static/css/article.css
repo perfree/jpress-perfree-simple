@@ -104,11 +104,30 @@
 .article-content-bottom-right{
 	float: right;
 }
+#commentForm{
+	display: block;
+	overflow: hidden;
+}
 .revert-body{
 	padding: 10px 20px 20px 20px;
 }
 .revert-submit{
 	margin-top: 10px;
+}
+.comment-verify{
+	height: 38px!important;
+	margin-top: 10px;
+	border: 1px solid #cecece;
+	border-left: none;
+	float: right;
+}
+.captcha{
+	width: 200px;
+	margin-top: 10px;
+	float: right;
+	border-right: none;
+	height: 40px;
+	font-size: 14px;
 }
 .revert-user{
 	width: 100%;
@@ -157,4 +176,27 @@
 }
 .phone-yiyan-box{
 	display: none;
+}
+.no-comment{
+	margin-top: 10px;
+	text-align: center;
+	font-size: 13px;
+	color: #98a6ad;
+}
+.switch-article{
+	height: 15px;
+}
+.pre-article,.next-article{
+	display: block;
+	color: #77778d;
+	font-weight: 600;
+}
+.pre-article i,.next-article i{
+	font-weight: 600;
+}
+.pre-article{
+	float: left;
+}
+.next-article{
+	float: right;
 }

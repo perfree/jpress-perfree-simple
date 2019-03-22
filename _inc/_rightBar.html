@@ -52,7 +52,7 @@
         <div class="layui-card-body hot-article-body">
             #articles(orderBy="view_count DESC",count=6)
                 #for(article : articles)
-                    <a class="hot-article-box" href="#(article.url)">
+                    <a class="hot-article-box pjax" href="#(article.url)">
                         <img src="#(article.thumbnail ?? 'static/img/1.jpg')" width="20%" height="50px" class="hot-article-img"/>
                         <span class="hot-article-title">#(article.title)</span><br>
                         <span class="hot-article-msg"><i class="fa fa-clock-o"></i> #date(article.created, "yyyy-MM-dd")&nbsp;&nbsp;<i class="fa fa-eye"></i> #(article.view_count ??)</span>
@@ -72,7 +72,7 @@
         <div class="layui-card-body tag-body">
             #tags(orderBy="count DESC")
                 #for(tag : tags)
-                    <a href="#(tag.url)" class="layui-btn layui-btn-normal tag" title="#(tag.title)">#(tag.title)</a>
+                    <a href="#(tag.url)" class="layui-btn layui-btn-normal tag pjax" title="#(tag.title)">#(tag.title)</a>
                 #end
             #end
         </div>

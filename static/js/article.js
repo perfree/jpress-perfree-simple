@@ -21,9 +21,11 @@ function loadscript(url, callback){
     script.src = url;
     document.getElementsByTagName("head")[0].appendChild(script);
 }
+layui.config({
+    base: '/templates/jpress-perfree-simple/static/plugin/layuinotice/'
+});
 layui.use(['element','layedit','form','layer','jquery'], function() {
     var element = layui.element,layedit = layui.layedit,form=layui.form,layer=layui.layer,$=layui.jquery;
-
     $("code").each(function(){
         $(this).html("<ul><li>" + $(this).html().replace(/\n/g,"\n</li><li>") +"\n</li></ul>");
     });
@@ -57,12 +59,13 @@ layui.use(['element','layedit','form','layer','jquery'], function() {
     });
 
     //监听form提交
-    form.on('submit(*)', function(data){
+    form.on('submit(comment)', function(data){
         var content = layedit.getContent(edit);
         if(content == null || content == "" || content == undefined){
             alert('请填写评论内容');
             return false;
         }
+        var captcha = $(".captcha").val();
         var str = '回复 @' + $(".toReply").attr('data-author') + " ：";
         var revertContent = $("#revert").val();
         //判断回复是否存在
@@ -73,7 +76,7 @@ layui.use(['element','layedit','form','layer','jquery'], function() {
         }
         $.post({
             url:"/article/postComment",
-            data: {articleId:$("#articleId").val(),pid: $("#pid").val(),content: revertContent},
+            data: {articleId:$("#articleId").val(),pid: $("#pid").val(),content: revertContent,captcha:captcha},
             success:function(result){
                 if(result.state == "ok"){
                     //清空编辑器
@@ -106,8 +109,12 @@ layui.use(['element','layedit','form','layer','jquery'], function() {
                     html += '<a class="toReply" href="javascript:;" data-cid="'+result.comment.id+'" data-author="'+result.comment.author+'">回复</a>'+
                         '</div> <hr class="layui-bg-gray">';
                     $("#allComment").prepend(html);
+                    $(".captcha").val("");
+                    $(".comment-verify").attr("src",'/commons/captcha?d='+Math.random());
                 }else{
                     alert('评论失败:' + result.message);
+                    $(".captcha").val("");
+                    $(".comment-verify").attr("src",'/commons/captcha?d='+Math.random());
                     if (data.errorCode == 9) {
                         location.href = '/user/login';
                     }
@@ -116,6 +123,8 @@ layui.use(['element','layedit','form','layer','jquery'], function() {
             },
             error:function () {
                 alert('网络错误，请稍后重试');
+                $(".captcha").val("");
+                $(".comment-verify").attr("src",'/commons/captcha?d='+Math.random());
                 return false;
             }
         });

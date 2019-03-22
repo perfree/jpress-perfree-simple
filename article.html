@@ -22,6 +22,18 @@
 			<div class="article-content-bottom">
 				<span class="article-content-bottom-left"><i class="fa fa-clock-o"></i> 最后修改于 #date(article.created, "yyyy-MM-dd HH:mm:ss")</span>
 			</div>
+			<div class="switch-article">
+				#previousArticle()
+				<a href="#(previous.url)" title="#(previous.title)" class="pre-article pjax">
+					<i class="fa fa-angle-double-left" aria-hidden="true"></i> 上一篇
+				</a>
+				#end
+				#nextArticle()
+				<a href="#(next.url)" title="#(next.title)" class="next-article pjax">
+					下一篇 <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+				</a>
+				#end
+			</div>
 		</div>
 	</div>
 	<!-- 文章end -->
@@ -35,7 +47,11 @@
 					<input type="hidden" name="articleId" value="#(article.id)" id="articleId">
 					<input type="hidden" name="pid" id="pid">
 					<textarea id="revert" style="display: none;" name="content" lay-verify="content"></textarea>
-					<button class="layui-btn layui-btn-normal revert-submit" lay-submit lay-filter="*">发表评论</button>
+					#if(option('article_comment_vcode_enable'))
+						<img src="/commons/captcha" style="height: 25px" onclick="this.src='#(CPATH)/commons/captcha?d='+Math.random();" class="comment-verify">
+						<input placeholder="请输入验证码" autocomplete="off" required class="layui-input captcha" name="captcha" type="text" lay-verify="required">
+					#end
+					<button class="layui-btn layui-btn-normal revert-submit" lay-submit lay-filter="comment">发表评论</button>
 				</form>
 			</div>
 			<!-- 评论框end -->
@@ -73,6 +89,10 @@
 						<a class="toReply" href="javascript:;" data-cid="#(comment.id)" data-author="#(comment.author ??)">回复</a>
 					</div>
 					<hr class="layui-bg-gray">
+					#else
+						<div class="no-comment">
+							<i class="fa fa-volume-up" aria-hidden="true"></i> 还没有人评论哦~赶快抢占沙发吧~
+						</div>
 					#end
 					#commentPaginate(anchor="allComment")
 						<div class="layui-card">

@@ -496,6 +496,11 @@ body::-webkit-scrollbar-track {
 	background: #f0f8ff33;
 	display: none;
 }
+.no-article{
+	padding: 20px;
+	font-size: 14px;
+	color: #98a6ad;
+}
 @media screen and (max-width:768px) {
 	.perfree-content-right,.perfree-content-left {
 		float: none;
@@ -529,5 +534,9 @@ body::-webkit-scrollbar-track {
 	}
 	.phone-music-card{
 		display: block;
+	}
+	.layui-util-face{
+		margin-left: 0px!important;
+		left: 0px!important;
 	}
 }
