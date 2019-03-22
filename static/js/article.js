@@ -72,7 +72,7 @@ layui.use(['element','layedit','form','layer','jquery'], function() {
             revertContent = revertContent.replace(str,'');
         }
         $.post({
-            url:"#(CPATH)/article/postComment",
+            url:"/article/postComment",
             data: {articleId:$("#articleId").val(),pid: $("#pid").val(),content: revertContent},
             success:function(result){
                 if(result.state == "ok"){
@@ -109,7 +109,7 @@ layui.use(['element','layedit','form','layer','jquery'], function() {
                 }else{
                     alert('评论失败:' + result.message);
                     if (data.errorCode == 9) {
-                        location.href = '#(CPATH)/user/login';
+                        location.href = '/user/login';
                     }
                 }
                 return false;

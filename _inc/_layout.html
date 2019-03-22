@@ -41,26 +41,23 @@
 <div class="mask"></div>
 <!-- 遮罩end -->
 <script>
-    //设置pjax
-    var pjax = new Pjax({
-        selectors: [
-            "title",
-            "meta[name=description]",
-            "#loadJs",
-            ".perfree-content-left",
-            ".right-hot-article-box",
-            ".right-hot-tag",
-            ".header",
-            ".phone-header",
-            ".phone-nav-box",
-            ".layui-footer"
-        ]
-    })
     //初始化layui,返回顶部按钮
     layui.use(['util','element'], function(){
         var util = layui.util,element = layui.element;;
         util.fixbar({});
     });
+    //设置pjax
+    var pjax = new Pjax({
+        selectors: [
+            "title",
+            "meta[name=description]",
+            ".loadJs",
+            ".perfree-content-left",
+            ".right-hot-article-box",
+            ".right-hot-tag",
+            ".layui-footer",
+        ]
+    })
 </script>
 <!-- 自定义js代码 -->
 #option('page_js_code' ??)
