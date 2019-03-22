@@ -13,7 +13,7 @@
         <ul class="layui-nav layui-bg-cyan" lay-filter="">
             #for(menu : MENUS)
                 <li class="layui-nav-item" lay-unselect>
-                    <a href="#(menu.url ??)"><i class="fa fa-#(menu.icon ??)"></i> #(menu.text ??)</a>
+                    <a href="#(menu.url ?? 'javascript:;')"><i class="fa fa-#(menu.icon ??)"></i> #(menu.text ??)</a>
                     #if(menu.hasChild())
                         <dl class="layui-nav-child">
                             #for(childMenu : menu.getChilds())

@@ -1,0 +1,46 @@
+#include("./_inc/_layout.html")
+#@layout()
+#define content()
+<div class="layui-col-xs12 layui-col-sm7 layui-col-md8 perfree-content-left">
+    <link rel="stylesheet" href="static/css/article.css" media="all">
+    <style>
+        .perfree-article-content{
+            padding: 20px!important;
+        }
+    </style>
+    <div class="layui-card">
+        <div class="layui-card-body" style="padding: 8px">
+            <div class="perfree-article-content">
+                #page(slug="后台创建页面时的url")
+                    #(page.content ??)
+                #end
+            </div>
+        </div>
+    </div>
+    <script>
+        //加载代码高亮js
+        loadscript("/templates/jpress-perfree-simple/static/plugin/highlight/highlight.pack.js",function () {
+            hljs.initHighlighting();
+        });
+        //加载js
+        function loadscript(url, callback){
+            var script = document.createElement ("script")
+            script.type = "text/javascript";
+            if (script.readyState){
+                script.onreadystatechange = function(){
+                    if (script.readyState == "loaded" || script.readyState == "complete"){
+                        script.onreadystatechange = null;
+                        callback();
+                    }
+                };
+            } else {
+                script.onload = function(){
+                    callback();
+                };
+            }
+            script.src = url;
+            document.getElementsByTagName("head")[0].appendChild(script);
+        }
+    </script>
+</div>
+#end

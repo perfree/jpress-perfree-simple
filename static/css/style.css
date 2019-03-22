@@ -36,7 +36,7 @@ body::-webkit-scrollbar-track {
 	border-radius: 10px;
 	background: #d7dde4;
 }
-/*顶部导航容器*/
+/*顶部导航容器pc端*/
 .header {
 	width: 100%!important;
 	float: left;
