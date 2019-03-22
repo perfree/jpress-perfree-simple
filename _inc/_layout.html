@@ -7,40 +7,16 @@
     <meta name="description" content="#(SEO_DESCRIPTION ??)">
     <meta name="template" content="Perfree-Simple">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-    <!-- ico -->
-    <link rel="icon" type="image/ico" href="#option('perfree_logo' ??)">
-    <link rel="stylesheet" href="plugin/layui/css/layui.css" media="all">
-    <link rel="stylesheet" href="plugin/font-awesome/css/font-awesome.min.css" media="all">
-    #if(option('music_server') != null && option('music_type') != null && option('music_id') != null)
-    <!-- require APlayer -->
-    <link rel="stylesheet" href="plugin/music/APlayer.min.css">
-    #end
-    <link rel="stylesheet" href="css/style.css" media="all">
-    <!-- 代码样式 -->
-    <link rel="stylesheet" href="plugin/highlight/styles/#option('page_code_style','vs').css" media="all">
-    <script src="js/jquery-3.2.1.min.js"></script>
-    <script src="plugin/layui/layui.js"></script>
-    <script src="plugin/pjax/jquery.pjax.js"></script>
-    #if(option('music_server') != null && option('music_type') != null && option('music_id') != null)
-    <!-- require APlayer -->
-    <script src="plugin/music/APlayer.min.js"></script>
-    <script src="plugin/music/Meting.min.js"></script>
-    #end
-    <!-- 自定义网页头部代码 -->
-    #option('page_head_code' ??)
-    <!-- 自定义css代码 -->
-    #option('page_css_code' ??)
+    <!-- 引入资源文件 -->
+    #include("./_resources.html")
 </head>
 <body>
-<div id="loadJs">
-    <script src="js/perfree.js"></script>
-</div>
-<!-- 引入导航栏 -->
+<!-- 引入顶部导航栏 -->
 #include("./_headerBar.html")
 
 <!-- 内容部分start -->
 <div class="layui-container perfree-content layui-anim-up">
-    <!-- 一言组件 -->
+    <!-- 一言组件手机端，电脑端不展示start -->
     <div class="layui-card phone-yiyan-box">
         <div class="layui-card-body page-title-body">
             <h2>#(WEB_NAME ??)</h2>
@@ -52,13 +28,18 @@
             </div>
         </div>
     </div>
-    <!-- 一言组件 -->
+    <!-- 一言组件手机端，电脑端不展示end -->
+    <!-- 引入内容 -->
     #@content()
+    <!-- 引入右侧边栏 -->
     #include("./_rightBar.html")
+    <!-- 引入底栏 -->
     #include("./_footBar.html")
 </div>
 <!-- 内容部分end -->
+<!-- 遮罩start -->
 <div class="mask"></div>
+<!-- 遮罩end -->
 <script>
     //设置pjax
     var pjax = new Pjax({
@@ -75,6 +56,7 @@
             ".layui-footer"
         ]
     })
+    //初始化layui,返回顶部按钮
     layui.use(['util','element'], function(){
         var util = layui.util,element = layui.element;;
         util.fixbar({});

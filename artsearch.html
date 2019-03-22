@@ -1,4 +1,4 @@
-#include("./_layout.html")
+#include("./_inc/_layout.html")
 #@layout()
 #define content()
     <div class="layui-col-xs12 layui-col-sm7 layui-col-md8 perfree-content-left">
@@ -8,9 +8,9 @@
                     <div class="layui-card">
                         <div class="layui-card-body">
                             #if(article.thumbnail != null)
-                            <div class="article-img">
-                                <img src="#(article.thumbnail ?? 'img/1.jpg')" alt="#(article.title ??)" width="100%" height="300px"/>
-                            </div>
+                                <div class="article-img">
+                                    <img src="#(article.thumbnail ??)" alt="#(article.title ??)" width="100%" height="300px"/>
+                                </div>
                             #end
                             <div class="article-box-content">
                                 <h2 class="article-title">
@@ -28,7 +28,7 @@
                         </div>
                     </div>
                 #end
-                #articleSearchPaginate(firstGotoIndex=true)
+                #articleSearchPaginate()
                     <div class="layui-card">
                         <div class="layui-card-body">
                             <div class="perfree-page-box">

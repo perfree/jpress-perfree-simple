@@ -1,8 +1,8 @@
-#include("./_layout.html")
+#include("./_inc/_layout.html")
 #@layout()
 #define content()
 <div class="layui-col-xs12 layui-col-sm7 layui-col-md8 perfree-content-left">
-    <link rel="stylesheet" href="css/article.css" media="all">
+    <link rel="stylesheet" href="static/css/article.css" media="all">
     <style>
         .perfree-article-content{
             padding: 20px!important;
@@ -19,7 +19,7 @@
     </div>
     <script>
         //加载代码高亮js
-        loadscript("/templates/jpress-perfree-simple/plugin/highlight/highlight.pack.js",function () {
+        loadscript("/templates/jpress-perfree-simple/static/plugin/highlight/highlight.pack.js",function () {
             hljs.initHighlighting();
         });
         //加载js

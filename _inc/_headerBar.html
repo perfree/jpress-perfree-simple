@@ -1,5 +1,5 @@
 <!-- 导航栏部分 -->
-<div class="header layui-bg-cyan">
+<div class="header layui-bg-cyan pc-header">
     <div class="layui-container">
 
         <!-- 导航栏logo及文字start -->
@@ -24,13 +24,13 @@
                 </li>
             #end
             #if(USER == null)
-                <li class="layui-nav-item" lay-unselect>
+                <li class="layui-nav-item login-box" lay-unselect>
                     <a href="/user/login" class="login-btn"> 登录</a>|
                     <a href="/user/register" class="register-btn"> 注册</a>
                 </li>
             #else
                 <li class="layui-nav-item">
-                    <a href="/ucenter"><img src="#(USER.avatar??)" class="layui-nav-img">#(USER.nickname??)</a>
+                    <a href="/ucenter" target="_blank"><img src="#(USER.avatar??)" class="layui-nav-img">#(USER.nickname??)</a>
                 </li>
             #end
         </ul>

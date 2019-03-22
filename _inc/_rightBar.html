@@ -53,7 +53,7 @@
             #articles(orderBy="view_count DESC",count=6)
                 #for(article : articles)
                     <a class="hot-article-box" href="#(article.url)">
-                        <img src="#(article.thumbnail ?? 'img/1.jpg')" width="20%" height="50px" class="hot-article-img"/>
+                        <img src="#(article.thumbnail ?? 'static/img/1.jpg')" width="20%" height="50px" class="hot-article-img"/>
                         <span class="hot-article-title">#(article.title)</span><br>
                         <span class="hot-article-msg"><i class="fa fa-clock-o"></i> #date(article.created, "yyyy-MM-dd")&nbsp;&nbsp;<i class="fa fa-eye"></i> #(article.view_count ??)</span>
                     </a>
@@ -90,9 +90,4 @@
         </div>
     </div>
     <!-- 标签end -->
-
-    <!-- 手机端音乐start -->
-
-    <!-- 音乐end -->
-
 </div>
