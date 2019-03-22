@@ -79,15 +79,25 @@ layui.use(['element','layedit','form','layer','jquery'], function() {
             data: {articleId:$("#articleId").val(),pid: $("#pid").val(),content: revertContent,captcha:captcha},
             success:function(result){
                 if(result.state == "ok"){
+                    console.log(result);
+                    var avatarUrl;
+                    var author;
+                    if(result.user != null){
+                        avatarUrl = result.user.avatar;
+                        author = result.comment.author;
+                    }else {
+                        avatarUrl = "/templates/jpress-perfree-simple/static/img/avatar.png";
+                        author = "匿名用户";
+                    }
                     //清空编辑器
                     layedit.clearContent(edit);
                     var pid = $("#pid").val();
                     //追加html
                     var html = '<div class="revert-content-box">' +
                         '<div class="revert-user">' +
-                        '<img src="'+result.user.avatar+'" width="40px" height="40px"/>' +
+                        '<img src="'+avatarUrl+'" width="40px" height="40px"/>' +
                         '<span class="revert-user-msg">' +
-                        '<span class="revert-user-name">'+result.comment.author+'</span>' +
+                        '<span class="revert-user-name">'+author+'</span>' +
                         '<br>' +
                         '<span class="revert-user-time">'+result.comment.created+'</span>' +
                         '</span>' +
@@ -106,7 +116,7 @@ layui.use(['element','layedit','form','layer','jquery'], function() {
                             '<div class="revert-content">'+pRevertContent+'</div>' +
                             '</div>';
                     }
-                    html += '<a class="toReply" href="javascript:;" data-cid="'+result.comment.id+'" data-author="'+result.comment.author+'">回复</a>'+
+                    html += '<a class="toReply" href="javascript:;" data-cid="'+result.comment.id+'" data-author="'+author+'">回复</a>'+
                         '</div> <hr class="layui-bg-gray">';
                     $("#allComment").prepend(html);
                     $(".captcha").val("");

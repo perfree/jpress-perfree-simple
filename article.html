@@ -61,9 +61,9 @@
 					#for(comment : commentPage.list)
 					<div class="revert-content-box">
 						<div class="revert-user">
-							<img src="#(comment.user.avatar)" width="40px" height="40px"/>
+							<img src="#(comment.user.avatar ?? 'static/img/avatar.png')" width="40px" height="40px"/>
 							<span class="revert-user-msg">
-								<span class="revert-user-name">#(comment.author ??)</span>
+								<span class="revert-user-name">#(comment.author ?? '匿名用户')</span>
 								<br>
 								<span class="revert-user-time">#date(comment.created, "yyyy-MM-dd HH:mm:ss")</span>
 							</span>
@@ -74,9 +74,9 @@
 						#if(comment.parent)
 						<div class="revert-comment-content-box">
 							<div class="revert-user">
-								<img src="#(comment.parent.user.avatar)" width="40px" height="40px"/>
+								<img src="#(comment.parent.user.avatar ?? 'static/img/avatar.png')" width="40px" height="40px"/>
 								<span class="revert-user-msg">
-									<span class="revert-user-name">#(comment.parent.author)</span>
+									<span class="revert-user-name">#(comment.parent.author ?? '匿名用户')</span>
 									<br>
 									<span class="revert-user-time">#date(comment.parent.created, "yyyy-MM-dd HH:mm:ss")</span>
 								</span>
@@ -86,7 +86,7 @@
 							</div>
 						</div>
 						#end
-						<a class="toReply" href="javascript:;" data-cid="#(comment.id)" data-author="#(comment.author ??)">回复</a>
+						<a class="toReply" href="javascript:;" data-cid="#(comment.id)" data-author="#(comment.author ?? '匿名用户')">回复</a>
 					</div>
 					<hr class="layui-bg-gray">
 					#else
