@@ -3,16 +3,21 @@ $(function() {
     var leftNavActive = true;
     $('.phone-header').on('click', '.phone-open-nav-btn', function () {
         if(leftNavActive){
-            $(".phone-nav-box").animate({left:"0"});
-            $(".perfree-content").animate({left:"200px"});
+            openNav();
             leftNavActive = false;
         }else{
-            $(".phone-nav-box").animate({left:"-200px"});
-            $(".perfree-content").animate({left:"0"});
+            closeNav();
             leftNavActive = true;
         }
     });
 
+    $('body').on('click', '.mask', function () {
+        closeNav();
+    });
+
+    $('.phone-nav-box').on('click', 'a', function () {
+        closeNav();
+    });
     //监听顶部设置按钮点击事件
     var headerActive = true;
     $('.phone-header').on('click', '.phone-setting-btn', function () {
@@ -25,3 +30,14 @@ $(function() {
         }
     });
 });
+function closeNav() {
+    $(".mask").hide()
+    $(".phone-nav-box").animate({left:"-200px"});
+    $(".perfree-content").animate({left:"0"});
+}
+
+function openNav() {
+    $(".mask").show()
+    $(".phone-nav-box").animate({left:"0"});
+    $(".perfree-content").animate({left:"200px"});
+}

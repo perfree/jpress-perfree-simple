@@ -474,6 +474,28 @@ body::-webkit-scrollbar-track {
 .phone-yiyan-box{
 	display: none;
 }
+/*音乐播放器*/
+.aplayer.aplayer-withlist .aplayer-info{
+	border-bottom: none;
+}
+.aplayer{
+	box-shadow:none;
+}
+.phone-music-card{
+	display: none;
+}
+.mask{
+	z-index: 997;
+	height: 100%;
+	width: 100%;
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background: #f0f8ff33;
+	display: none;
+}
 @media screen and (max-width:768px) {
 	.perfree-content-right,.perfree-content-left {
 		float: none;
@@ -504,5 +526,8 @@ body::-webkit-scrollbar-track {
 		margin-left: -6px;
 		margin-right: -6px;
 		margin-top: -10px!important;
+	}
+	.phone-music-card{
+		display: block;
 	}
 }

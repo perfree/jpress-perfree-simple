@@ -32,23 +32,49 @@
     #option('page_css_code' ??)
 </head>
 <body>
-
+<div id="loadJs">
+    <script src="js/perfree.js"></script>
+</div>
 <!-- 引入导航栏 -->
 #include("./_headerBar.html")
 
 <!-- 内容部分start -->
 <div class="layui-container perfree-content layui-anim-up">
+    <!-- 一言组件 -->
+    <div class="layui-card phone-yiyan-box">
+        <div class="layui-card-body page-title-body">
+            <h2>#(WEB_NAME ??)</h2>
+            <div>
+                <script type="text/javascript" src="https://api.lwl12.com/hitokoto/v1?encode=js&charset=utf-8"></script>
+                <span id="lwlhitokoto">
+                <script>lwlhitokoto()</script>
+            </span>
+            </div>
+        </div>
+    </div>
+    <!-- 一言组件 -->
     #@content()
     #include("./_rightBar.html")
     #include("./_footBar.html")
 </div>
 <!-- 内容部分end -->
-<script src="js/perfree.js"></script>
-<script src="plugin/highlight/highlight.pack.js"></script>
-<script src="https://v1.hitokoto.cn/?encode=js&select=%23hitokoto" defer></script>
+<div class="mask"></div>
 <script>
-    $(document).pjax('a', '.perfree-content-left', {fragment: '.perfree-content-left'});
-    hljs.initHighlightingOnLoad();
+    //设置pjax
+    var pjax = new Pjax({
+        selectors: [
+            "title",
+            "meta[name=description]",
+            "#loadJs",
+            ".perfree-content-left",
+            ".right-hot-article-box",
+            ".right-hot-tag",
+            ".header",
+            ".phone-header",
+            ".phone-nav-box",
+            ".layui-footer"
+        ]
+    })
     layui.use(['util','element'], function(){
         var util = layui.util,element = layui.element;;
         util.fixbar({});
