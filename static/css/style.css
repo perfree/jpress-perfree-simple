@@ -300,7 +300,7 @@ body::-webkit-scrollbar-track {
 	font-size: 38px;
 }
 .aplayer{
-	margin: 0px;
+	margin: 0px!important;
 }
 .music-body{
 	padding: 0px;
