@@ -1,13 +1,12 @@
 $(function() {
-    //监听顶部导航开合按钮点击事件
     var leftNavActive = true;
+    //监听顶部导航开合按钮点击事件
     $('.phone-header').on('click', '.phone-open-nav-btn', function () {
+        console.log(leftNavActive);
         if(leftNavActive){
             openNav();
-            leftNavActive = false;
         }else{
             closeNav();
-            leftNavActive = true;
         }
     });
 
@@ -29,15 +28,17 @@ $(function() {
             headerActive = true;
         }
     });
-});
-function closeNav() {
-    $(".mask").hide()
-    $(".phone-nav-box").animate({left:"-200px"});
-    $(".perfree-content").animate({left:"0"});
-}
+    function closeNav() {
+        leftNavActive = true;
+        $(".mask").hide()
+        $(".perfree-content").animate({left:"0"},"fast");
+        $(".phone-nav-box").animate({left:"-200px"},"fast");
+    }
 
-function openNav() {
-    $(".mask").show()
-    $(".phone-nav-box").animate({left:"0"});
-    $(".perfree-content").animate({left:"200px"});
-}
+    function openNav() {
+        leftNavActive = false;
+        $(".mask").show()
+        $(".phone-nav-box").animate({left:"0"},"fast");
+        $(".perfree-content").animate({left:"200px"},"fast");
+    }
+});

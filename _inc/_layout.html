@@ -10,7 +10,17 @@
     <!-- 引入资源文件 -->
     #include("./_resources.html")
 </head>
-<body>
+<body id="web-body">
+#if(option('page_background_color') != null)
+<script>
+    $("#web-body").css("background-color","#option('page_background_color')");
+</script>
+#end
+#if(option('page_bacground-img') != null)
+<script>
+    $("#web-body").css("background-image","url(#option('page_bacground-img'))");
+</script>
+#end
 <!-- 引入顶部导航栏 -->
 #include("./_headerBar.html")
 
@@ -46,6 +56,9 @@
         var util = layui.util,element = layui.element;;
         util.fixbar({});
     });
+</script>
+#if(option('page_pjax') == null || option('page_pjax') == true)
+<script>
     //设置pjax
     var pjax = new Pjax({
         elements: ".pjax,form",
@@ -57,9 +70,11 @@
             ".right-hot-article-box",
             ".right-hot-tag",
             ".layui-footer",
+            ".header-logout"
         ]
     })
 </script>
+#end
 <!-- 自定义js代码 -->
 #option('page_js_code' ??)
 </body>

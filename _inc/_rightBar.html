@@ -44,42 +44,46 @@
     <!-- 音乐end -->
 
     <!-- 热门start -->
-    <div class="layui-card right-hot-article-box">
-        <div class="layui-card-header">
-            <i class="fa fa-fire"></i>
-            <span style="margin-left: 3px;">热门文章</span>
-        </div>
-        <div class="layui-card-body hot-article-body">
-            #articles(orderBy="view_count DESC",count=6)
+    #articles(orderBy="view_count DESC",count=6)
+        <div class="layui-card right-hot-article-box">
+            <div class="layui-card-header">
+                <i class="fa fa-fire"></i>
+                <span style="margin-left: 3px;">热门文章</span>
+            </div>
+            <div class="layui-card-body hot-article-body">
                 #for(article : articles)
                     <a class="hot-article-box pjax" href="#(article.url)">
-                        <img src="#(article.thumbnail ?? 'static/img/1.jpg')" width="20%" height="50px" class="hot-article-img"/>
+                        #if(for.odd)
+                            <img src="#(article.thumbnail ?? 'static/img/3.jpg')" width="20%" height="50px" class="hot-article-img"/>
+                        #else
+                            <img src="#(article.thumbnail ?? 'static/img/2.jpg')" width="20%" height="50px" class="hot-article-img"/>
+                        #end
                         <span class="hot-article-title">#(article.title)</span><br>
                         <span class="hot-article-msg"><i class="fa fa-clock-o"></i> #date(article.created, "yyyy-MM-dd")&nbsp;&nbsp;<i class="fa fa-eye"></i> #(article.view_count ??)</span>
                     </a>
                 #end
-            #end
+            </div>
         </div>
-    </div>
+    #end
     <!-- 热门end -->
 
     <!-- 标签start -->
-    <div class="layui-card right-hot-tag">
-        <div class="layui-card-header">
-            <i class="fa fa-tags"></i>
-            <span style="margin-left: 3px;">热门标签</span>
-        </div>
-        <div class="layui-card-body tag-body">
-            #tags(orderBy="count DESC")
+    #tags(orderBy="count DESC")
+        <div class="layui-card right-hot-tag">
+            <div class="layui-card-header">
+                <i class="fa fa-tags"></i>
+                <span style="margin-left: 3px;">热门标签</span>
+            </div>
+            <div class="layui-card-body tag-body">
                 #for(tag : tags)
                     <a href="#(tag.url)" class="layui-btn layui-btn-normal tag pjax" title="#(tag.title)">#(tag.title)</a>
                 #end
-            #end
+            </div>
         </div>
-    </div>
+    #end
     <!-- 标签end -->
 
-    <!-- 标签start -->
+    <!-- 广告start -->
     <div class="layui-card #if(option('page_ad_code') == null) perfree-hide #end">
         <div class="layui-card-header">
             <i class="fa fa-bullhorn"></i>
@@ -89,5 +93,5 @@
             #option('page_ad_code' ??)
         </div>
     </div>
-    <!-- 标签end -->
+    <!-- 广告end -->
 </div>
