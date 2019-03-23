@@ -14,7 +14,7 @@ $(function() {
         closeNav();
     });
 
-    $('.phone-nav-box').on('click', 'a', function () {
+    $('.phone-nav-box').on('click', '.nav-link', function () {
         closeNav();
     });
     //监听顶部设置按钮点击事件

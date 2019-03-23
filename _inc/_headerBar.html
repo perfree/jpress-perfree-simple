@@ -87,7 +87,11 @@
     <ul class="layui-nav layui-nav-tree layui-nav-side layui-bg-cyan" lay-filter="">
         #for(menu : MENUS)
         <li class="layui-nav-item" lay-unselect>
+            #if(menu.hasChild())
             <a href="#(menu.url ??)" class="pjax"><i class="fa fa-#(menu.icon ??)"></i> #(menu.text ??)</a>
+            #else
+            <a href="#(menu.url ??)" class="pjax nav-link"><i class="fa fa-#(menu.icon ??)"></i> #(menu.text ??)</a>
+            #end
             #if(menu.hasChild())
             <dl class="layui-nav-child">
                 #for(childMenu : menu.getChilds())
