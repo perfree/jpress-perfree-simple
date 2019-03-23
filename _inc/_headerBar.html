@@ -95,7 +95,7 @@
             #if(menu.hasChild())
             <dl class="layui-nav-child">
                 #for(childMenu : menu.getChilds())
-                <dd><a href="#(childMenu.url ??)" class="pjax"> #(childMenu.text ??)</a></dd>
+                <dd><a href="#(childMenu.url ??)" class="pjax nav-link"> #(childMenu.text ??)</a></dd>
                 #end
             </dl>
             #end
