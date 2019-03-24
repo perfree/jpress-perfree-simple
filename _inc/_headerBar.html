@@ -13,11 +13,11 @@
         <ul class="layui-nav layui-bg-cyan" lay-filter="">
             #for(menu : MENUS)
                 <li class="layui-nav-item" lay-unselect>
-                    <a href="#(menu.url ?? 'javascript:;')" class="pjax"><i class="fa fa-#(menu.icon ??)"></i> #(menu.text ??)</a>
+                    <a href="#(menu.url == null ? 'javascript:;':menu.url)" class="pjax"><i class="fa fa-#(menu.icon ??)"></i> #(menu.text ??)</a>
                     #if(menu.hasChild())
                         <dl class="layui-nav-child">
                             #for(childMenu : menu.getChilds())
-                                <dd><a href="#(childMenu.url ??)" class="pjax"> #(childMenu.text ??)</a></dd>
+                                <dd lay-unselect><a href="#(childMenu.url ??)" class="pjax"> #(childMenu.text ??)</a></dd>
                             #end
                         </dl>
                     #end
@@ -32,13 +32,13 @@
                 <li class="layui-nav-item">
                     <a href="/ucenter" target="_blank"><img src="#(USER.avatar??)" class="layui-nav-img">#(USER.nickname??)</a>
                     <dl class="layui-nav-child">
-                        <dd>
+                        <dd lay-unselect>
                             <a href="/ucenter" target="_blank">个人中心</a>
                         </dd>
-                        <dd>
+                        <dd lay-unselect>
                             <a href="/ucenter/pwd" target="_blank">修改密码</a>
                         </dd>
-                        <dd class="header-logout">
+                        <dd class="header-logout" lay-unselect>
                             <a href="#(CPATH)/ucenter/doLogout?csrf_token=#(CSRF_TOKEN)"> 退出登录 </a>
                         </dd>
                     </dl>
@@ -88,14 +88,14 @@
         #for(menu : MENUS)
         <li class="layui-nav-item" lay-unselect>
             #if(menu.hasChild())
-            <a href="#(menu.url ??)" class="pjax"><i class="fa fa-#(menu.icon ??)"></i> #(menu.text ??)</a>
+            <a href="#(menu.url == null ? 'javascript:;':menu.url)" class="pjax"><i class="fa fa-#(menu.icon ??)"></i> #(menu.text ??)</a>
             #else
-            <a href="#(menu.url ??)" class="pjax nav-link"><i class="fa fa-#(menu.icon ??)"></i> #(menu.text ??)</a>
+            <a href="#(menu.url == null ? 'javascript:;':menu.url)" class="pjax nav-link"><i class="fa fa-#(menu.icon ??)"></i> #(menu.text ??)</a>
             #end
             #if(menu.hasChild())
             <dl class="layui-nav-child">
                 #for(childMenu : menu.getChilds())
-                <dd><a href="#(childMenu.url ??)" class="pjax nav-link"> #(childMenu.text ??)</a></dd>
+                <dd lay-unselect><a href="#(childMenu.url ??)" class="pjax nav-link"> #(childMenu.text ??)</a></dd>
                 #end
             </dl>
             #end
