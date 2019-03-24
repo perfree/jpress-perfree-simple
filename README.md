@@ -18,7 +18,7 @@
 
 [模板下载](https://github.com/perfree/jpress-perfree-simple/releases)
 
-[使用文档](https://www.yinpengfei.com/archives/168/)
+[使用文档](http://www.simple.perfree.top)
 ## 简单预览
 首页
 ![简单预览](./screenshot.png "截图")
