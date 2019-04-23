@@ -502,6 +502,37 @@ body::-webkit-scrollbar-track {
 	font-size: 14px;
 	color: #98a6ad;
 }
+@media screen and (min-width: 768px){
+	.layui-container {
+		width: 750px;
+	}
+}
+@media screen and (min-width: 992px){
+	.layui-container {
+		width: 970px;
+	}
+}
+@media screen and (min-width: 1200px){
+	.layui-container {
+		width: 1100px;
+	}
+}
+
+@media screen and (min-width: 1400px){
+	.layui-container {
+		width: 1300px;
+	}
+}
+@media screen and (min-width: 1500px){
+	.layui-container {
+		width: 1350px;
+	}
+}
+@media screen and (min-width: 1600px){
+	.layui-container {
+		width: 1400px;
+	}
+}
 @media screen and (max-width:768px) {
 	.perfree-content-right,.perfree-content-left {
 		float: none;
