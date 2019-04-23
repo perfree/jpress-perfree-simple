@@ -12,14 +12,10 @@
 </head>
 <body id="web-body">
 #if(option('page_background_color') != null)
-<script>
-    $("#web-body").css("background-color","#option('page_background_color')");
-</script>
+    <script>$("#web-body").css("background-color","#option('page_background_color')");</script>
 #end
 #if(option('page_bacground-img') != null)
-<script>
-    $("#web-body").css("background-image","url(#option('page_bacground-img'))");
-</script>
+    <script>$("#web-body").css("background-image","url(#option('page_bacground-img'))");</script>
 #end
 <div style="overflow-x: hidden;">
     <!-- 引入顶部导航栏 -->

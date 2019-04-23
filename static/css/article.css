@@ -21,6 +21,7 @@
 }
 .article-title h2{
 	line-height: 30px;
+	font-weight: 600;
 }
 .article-title p{
 	font-size: .8em;
