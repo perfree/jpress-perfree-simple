@@ -16,6 +16,7 @@
 			</p>
 		</div>
 		<div class="layui-card-body article-body">
+			<span id="edit-model" style="display: none">#(article.edit_mode)</span>
 			<div class="perfree-article-content">
 				#(article.content ??)
 			</div>
@@ -113,7 +114,11 @@
 	#if(option('page_code_line') == null || option('page_code_line') != '不开启')
 	<script>
 		$('pre code').each(function(){
-			var lines = $(this).text().split('\n').length;
+			var edit = $("#edit-model").text();
+			var lines = $(this).text().split('\n').length-1;
+			if(edit == 'html'){
+				lines = $(this).text().split('\n').length;
+			}
 			var $numbering = $('<ul/>').addClass('pre-numbering hljs');
 			$(this)
 					.addClass('has-numbering')
