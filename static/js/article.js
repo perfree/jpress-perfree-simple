@@ -26,17 +26,6 @@ layui.config({
 });
 layui.use(['element','layedit','form','layer','jquery'], function() {
     var element = layui.element,layedit = layui.layedit,form=layui.form,layer=layui.layer,$=layui.jquery;
-    $('pre code').each(function(){
-        var lines = $(this).text().split('\n').length - 1;
-        var $numbering = $('<ul/>').addClass('pre-numbering hljs');
-        $(this)
-            .addClass('has-numbering')
-            .parent()
-            .append($numbering);
-        for(i=1;i<=lines;i++){
-            $numbering.append($('<li/>').text(i+"."));
-        }
-    });
     //实例化编辑器
     var edit = layedit.build('revert', {
         tool: ['strong','italic','underline','del','link', 'face'],

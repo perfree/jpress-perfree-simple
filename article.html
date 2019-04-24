@@ -110,5 +110,20 @@
 			<!-- 评论列表end -->
 		</div>
 	</div>
+	#if(option('page_code_line') == null || option('page_code_line') != '不开启')
+	<script>
+		$('pre code').each(function(){
+			var lines = $(this).text().split('\n').length;
+			var $numbering = $('<ul/>').addClass('pre-numbering hljs');
+			$(this)
+					.addClass('has-numbering')
+					.parent()
+					.append($numbering);
+			for(i=1;i<=lines;i++){
+				$numbering.append($('<li/>').text(i+"."));
+			}
+		});
+	</script>
+	#end
 </div>
 #end
