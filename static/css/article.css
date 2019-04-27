@@ -101,7 +101,7 @@ code.has-numbering {
 .article-content-bottom-right{
 	float: right;
 }
-li{
+.article-body li{
 	list-style: decimal!important;
 }
 #commentForm{
