@@ -349,7 +349,6 @@
 .article-body h2 {
     font-size: 1.75rem;
     line-height: 1.225;
-    margin: 35px 0 15px;
     padding-bottom: 0.5em;
     border-bottom: 1px solid #ddd;
 }
@@ -357,7 +356,6 @@
 .article-body h3 {
     font-size: 1.4rem;
     line-height: 1.43;
-    margin: 20px 0 7px;
 }
 
 .article-body h4 {
