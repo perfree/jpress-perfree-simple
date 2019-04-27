@@ -5,13 +5,13 @@
 }
 /*滚动条里面小方块*/
 .perfree-article-content pre code::-webkit-scrollbar-thumb {
-	border-radius: 10px;
-	background: #9ea7b4;
+	border-radius: 10px!important;
+	background: #9ea7b4!important;
 }
 /*滚动条里面轨道*/
 .perfree-article-content pre code::-webkit-scrollbar-track {
-	border-radius: 10px;
-	background: #d7dde4;
+	border-radius: 10px!important;
+	background: #d7dde4!important;
 }
 .article-title{
 	font-weight: initial;
@@ -43,33 +43,36 @@
 	cursor: pointer!important;
 }
 pre {
-	position: relative;
-	margin-bottom: 24px;
-	background: #FFF;
-	overflow: hidden;
+	position: relative!important;
+	margin-bottom: 24px!important;
+	background: #FFF!important;
+	overflow: hidden!important;
+}
+.article-body p, .article-body blockquote, .article-body ul, .article-body ol, .article-body dl, .article-body table{
+	margin: 0!important;
 }
 
 code {
-	display: block;
-	padding: 12px 24px;
-	overflow-y: auto;
-	font-weight: 300;
-	font-size: 1.05em;
+	display: block!important;
+	padding: 12px 6px!important;
+	overflow-y: auto!important;
+	font-weight: 300!important;
+	font-size: 1.05em!important;
 }
 
 code.has-numbering {
-	margin-left: 28px;
+	margin-left: 28px!important;
 }
 
 .pre-numbering {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 26px;
-	padding: 6px 2px 12px 0;
-	border-right: 1px solid #c3ccd0;
-	text-align: right;
-	font-size: 1.05em;
+	position: absolute!important;
+	top: 0!important;
+	left: 0!important;
+	width: 26px!important;
+	padding: 12px 2px 12px 0!important;
+	border-right: 1px solid #c3ccd0!important;
+	text-align: right!important;
+	font-size: 1.05em!important;
 }
 .perfree-article-content pre{
 	font-size: 13px!important;
@@ -85,26 +88,6 @@ code.has-numbering {
 .perfree-article-content pre code{
 	font-family: Menlo,Monaco,Consolas,"Courier New",monospace!important;
 }
-.perfree-article-content h1{
-	font-size: 1.6em;
-	font-weight: 600;
-	line-height: 55px;
-}
-.perfree-article-content h2{
-	font-size: 1.4em;
-	font-weight: 600;
-	line-height: 50px;
-}
-.perfree-article-content h3{
-	font-size: 1.3em;
-	font-weight: 600;
-	line-height: 46px;
-}
-.perfree-article-content h4{
-	font-size: 1.2em;
-	font-weight: 600;
-	line-height: 42px;
-}
 .perfree-article-content pre code{
 }
 .article-content-bottom{
@@ -117,6 +100,9 @@ code.has-numbering {
 }
 .article-content-bottom-right{
 	float: right;
+}
+li{
+	list-style: decimal!important;
 }
 #commentForm{
 	display: block;
