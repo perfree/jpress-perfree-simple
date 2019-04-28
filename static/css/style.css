@@ -121,8 +121,7 @@ body::-webkit-scrollbar-track {
 }
 .article-title {
 	overflow: hidden;
-	text-overflow: ellipsis;
-	white-space: nowrap;
+    text-overflow: ellipsis;
 }
 .article-title a{
 	color: #657180;
@@ -169,6 +168,16 @@ body::-webkit-scrollbar-track {
 	height: 50px;
 	line-height: 50px;
 	padding-top: 15px;
+}
+.layui-card-header {
+    position: relative;
+    height: auto;
+    line-height: auto;
+    padding: 0 15px;
+    border-bottom: 1px solid #f6f6f6;
+    color: #333;
+    border-radius: 2px 2px 0 0;
+    font-size: 14px;
 }
 .footer-left{
 	float: left;

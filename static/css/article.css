@@ -15,9 +15,9 @@
 }
 .article-title{
 	font-weight: initial;
-	height: 56px;
-	font-size: 1.1em;
-	padding: 14px 20px 4px 20px;
+    font-size: 1.1em;
+    padding: 14px 20px 4px 20px;
+    word-wrap: initial;
 }
 .article-title h2{
 	line-height: 30px;
