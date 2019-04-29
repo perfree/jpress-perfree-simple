@@ -4,6 +4,7 @@
 }
 .time-line-body{
 	padding: 10px;
+	margin-bottom: 10px;
 }
 .layui-timeline-item:before{
 	left: 3px!important;

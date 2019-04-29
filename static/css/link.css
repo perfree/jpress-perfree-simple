@@ -1,0 +1,40 @@
+.link-box{
+    margin-top: 8px;
+    height: 50px;
+    display: block;
+    padding: 8px;
+    border: 1px solid #e7ecee;
+}
+.link-img{
+    width: 50px;
+    height: 50px;
+    margin: 0!important;
+    float: left;
+    border-radius: 50%;
+}
+.link-msg-box{
+    padding-left: 10px;
+    overflow: hidden;
+}
+.link-name{
+    display: block;
+    line-height: 20px;
+    font-size: 1.1em;
+    color: #575f63;
+    margin-top: 7px;
+}
+.link-desc{
+    line-height: 20px;
+    font-size: .7em;
+    color: #98a6ad;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.link-box:hover{
+    background-color: #f0f3f4;
+}
+.layui-elem-quote{
+    border-left: 4px solid #42b983;
+    background-color: rgba(66, 185, 131, .1);
+}

@@ -110,6 +110,7 @@ code.has-numbering {
 }
 .revert-body{
 	padding: 10px 20px 20px 20px;
+	margin-bottom: 10px;
 }
 .revert-submit{
 	margin-top: 10px;

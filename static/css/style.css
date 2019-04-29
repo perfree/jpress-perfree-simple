@@ -167,12 +167,16 @@ body::-webkit-scrollbar-track {
 	clear: both;
 	height: 50px;
 	line-height: 50px;
-	padding-top: 15px;
+	background: #ffffff;
+	padding-left: 15px;
+	padding-right: 15px;
+}
+.right-hot-tag{
+	margin-bottom: 10px;
 }
 .layui-card-header {
     position: relative;
     height: auto;
-    line-height: auto;
     padding: 0 15px;
     border-bottom: 1px solid #f6f6f6;
     color: #333;
@@ -203,6 +207,15 @@ body::-webkit-scrollbar-track {
 }
 .hot-article-img{
 	float: left;
+	transition: all .5s;
+	-webkit-transition: all .5s;
+}
+.hot-article-img:hover{
+	transform: scale(1.02);
+	-ms-transform:scale(1.02);
+	-moz-transform:scale(1.02);
+	-webkit-transform:scale(1.02);
+	-o-transform:scale(1.02);
 }
 .hot-article-title{
 	line-height: 14px;
@@ -233,10 +246,10 @@ body::-webkit-scrollbar-track {
 	height: 24px;
     line-height: 18px;
     font-size: .6em;
-    font-weight: 600;
     padding: 3px 6px 3px 6px;
 	margin-left: 4px!important;
 	margin-top: 6px!important;
+	border-radius: 4px;
 }
 .layui-laypage a:hover {
     color: #23b7e5;
@@ -248,6 +261,7 @@ body::-webkit-scrollbar-track {
 	float: none;
 	line-height: 50px;
 	margin-left: 15px;
+	margin-bottom: 10px;
 }
 .page-item{
 	list-style: none;
@@ -291,6 +305,18 @@ body::-webkit-scrollbar-track {
 .perfree-hide{
 	display: none;
 }
+.top-tip{
+	color: white;
+	font-size: 0.3em;
+	display: block;
+	line-height: 18px;
+	float: left;
+	margin-top: 3px;
+	background: #ff6060;
+	padding-left: 5px;
+	padding-right: 5px;
+	margin-right: 5px;
+}
 .layui-fixbar li {
 	width: 40px;
 	height: 40px;
@@ -317,7 +343,15 @@ body::-webkit-scrollbar-track {
 .article-box-content{
 	padding: 20px!important;
 }
-
+.read-all-btn{
+	float: right;
+	color: #98a6ad;
+	transition: all .5s;
+}
+.read-all-btn:hover{
+	color: #98a6ad;
+	text-decoration: underline;
+}
 /*移动端导航*/
 .phone-header{
 	display: none;

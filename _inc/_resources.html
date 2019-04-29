@@ -3,7 +3,9 @@
 <link rel="stylesheet" href="static/plugin/layui/css/layui.css" media="all">
 <link rel="stylesheet" href="static/plugin/font-awesome/css/font-awesome.min.css" media="all">
 <link rel="stylesheet" href="static/css/style.css" media="all">
-#if(option('page_theme_style') != null)
+#if(option('page_theme_style') == null || option('page_theme_style') == "")
+<link rel="stylesheet" href="static/theme/white.css" media="all">
+#else
 <link rel="stylesheet" href="static/theme/#option('page_theme_style').css" media="all">
 #end
 <!-- 代码样式 -->

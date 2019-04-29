@@ -38,13 +38,13 @@
 }
 /* 手机端右侧导航颜色 */
 .phone-nav-box,.phone-nav-box .layui-nav-side{
-    background-color: #3a3f51!important;
+    background-color: #ffffff!important;
 }
 /* 手机端右侧导航文字颜色 */
 .phone-nav-box .layui-nav-side .layui-nav-item, .phone-nav-box .layui-nav-side .layui-nav-item a{
-    color: rgba(255,255,255,.7)!important;
+    color: #657180!important;
 }
 /* 手机端右侧导航菜单hover颜色 */
 .phone-nav-box .layui-nav-side .layui-nav-item a:hover{
-    background-color: #313544;
+    background-color: #ffffff;
 }
