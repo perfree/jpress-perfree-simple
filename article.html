@@ -24,6 +24,23 @@
 			<div class="article-content-bottom">
 				<span class="article-content-bottom-left"><i class="fa fa-clock-o"></i> 最后修改于 #date(article.created, "yyyy-MM-dd HH:mm:ss")</span>
 			</div>
+			#if(option('page_appreciate') == null || option('page_appreciate') == true)
+			<div class="appreciate-box">
+				<button class="layui-btn layui-btn-radius layui-btn-normal" onclick="appreciate();">
+					<i class="layui-icon">&#xe65e;</i>赞赏
+				</button>
+				<span class="appreciate-tip">如果觉得我的文章对你有用，请随意赞赏</span>
+			</div>
+			<div id="appreciate-content">
+				<div class="appreciate-content-tip">扫一扫支付</div>
+				<img src="#option('perfree_alipay' ??)" id="appreciate-content-aLiImg">
+				<img src="#option('perfree_wechat' ??)" id="appreciate-content-wechatImg">
+				<div class="appreciate-content-btn-box">
+					<button class="layui-btn layui-btn-normal" onclick="changeImg(1);">支付宝支付</button>
+					<button class="layui-btn" onclick="changeImg(2);">微信支付</button>
+				</div>
+			</div>
+			#end
 			<div class="switch-article">
 				#previousArticle()
 				<a href="#(previous.url)" title="#(previous.title)" class="pre-article pjax">
@@ -142,6 +159,24 @@
 			imagep.height(h);
 			imagep.width(w);
 		});
+		function appreciate() {
+			layer.open({
+				type: 1,
+				title:'赞赏作者',
+				shade: 0.6,
+				shadeClose:true,
+				content: $('#appreciate-content')
+			});
+		}
+		function changeImg(type) {
+			if(type == 1){
+				$(".layui-layer-wrap > #appreciate-content-wechatImg").hide();
+				$(".layui-layer-wrap > #appreciate-content-aLiImg").show();
+			}else{
+				$(".layui-layer-wrap > #appreciate-content-aLiImg").hide();
+				$(".layui-layer-wrap > #appreciate-content-wechatImg").show();
+			}
+		}
 	</script>
 	#if(option('page_code_line') == null || option('page_code_line') != '不开启')
 	<script>

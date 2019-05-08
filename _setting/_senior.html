@@ -9,6 +9,54 @@
     <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
         <div class="panel-body">
 
+            <!-- 赞赏start -->
+            <div class="form-group">
+                <label class="col-sm-2 control-label">赞赏:</label>
+                <div class="col-sm-6">
+                    <select class="form-control" name="page_appreciate">
+                        <option value="#option('page_appreciate' ??)" style="display: none">#option('page_appreciate','启用')</option>
+                        <option value="true">启用</option>
+                        <option value="false">关闭</option>
+                    </select>
+                    <span style="color: #999">文章赞赏功能，默认启用，需要配置微信和支付宝付款码</span>
+                </div>
+            </div>
+            <!-- 赞赏end -->
+            <!-- 支付宝收款码start -->
+            <div class="form-group">
+                <label class="col-sm-2 control-label">支付宝收款码:</label>
+                <div class="col-sm-6">
+                    <button type="button"
+                            for-src="perfree_alipay"
+                            for-input="perfree_alipay_input"
+                            class="jp-image-browser btn btn-flat btn-default btn-xs">
+                        <i class="fa fa-fw fa-image"></i> 选择图片
+                    </button>
+                    <br/>
+                    <img src="#(CPATH)#option('perfree_alipay','/templates/jpress-perfree-simple/static/img/avatar.png')"
+                         id="perfree_alipay">
+                    <input type="hidden" id="perfree_alipay_input" name="perfree_alipay" value="#option('perfree_alipay' ??)">
+                </div>
+            </div>
+            <!-- 支付宝收款码end -->
+            <!-- 微信收款码start -->
+            <div class="form-group">
+                <label class="col-sm-2 control-label">微信收款码:</label>
+                <div class="col-sm-6">
+                    <button type="button"
+                            for-src="perfree_wechat"
+                            for-input="perfree_wechat_input"
+                            class="jp-image-browser btn btn-flat btn-default btn-xs">
+                        <i class="fa fa-fw fa-image"></i> 选择图片
+                    </button>
+                    <br/>
+                    <img src="#(CPATH)#option('perfree_wechat','/templates/jpress-perfree-simple/static/img/avatar.png')"
+                         id="perfree_wechat">
+                    <input type="hidden" id="perfree_wechat_input" name="perfree_wechat" value="#option('perfree_wechat' ??)">
+                </div>
+            </div>
+            <!-- 支微信收款码end -->
+
             <!-- 配色样式start -->
             <div class="form-group">
                 <label class="col-sm-2 control-label">全站pjax:</label>

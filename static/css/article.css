@@ -91,8 +91,9 @@ code.has-numbering {
 .perfree-article-content pre code{
 }
 .article-content-bottom{
-	height: 60px;
-	line-height: 60px;
+	height: 30px;
+	line-height: 30px;
+	margin-top: 10px;
 }
 .article-content-bottom-left{
 	float: left;
@@ -200,4 +201,40 @@ code.has-numbering {
 }
 .next-article{
 	float: right;
+}
+.appreciate-box{
+	text-align: center;
+}
+.appreciate-box .layui-btn-radius{
+	border-radius:100px;
+}
+.appreciate-tip{
+	display: block;
+}
+#appreciate-content{
+	display: none;
+	padding: 20px;
+}
+.layui-layer-setwin a{
+	padding: 0;
+}
+.appreciate-content-tip{
+	text-align: center;
+	font-weight: 800;
+	font-size: 1.1em;
+}
+.layui-layer-wrap #appreciate-content-wechatImg{
+	display: none;
+}
+#appreciate-content-wechatImg,#appreciate-content-aLiImg{
+	max-width: 220px;
+	max-height: 240px;
+	min-height: 220px;
+	min-width: 200px;
+	display: block;
+	margin: 5px auto auto;
+}
+.appreciate-content-btn-box{
+	margin-top: 10px;
+	text-align: center;
 }

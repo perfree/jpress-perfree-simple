@@ -79,6 +79,16 @@
             "#load-js-code"
         ]
     })
+    var index;
+    document.addEventListener('pjax:send', function () {
+        index = layer.load();
+    });
+    document.addEventListener('pjax:success', function() {
+        layer.close(index);
+    });
+    document.addEventListener('pjax:error', function() {
+        layer.msg("系统出现问题,请刷新网页");
+    });
 </script>
 #end
 <!-- 自定义js代码 -->
