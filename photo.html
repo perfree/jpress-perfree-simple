@@ -1,0 +1,46 @@
+#include("./_inc/_layout.html")
+#@layout()
+#define content()
+<div class="layui-col-xs12 layui-col-sm7 layui-col-md8 perfree-content-left">
+    <link rel="stylesheet" href="static/css/article.css" media="all">
+    <link rel="stylesheet" href="static/css/photo.css" media="all">
+    <div class="layui-card">
+        <div class="layui-card-body photo-card" style="padding: 8px">
+                #perfreePhoto()
+                    #if(perfreePhoto.isEncrypt == 1)
+                        <div class="perfree-article-content check-form">
+                            <form class="layui-form" action="">
+                                <input type="hidden" name="id" value="#(perfreePhoto.id)" id="photoId">
+                                <div class="layui-form-item" style="width: 248px;width: 248px;margin: auto;margin-top: 50px;margin-bottom: 50px;">
+                                    <blockquote class="layui-elem-quote">该相册已加密,需要输入密码访问哦~</blockquote>
+                                    <input type="password" name="password" id="photoPassword" placeholder="请输入相册密码" class="layui-input" style="width: 180px;float: left;">
+                                    <button class="layui-btn" lay-submit lay-filter="checkPhoto" style="width: 66px;text-align: center;">提交</button>
+                                </div>
+                            </form>
+                        </div>
+                    #else
+                        <div class="layui-card-header article-title">
+                                <h2>#(perfreePhoto.name)</h2>
+                            <p>
+                                <span><i class="fa fa-user-o"></i> #(perfreePhoto.nickname)</span>
+                                <span>&nbsp;&nbsp;<i class="fa fa-clock-o"></i> #date(perfreePhoto.createTime, "yyyy-MM-dd HH:mm:ss")</span>
+                            </p>
+                        </div>
+                        <div class="layui-card-body article-body">
+                            <div class="perfree-article-content">
+                                <div class="perfree-img-parent">
+                                    #for(photo : perfreePhoto.photos)
+                                        <div class="photo-box">
+                                            <img src="#(photo)">
+                                        </div>
+                                    #end
+                                </div>
+                            </div>
+                        </div>
+                    #end
+                #end
+            </div>
+        <script src="static/js/photo.js"></script>
+    </div>
+</div>
+#end

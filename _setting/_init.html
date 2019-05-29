@@ -1,0 +1,51 @@
+<div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingOne">
+        <h4 class="panel-title">
+            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                <span class="glyphicon glyphicon-send"></span> 初始配置
+            </a>
+        </h4>
+    </div>
+    <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+        <div class="panel-body">
+            <!-- ico配置start -->
+            <div class="form-group">
+                <label class="col-sm-2 control-label">网页ico图标:</label>
+                <div class="col-sm-6">
+                    <button type="button"
+                            for-src="perfree_logo"
+                            for-input="perfree_logo_input"
+                            class="jp-image-browser btn btn-flat btn-default btn-xs">
+                        <i class="fa fa-fw fa-image"></i> 选择图片
+                    </button>
+                    <br/>
+                    <img src="#(CPATH)#option('perfree_logo','/templates/jpress-perfree-simple/static/img/logo.png')"
+                         id="perfree_logo">
+                    <input type="hidden" id="perfree_logo_input" name="perfree_logo"
+                           value="#option('perfree_logo' ??)">
+                </div>
+            </div>
+            <!-- ico配置end -->
+
+            <!-- 导航栏logo图标start -->
+            <div class="form-group">
+                <label class="col-sm-2 control-label">导航栏logo图标:</label>
+                <div class="col-sm-6">
+                    <input type="input" class="form-control" placeholder="网站左侧顶部logo图标"
+                           name="page_logo_icon" value="#option('page_logo_icon' ??)">
+                    <span style="color: #999">请使用Font Awesome图标,直接写图标名称就行可,如fa fa-user-o只需写user-o即可</span>
+                </div>
+            </div>
+            <!-- 导航栏logo图标end -->
+            <!-- 公告配置 -->
+            <div class="form-group">
+                <label class="col-sm-2 control-label">公告:</label>
+                <div class="col-sm-6">
+                    <input type="input" class="form-control" placeholder="请输入公告内容"
+                           name="notice_content" value="#option('notice_content' ??)">
+                    <span style="color: #999">就是公告内容~</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

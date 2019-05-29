@@ -1,0 +1,50 @@
+/* 导航栏背景色 */
+.layui-bg-cyan{
+    background-color: #ffffff!important;
+}
+/* 导航栏logo，菜单字体颜色 */
+.header .logo-box,.layui-nav .layui-nav-item a{
+    color: #657180;
+}
+/* 导航栏菜单鼠标悬浮颜色 */
+.header .logo-box:hover,.layui-nav .layui-nav-item a:hover{
+    color: #000000;
+}
+/* 导航栏二级菜单向下箭头颜色 */
+.layui-nav .layui-nav-more{
+    border-color: #657180 transparent transparent;
+}
+/* 导航栏二级菜单向上箭头颜色 */
+.layui-nav .layui-nav-mored, .layui-nav-itemed>a .layui-nav-more{
+    border-color: transparent transparent #657180!important;
+}
+/* 手机端顶部导航栏字体颜色 */
+.phone-header .phone-open-nav-btn,.phone-header .logo-box,.phone-header .phone-setting-btn,.phone-my-message-box .my-name-img{
+    color: #657180!important;
+}
+/* 手机端顶部导航栏展开颜色 */
+.phone-setting-box{
+    background-color: #ffffff!important;
+    border-top: 1px solid #ecf1fd;
+    box-shadow: 0 2px 2px rgba(0,0,0,.05), 0 1px 0 rgba(0,0,0,.05);
+}
+/* 手机端顶部导航栏登录容器颜色 */
+.phone-my-message-box{
+    border-top: 1px solid #ecf1fd;
+}
+.phone-my-message-box,.phone-my-message-box .register-btn,
+.phone-my-message-box .login-btn{
+    color:#657180!important;
+}
+/* 手机端右侧导航颜色 */
+.phone-nav-box,.phone-nav-box .layui-nav-side{
+    background-color: #ffffff!important;
+}
+/* 手机端右侧导航文字颜色 */
+.phone-nav-box .layui-nav-side .layui-nav-item, .phone-nav-box .layui-nav-side .layui-nav-item a{
+    color: #657180!important;
+}
+/* 手机端右侧导航菜单hover颜色 */
+.phone-nav-box .layui-nav-side .layui-nav-item a:hover{
+    background-color: #ffffff;
+}

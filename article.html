@@ -1,113 +1,10 @@
-#include("./_layout.html")
+#include("./_inc/_layout.html")
 #@layout()
 #define content()
-<link rel="stylesheet" href="css/article.min.css" media="all">
-<script src="js/jquery-3.2.1.min.js"></script>
-<script src="/static/components/jquery/jquery.form.min.js"></script>
-<script>
-	layui.use(['element','layedit','form','layer','jquery'], function() {
-		var element = layui.element,layedit = layui.layedit,form=layui.form,layer=layui.layer,$=layui.jquery;
-
-		$("code").each(function(){
-			$(this).html("<ul><li>" + $(this).html().replace(/\n/g,"\n</li><li>") +"\n</li></ul>");
-		});
-		//实例化编辑器
-		var edit = layedit.build('revert', {
-			tool: ['strong','italic','underline','del','link', 'face'],
-			height: 100
-		});
-
-		//利用表单验证将编辑器值赋予textarea
-		form.verify({
-			content: function(value, item) {
-				layedit.sync(edit);
-			}
-		});
-		var pRevertContent,pRevertAuthor,pRevertCreated,pRevertAvatar;
-		//监听回复按钮点击事件
-		$('#allComment').on('click','.toReply', function () {
-			$('#pid').val($(this).attr('data-cid'));
-			$('#revert').val('回复 @' + $(this).attr('data-author') + " ：");
-			edit = layedit.build('revert', {
-				tool: ['strong','italic','underline','del','link', 'face'],
-				height: 100
-			});
-			//记录父级评论内容
-			pRevertContent = $(this).siblings(".revert-content").text();
-			pRevertAuthor = $(this).siblings(".revert-user").children(".revert-user-msg").children(".revert-user-name").text();
-			pRevertCreated = $(this).siblings(".revert-user").children(".revert-user-msg").children(".revert-user-time").text();
-			pRevertAvatar = $(this).siblings(".revert-user").children("img").attr("src");
-			$('#revert').focus();
-		});
-
-		//监听form提交
-		form.on('submit(*)', function(data){
-			var content = layedit.getContent(edit);
-			if(content == null || content == "" || content == undefined){
-				alert('请填写评论内容');
-				return false;
-			}
-			var str = '回复 @' + $(".toReply").attr('data-author') + " ：";
-			var revertContent = $("#revert").val();
-			//判断回复是否存在
-			if(!new RegExp(str).test(revertContent)){
-				$('#pid').val('');
-			}else {
-				revertContent = revertContent.replace(str,'');
-			}
-			$.post({
-				url:"#(CPATH)/article/postComment",
-				data: {articleId:$("#articleId").val(),pid: $("#pid").val(),content: revertContent},
-				success:function(result){
-					if(result.state == "ok"){
-						//清空编辑器
-						layedit.clearContent(edit);
-						var pid = $("#pid").val();
-						//追加html
-						var html = '<div class="revert-content-box">' +
-								'<div class="revert-user">' +
-								'<img src="'+result.user.avatar+'" width="40px" height="40px"/>' +
-								'<span class="revert-user-msg">' +
-								'<span class="revert-user-name">'+result.comment.author+'</span>' +
-								'<br>' +
-								'<span class="revert-user-time">'+result.comment.created+'</span>' +
-								'</span>' +
-								'</div>' +
-								'<div class="revert-content">'+result.comment.text+'</div>';
-						if(pid != ''){
-							html += '<div class="revert-comment-content-box">' +
-									'<div class="revert-user">' +
-									'<img src="'+pRevertAvatar+'" width="40px" height="40px"/>' +
-									'<span class="revert-user-msg">' +
-									'<span class="revert-user-name">'+pRevertAuthor+'</span>' +
-									'<br>' +
-									'<span class="revert-user-time">'+pRevertCreated+'</span>' +
-									'</span>' +
-									'</div>' +
-									'<div class="revert-content">'+pRevertContent+'</div>' +
-									'</div>';
-						}
-						html += '<a class="toReply" href="javascript:;" data-cid="'+result.comment.id+'" data-author="'+result.comment.author+'">回复</a>'+
-								'</div> <hr class="layui-bg-gray">';
-						$("#allComment").prepend(html);
-					}else{
-						alert('评论失败:' + result.message);
-						if (data.errorCode == 9) {
-							location.href = '#(CPATH)/user/login';
-						}
-					}
-					return false;
-				},
-				error:function () {
-					alert('网络错误，请稍后重试');
-					return false;
-				}
-			});
-			return false;
-		});
-	});
-</script>
 <div class="layui-col-xs12 layui-col-sm7 layui-col-md8 perfree-content-left">
+	<link rel="stylesheet" href="static/plugin/vue-markdown/vue.css" media="all">
+	<link rel="stylesheet" href="static/css/article.css" media="all">
+	<script src="static/js/article.js"></script>
 	<!-- 文章start -->
 	<div class="layui-card">
 		<div class="layui-card-header article-title">
@@ -120,11 +17,41 @@
 			</p>
 		</div>
 		<div class="layui-card-body article-body">
+			<span id="edit-model" style="display: none">#(article.edit_mode)</span>
 			<div class="perfree-article-content">
 				#(article.content ??)
 			</div>
 			<div class="article-content-bottom">
 				<span class="article-content-bottom-left"><i class="fa fa-clock-o"></i> 最后修改于 #date(article.created, "yyyy-MM-dd HH:mm:ss")</span>
+			</div>
+			#if(option('page_appreciate') == null || option('page_appreciate') == true)
+			<div class="appreciate-box">
+				<button class="layui-btn layui-btn-radius layui-btn-normal" onclick="appreciate();">
+					<i class="layui-icon">&#xe65e;</i>赞赏
+				</button>
+				<span class="appreciate-tip">如果觉得我的文章对你有用，请随意赞赏</span>
+			</div>
+			<div id="appreciate-content">
+				<div class="appreciate-content-tip">扫一扫支付</div>
+				<img src="#option('perfree_alipay' ??)" id="appreciate-content-aLiImg">
+				<img src="#option('perfree_wechat' ??)" id="appreciate-content-wechatImg">
+				<div class="appreciate-content-btn-box">
+					<button class="layui-btn layui-btn-normal" onclick="changeImg(1);">支付宝支付</button>
+					<button class="layui-btn" onclick="changeImg(2);">微信支付</button>
+				</div>
+			</div>
+			#end
+			<div class="switch-article">
+				#previousArticle()
+				<a href="#(previous.url)" title="#(previous.title)" class="pre-article pjax">
+					<i class="fa fa-angle-double-left" aria-hidden="true"></i> 上一篇
+				</a>
+				#end
+				#nextArticle()
+				<a href="#(next.url)" title="#(next.title)" class="next-article pjax">
+					下一篇 <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+				</a>
+				#end
 			</div>
 		</div>
 	</div>
@@ -139,7 +66,11 @@
 					<input type="hidden" name="articleId" value="#(article.id)" id="articleId">
 					<input type="hidden" name="pid" id="pid">
 					<textarea id="revert" style="display: none;" name="content" lay-verify="content"></textarea>
-					<button class="layui-btn layui-btn-normal revert-submit" lay-submit lay-filter="*">发表评论</button>
+					#if(option('article_comment_vcode_enable'))
+						<img src="/commons/captcha" style="height: 25px" onclick="this.src='#(CPATH)/commons/captcha?d='+Math.random();" class="comment-verify">
+						<input placeholder="请输入验证码" autocomplete="off" required class="layui-input captcha" name="captcha" type="text" lay-verify="required">
+					#end
+					<button class="layui-btn layui-btn-normal revert-submit" lay-submit lay-filter="comment">发表评论</button>
 				</form>
 			</div>
 			<!-- 评论框end -->
@@ -149,9 +80,9 @@
 					#for(comment : commentPage.list)
 					<div class="revert-content-box">
 						<div class="revert-user">
-							<img src="#(comment.user.avatar)" width="40px" height="40px"/>
+							<img src="#(comment.user.avatar ?? 'static/img/avatar.png')" width="40px" height="40px"/>
 							<span class="revert-user-msg">
-								<span class="revert-user-name">#(comment.author ??)</span>
+								<span class="revert-user-name">#(comment.author ?? '匿名用户')</span>
 								<br>
 								<span class="revert-user-time">#date(comment.created, "yyyy-MM-dd HH:mm:ss")</span>
 							</span>
@@ -162,9 +93,9 @@
 						#if(comment.parent)
 						<div class="revert-comment-content-box">
 							<div class="revert-user">
-								<img src="#(comment.parent.user.avatar)" width="40px" height="40px"/>
+								<img src="#(comment.parent.user.avatar ?? 'static/img/avatar.png')" width="40px" height="40px"/>
 								<span class="revert-user-msg">
-									<span class="revert-user-name">#(comment.parent.author)</span>
+									<span class="revert-user-name">#(comment.parent.author ?? '匿名用户')</span>
 									<br>
 									<span class="revert-user-time">#date(comment.parent.created, "yyyy-MM-dd HH:mm:ss")</span>
 								</span>
@@ -174,9 +105,13 @@
 							</div>
 						</div>
 						#end
-						<a class="toReply" href="javascript:;" data-cid="#(comment.id)" data-author="#(comment.author ??)">回复</a>
+						<a class="toReply" href="javascript:;" data-cid="#(comment.id)" data-author="#(comment.author ?? '匿名用户')">回复</a>
 					</div>
 					<hr class="layui-bg-gray">
+					#else
+						<div class="no-comment">
+							<i class="fa fa-volume-up" aria-hidden="true"></i> 还没有人评论哦~赶快抢占沙发吧~
+						</div>
 					#end
 					#commentPaginate(anchor="allComment")
 						<div class="layui-card">
@@ -194,5 +129,73 @@
 			<!-- 评论列表end -->
 		</div>
 	</div>
+	<script>
+		layer.photos({
+			photos: '.perfree-article-content',
+			anim: 5
+		});
+		$(document).on("mousewheel DOMMouseScroll", ".layui-layer-phimg img", function(e) {
+			var delta = (e.originalEvent.wheelDelta && (e.originalEvent.wheelDelta > 0 ? 1 : -1)) || // chrome & ie
+					(e.originalEvent.detail && (e.originalEvent.detail > 0 ? -1 : 1)); // firefox
+			var imagep = $(".layui-layer-phimg").parent().parent();
+			var image = $(".layui-layer-phimg").parent();
+			var h = image.height();
+			var w = image.width();
+			if(delta > 0) {
+				if(h < (window.innerHeight)) {
+					h = h * 1.05;
+					w = w * 1.05;
+				}
+			} else if(delta < 0) {
+				if(h > 100) {
+					h = h * 0.95;
+					w = w * 0.95;
+				}
+			}
+			imagep.css("top", (window.innerHeight - h) / 2);
+			imagep.css("left", (window.innerWidth - w) / 2);
+			image.height(h);
+			image.width(w);
+			imagep.height(h);
+			imagep.width(w);
+		});
+		function appreciate() {
+			layer.open({
+				type: 1,
+				title:'赞赏作者',
+				shade: 0.6,
+				shadeClose:true,
+				content: $('#appreciate-content')
+			});
+		}
+		function changeImg(type) {
+			if(type == 1){
+				$(".layui-layer-wrap > #appreciate-content-wechatImg").hide();
+				$(".layui-layer-wrap > #appreciate-content-aLiImg").show();
+			}else{
+				$(".layui-layer-wrap > #appreciate-content-aLiImg").hide();
+				$(".layui-layer-wrap > #appreciate-content-wechatImg").show();
+			}
+		}
+	</script>
+	#if(option('page_code_line') == null || option('page_code_line') != '不开启')
+	<script>
+		$('pre code').each(function(){
+			var edit = $("#edit-model").text();
+			var lines = $(this).text().split('\n').length-1;
+			if(edit == 'html'){
+				lines = $(this).text().split('\n').length;
+			}
+			var $numbering = $('<ul/>').addClass('pre-numbering hljs');
+			$(this)
+					.addClass('has-numbering')
+					.parent()
+					.append($numbering);
+			for(i=1;i<=lines;i++){
+				$numbering.append($('<li/>').text(i+"."));
+			}
+		});
+	</script>
+	#end
 </div>
 #end

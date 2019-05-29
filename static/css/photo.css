@@ -1,0 +1,43 @@
+.perfree-img-parent img{
+    width:200px!important;
+    height:150px!important;
+}
+.perfree-article-content img{
+    margin: 0;
+}
+.perfree-img-parent img:hover{
+    cursor: pointer;
+    transform:scale(1.02);
+}
+.article-body{
+    padding: 5px 20px 20px 15px;
+}
+.perfree-img-parent img{
+    width: 100%!important;
+}
+.photo-box{
+    float: left;
+    width: 24%;
+    padding-top: 5px;
+    padding-left: 5px;
+}
+@media screen and (max-width: 1400px){
+    .photo-box {
+        width: 28%;
+    }
+}
+@media screen and (max-width: 1200px){
+    .photo-box {
+        width: 33%;
+    }
+}
+@media screen and (max-width: 997px){
+    .photo-box {
+        width: 48%;
+    }
+}
+@media screen and (max-width: 800px) and (min-width: 600px){
+    .photo-box {
+        width: 32.8%;
+    }
+}

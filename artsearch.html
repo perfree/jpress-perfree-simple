@@ -1,16 +1,24 @@
-#include("./_layout.html")
+#include("./_inc/_layout.html")
 #@layout()
 #define content()
     <div class="layui-col-xs12 layui-col-sm7 layui-col-md8 perfree-content-left">
         <div class="article-box">
-            #articleSearchPage(pageSize=2)
+            #articleSearchPage(pageSize=6)
                 #for(article : articlePage.list)
                     <div class="layui-card">
                         <div class="layui-card-body">
-                            #if(article.thumbnail != null)
-                            <div class="article-img">
-                                <img src="#(article.thumbnail ?? 'img/1.jpg')" alt="#(article.title ??)" width="100%" height="300px"/>
-                            </div>
+                            #if(option('page_article_thumbnail') == null || option('page_article_thumbnail') == '手动上传缩略图')
+                                #if(article.thumbnail != null)
+                                    <div class="article-img">
+                                        <img src="#(article.thumbnail ??)" alt="#(article.title ??)" width="100%" height="300px"/>
+                                    </div>
+                                #end
+                            #else
+                                #if(article.showImage != null)
+                                    <div class="article-img">
+                                        <img src="#(article.showImage ??)" alt="#(article.title ??)" width="100%" height="300px"/>
+                                    </div>
+                                #end
                             #end
                             <div class="article-box-content">
                                 <h2 class="article-title">
@@ -27,8 +35,16 @@
                             </div>
                         </div>
                     </div>
+                #else
+                    <div class="layui-card">
+                        <div class="layui-card-body">
+                            <div class="no-article">
+                                <i class="fa fa-bug" aria-hidden="true"></i> 没找到关于 #(keyword) 的文章，换个关键词试试~
+                            </div>
+                        </div>
+                    </div>
                 #end
-                #articleSearchPaginate(firstGotoIndex=true)
+                #articleSearchPaginate()
                     <div class="layui-card">
                         <div class="layui-card-body">
                             <div class="perfree-page-box">

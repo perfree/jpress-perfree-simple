@@ -1,0 +1,40 @@
+.time-line-header{
+	color: #5d727c;
+	font-weight: 800;
+}
+.time-line-body{
+	padding: 10px;
+	margin-bottom: 10px;
+}
+.layui-timeline-item:before{
+	left: 3px!important;
+    width: 3px!important;
+	background-color: #23b7e5!important;
+}
+.layui-timeline-axis{
+	color: #23b7e5!important;
+	font-weight: 800!important;
+}
+.layui-timeline-content{
+	position: relative;
+}
+.layui-timeline-title{
+	margin-bottom: 13px!important;
+	font-size: 15px!important;
+	color: #5d727c!important;
+}
+.perfree-timeline-title{
+	text-decoration:none!important;
+	height: 30px;
+	background-color: #23b7e5!important;
+	padding: 10px;
+	margin-top: 15px;
+	color: #FFFFFF!important;
+	border-radius: 4px;
+}
+.time-box-top{
+	color: #23b7e5!important;
+    position: absolute;
+    left: 45px;
+	top: 18px;
+}

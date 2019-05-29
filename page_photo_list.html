@@ -1,0 +1,32 @@
+#include("./_inc/_layout.html")
+#@layout()
+#define content()
+<div class="layui-col-xs12 layui-col-sm7 layui-col-md8 perfree-content-left">
+    <link rel="stylesheet" href="static/css/article.css" media="all">
+    <link rel="stylesheet" href="static/css/photoList.css" media="all">
+    <div class="layui-card">
+        <div class="layui-card-body" style="padding: 8px;margin-bottom: 10px;">
+            <div class="layui-card-header article-title" style="height: 30px;">
+                <h2>相册<span style="font-weight: 500;font-size: 13px;margin-left: 10px;">记录每一个瞬间</span></h2>
+            </div>
+            <div class="perfree-article-content">
+                #perfreePhotosList()
+                    #for(photo:photoList)
+                        <a class="photos-box pjax" title="#(photo.name)" href="/photo/#(photo.id)">
+                            <div class="photos-img-box">
+                                <img src="#(photo.coverImg)" height="120px">
+                            </div>
+                            <div class="photos-name-box">
+                                #if(photo.isEncrypt == 1)
+                                    <i class="fa fa-lock"></i>
+                                #end
+                                <span>#(photo.name)</span>
+                            </div>
+                        </a>
+                    #end
+                #end
+            </div>
+        </div>
+    </div>
+</div>
+#end

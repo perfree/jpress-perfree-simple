@@ -1,0 +1,97 @@
+<div class="layui-col-sm5 layui-col-md4 perfree-content-right">
+    <!-- 一言组件 -->
+    <div class="layui-card yiyan-box">
+        <div class="layui-card-body page-title-body">
+            <h2 class="right-name-title">#(WEB_NAME ??)</h2>
+            <div>
+                <script type="text/javascript" src="https://api.lwl12.com/hitokoto/v1?encode=js&charset=utf-8"></script>
+                    <span id="lwlhitokoto">
+                        <script>lwlhitokoto()</script>
+                    </span>
+            </div>
+        </div>
+    </div>
+    <!-- 一言组件 -->
+
+    <!-- 搜索start -->
+   <div class="layui-card search-box">
+        <div class="layui-card-header">
+            <i class="fa fa-search"></i>
+            <span style="margin-left: 3px;">搜索</span>
+        </div>
+        <div class="layui-card-body search-body">
+            <form class="layui-form" action="/article/search">
+                <div class="layui-form-item">
+                    <input type="text" name="keyword" required  lay-verify="required" placeholder="请输入关键字" autocomplete="off" class="layui-input search-input">
+                    <button class="layui-btn layui-btn-normal search-btn" type="submit"><i class="fa fa-search"></i></button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- 搜索end -->
+    <!-- 音乐start -->
+    #if(option('music_server') != null && option('music_type') != null && option('music_id') != null)
+    <div class="layui-card music-card">
+        <div class="layui-card-header">
+            <i class="fa fa-music"></i>
+            <span style="margin-left: 3px;">音乐推荐</span>
+        </div>
+        <div class="layui-card-body music-body">
+            <meting-js server="#option('music_server' ??)" type="#option('music_type' ??)" id="#option('music_id' ??)" list-max-height="240px" list-folded="true"></meting-js>
+        </div>
+    </div>
+    #end
+    <!-- 音乐end -->
+
+    <!-- 热门start -->
+    #articles(orderBy="view_count DESC",count=5)
+        <div class="layui-card right-hot-article-box">
+            <div class="layui-card-header">
+                <i class="fa fa-fire"></i>
+                <span style="margin-left: 3px;">热门文章</span>
+            </div>
+            <div class="layui-card-body hot-article-body">
+                #for(article : articles)
+                    <a class="hot-article-box pjax" href="#(article.url)">
+                        #if(for.odd)
+                            <img src="#(article.thumbnail ?? 'static/img/3.jpg')" width="20%" height="50px" class="hot-article-img"/>
+                        #else
+                            <img src="#(article.thumbnail ?? 'static/img/2.jpg')" width="20%" height="50px" class="hot-article-img"/>
+                        #end
+                        <span class="hot-article-title">#(article.title)</span><br>
+                        <span class="hot-article-msg"><i class="fa fa-clock-o"></i> #date(article.created, "yyyy-MM-dd")&nbsp;&nbsp;<i class="fa fa-eye"></i> #(article.view_count ??)</span>
+                    </a>
+                #end
+            </div>
+        </div>
+    #end
+    <!-- 热门end -->
+
+    <!-- 标签start -->
+    #tags(orderBy="count DESC")
+        <div class="layui-card right-hot-tag">
+            <div class="layui-card-header">
+                <i class="fa fa-tags"></i>
+                <span style="margin-left: 3px;">热门标签</span>
+            </div>
+            <div class="layui-card-body tag-body">
+                #for(tag : tags)
+                    <a href="#(tag.url)" class="layui-btn layui-btn-normal tag pjax" title="#(tag.title)">#(tag.title)</a>
+                #end
+            </div>
+        </div>
+    #end
+    <!-- 标签end -->
+
+    <!-- 广告start -->
+    <div class="layui-card #if(option('page_ad_code') == null) perfree-hide #end">
+        <div class="layui-card-header">
+            <i class="fa fa-bullhorn"></i>
+            <span style="margin-left: 3px;">广告</span>
+        </div>
+        <div class="layui-card-body tag-body">
+            #option('page_ad_code' ??)
+        </div>
+    </div>
+    <!-- 广告end -->
+</div>

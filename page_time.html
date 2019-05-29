@@ -1,23 +1,23 @@
-#include("./_layout.html")
+#include("./_inc/_layout.html")
 #@layout()
 #define content()
-<link rel="stylesheet" href="css/time.min.css" media="all">
 <div class="layui-col-xs12 layui-col-sm7 layui-col-md8 perfree-content-left">
+	<link rel="stylesheet" href="static/css/time.css" media="all">
 	<div class="layui-card">
 		#articles(count=99999999)
 		<div class="layui-card-header time-line-header"><i class="fa fa-volume-up"></i> 已经发布了#(articles.size()??0)篇文章了,继续努力~</div>
 		<div class="layui-card-body time-line-body">
 			<ul class="layui-timeline" id="timeLine">
-					#for(article : articles)
-					<li class="layui-timeline-item">
-						<i class="layui-icon layui-timeline-axis">&#xe643;</i>
-						<div class="layui-timeline-content layui-text">
-							<h3 class="layui-timeline-title">#date(article.created, "MM月dd日")</h3>
-							<span class="time-box-top"><i class="fa fa-caret-up"></i></span>
-							<a href="#(article.url ??)" title="#(article.title ??)" class="perfree-timeline-title">#(article.title ??)</a>
-						</div>
-					</li>
-					#end
+				#for(article : articles)
+				<li class="layui-timeline-item">
+					<i class="layui-icon layui-timeline-axis">&#xe643;</i>
+					<div class="layui-timeline-content layui-text">
+						<h3 class="layui-timeline-title">#date(article.created, "MM月dd日")</h3>
+						<span class="time-box-top"><i class="fa fa-caret-up"></i></span>
+						<a href="#(article.url ??)" title="#(article.title ??)" class="perfree-timeline-title pjax">#(article.title ??)</a>
+					</div>
+				</li>
+				#end
 			</ul>
 		</div>
 		#end

@@ -1,0 +1,105 @@
+<!-- 导航栏部分 -->
+<div class="header layui-bg-cyan pc-header">
+    <div class="layui-container">
+
+        <!-- 导航栏logo及文字start -->
+        <a class="logo-box pjax" href="/">
+            <i class="fa fa-#option('page_logo_icon' ??) fa-lg"></i>
+            <span> #(WEB_NAME ??)</span>
+        </a>
+        <!-- 导航栏logo及文字end -->
+
+        <!-- 导航栏菜单start -->
+        <ul class="layui-nav layui-bg-cyan" lay-filter="">
+            #for(menu : MENUS)
+                <li class="layui-nav-item" lay-unselect>
+                    <a href="#(menu.url == null ? 'javascript:;':menu.url)" class="pjax"><i class="fa fa-#(menu.icon ??)"></i> #(menu.text ??)</a>
+                    #if(menu.hasChild())
+                        <dl class="layui-nav-child">
+                            #for(childMenu : menu.getChilds())
+                                <dd lay-unselect><a href="#(childMenu.url ??)" class="pjax"> #(childMenu.text ??)</a></dd>
+                            #end
+                        </dl>
+                    #end
+                </li>
+            #end
+            #if(USER == null)
+                <li class="layui-nav-item login-box" lay-unselect>
+                    <a href="/user/login" class="login-btn pjax"> 登录</a>|
+                    <a href="/user/register" class="register-btn pjax"> 注册</a>
+                </li>
+            #else
+                <li class="layui-nav-item">
+                    <a><img src="#(USER.avatar??)" class="layui-nav-img">#(USER.nickname??)</a>
+                    <dl class="layui-nav-child">
+                        <dd lay-unselect>
+                            <a href="/ucenter" target="_blank">个人中心</a>
+                        </dd>
+                        <dd lay-unselect>
+                            <a href="/ucenter/pwd" target="_blank">修改密码</a>
+                        </dd>
+                        <dd class="header-logout" lay-unselect>
+                            <a href="#(CPATH)/ucenter/doLogout?csrf_token=#(CSRF_TOKEN)"> 退出登录 </a>
+                        </dd>
+                    </dl>
+                </li>
+            #end
+        </ul>
+        <!-- 导航栏菜单end -->
+    </div>
+</div>
+<!--移动端header-->
+<div class="phone-header layui-bg-cyan">
+    <a href="javascript:;" class="phone-open-nav-btn">
+        <i class="fa fa-bars" aria-hidden="true"></i>
+    </a>
+    <!-- 导航栏logo及文字start -->
+    <a class="logo-box pjax" href="/">
+        <i class="fa fa-#option('page_logo_icon' ??) fa-lg"></i>
+        <span> #(WEB_NAME ??)</span>
+    </a>
+    <!-- 导航栏logo及文字end -->
+
+    <a class="phone-setting-btn">
+        <i class="fa fa-cog" aria-hidden="true"></i>
+    </a>
+    <!--移动端设置容器-->
+    <div class="phone-setting-box">
+        <div class="phone-search-form">
+            <form action="/article/search">
+                <input type="text" name="keyword" required placeholder="请输入关键字" autocomplete="off">
+                <button type="submit"><i class="fa fa-search"></i></button>
+            </form>
+        </div>
+        <div class="phone-my-message-box">
+            #if(USER == null)
+                <a href="/user/login" class="login-btn"> 登录</a>
+                <span class="my-message-tarde">|</span>
+                <a href="/user/register" class="register-btn"> 注册</a>
+            #else
+                <a href="/ucenter" class="my-name-img"><img src="#(USER.avatar??)" class="layui-nav-img">#(USER.nickname??)</a>
+            #end
+        </div>
+    </div>
+</div>
+<!--移动端菜单-->
+<div class="phone-nav-box">
+    <ul class="layui-nav layui-nav-tree layui-nav-side layui-bg-cyan" lay-filter="">
+        #for(menu : MENUS)
+        <li class="layui-nav-item" lay-unselect>
+            #if(menu.hasChild())
+            <a href="#(menu.url == null ? 'javascript:;':menu.url)" class="pjax"><i class="fa fa-#(menu.icon ??)"></i> #(menu.text ??)</a>
+            #else
+            <a href="#(menu.url == null ? 'javascript:;':menu.url)" class="pjax nav-link"><i class="fa fa-#(menu.icon ??)"></i> #(menu.text ??)</a>
+            #end
+            #if(menu.hasChild())
+            <dl class="layui-nav-child">
+                #for(childMenu : menu.getChilds())
+                <dd lay-unselect><a href="#(childMenu.url ??)" class="pjax nav-link"> #(childMenu.text ??)</a></dd>
+                #end
+            </dl>
+            #end
+        </li>
+        #end
+    </ul>
+</div>

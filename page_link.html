@@ -1,0 +1,32 @@
+#include("./_inc/_layout.html")
+#@layout()
+#define content()
+<div class="layui-col-xs12 layui-col-sm7 layui-col-md8 perfree-content-left">
+    <link rel="stylesheet" href="static/css/article.css" media="all">
+    <link rel="stylesheet" href="static/css/link.css" media="all">
+    <div class="layui-card">
+        <div class="layui-card-body" style="padding: 8px">
+            <div class="layui-card-header article-title" style="height: 30px;padding: 8px;">
+                <h2>友情链接<span style="font-weight: 500;font-size: 13px;margin-left: 10px;">天涯若比邻</span></h2>
+            </div>
+            <div class="perfree-article-content" style="padding-top: 5px;padding-left: 8px;padding-right: 8px;">
+                #perfreeLinks()
+                    #for(link : links)
+                        <a href="#(link.link)" class="link-box" target="_blank">
+                            <img src="#(link.imgUrl)" class="link-img"/>
+                            <div class="link-msg-box">
+                                <span class="link-name">#(link.name)</span>
+                                <small class="link-desc">#(link.desc)</small>
+                            </div>
+                        </a>
+                    #end
+                #end
+                #if(page.content != null || page.content != 123)
+                    <h3 style="margin-top: 10px;font-size: 1.0em;font-weight: 600;">申请友链须知:</h3>
+                    <blockquote class="layui-elem-quote">#(page.content)</blockquote>
+                #end
+            </div>
+        </div>
+    </div>
+</div>
+#end

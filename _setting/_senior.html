@@ -1,0 +1,140 @@
+<div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingFour">
+        <h4 class="panel-title">
+            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                <span class="glyphicon glyphicon-cog"></span> 高级设置
+            </a>
+        </h4>
+    </div>
+    <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+        <div class="panel-body">
+
+            <!-- 赞赏start -->
+            <div class="form-group">
+                <label class="col-sm-2 control-label">赞赏:</label>
+                <div class="col-sm-6">
+                    <select class="form-control" name="page_appreciate">
+                        <option value="#option('page_appreciate' ??)" style="display: none">#option('page_appreciate','启用')</option>
+                        <option value="true">启用</option>
+                        <option value="false">关闭</option>
+                    </select>
+                    <span style="color: #999">文章赞赏功能，默认启用，需要配置微信和支付宝付款码</span>
+                </div>
+            </div>
+            <!-- 赞赏end -->
+            <!-- 支付宝收款码start -->
+            <div class="form-group">
+                <label class="col-sm-2 control-label">支付宝收款码:</label>
+                <div class="col-sm-6">
+                    <button type="button"
+                            for-src="perfree_alipay"
+                            for-input="perfree_alipay_input"
+                            class="jp-image-browser btn btn-flat btn-default btn-xs">
+                        <i class="fa fa-fw fa-image"></i> 选择图片
+                    </button>
+                    <br/>
+                    <img src="#(CPATH)#option('perfree_alipay','/templates/jpress-perfree-simple/static/img/avatar.png')"
+                         id="perfree_alipay">
+                    <input type="hidden" id="perfree_alipay_input" name="perfree_alipay" value="#option('perfree_alipay' ??)">
+                </div>
+            </div>
+            <!-- 支付宝收款码end -->
+            <!-- 微信收款码start -->
+            <div class="form-group">
+                <label class="col-sm-2 control-label">微信收款码:</label>
+                <div class="col-sm-6">
+                    <button type="button"
+                            for-src="perfree_wechat"
+                            for-input="perfree_wechat_input"
+                            class="jp-image-browser btn btn-flat btn-default btn-xs">
+                        <i class="fa fa-fw fa-image"></i> 选择图片
+                    </button>
+                    <br/>
+                    <img src="#(CPATH)#option('perfree_wechat','/templates/jpress-perfree-simple/static/img/avatar.png')"
+                         id="perfree_wechat">
+                    <input type="hidden" id="perfree_wechat_input" name="perfree_wechat" value="#option('perfree_wechat' ??)">
+                </div>
+            </div>
+            <!-- 支微信收款码end -->
+
+            <!-- 配色样式start -->
+            <div class="form-group">
+                <label class="col-sm-2 control-label">全站pjax:</label>
+                <div class="col-sm-6">
+                    <select class="form-control" name="page_pjax">
+                        <option value="#option('page_pjax' ??)" style="display: none">#option('page_pjax','启用')</option>
+                        <option value="true">启用</option>
+                        <option value="false">关闭</option>
+                    </select>
+                    <span style="color: #999">全站pjax，默认启用</span>
+                </div>
+            </div>
+            <!-- 配色样式end -->
+
+            <!-- 自定义输出head 头部的HTML代码start -->
+            <div class="form-group">
+                <label class="col-sm-2 control-label">head头部HTML代码:</label>
+                <div class="col-sm-6">
+                    <textarea class="form-control" placeholder="随意发挥..." name="page_head_code">#option('page_head_code' ??)</textarea>
+                    <span style="color: #999">这里填写的是html代码，会输入到head内,你可以填写网站统计代码等其他信息。</span>
+                </div>
+            </div>
+            <!-- 自定义输出head 头部的HTML代码end -->
+
+            <!-- 自定义css样式start -->
+            <div class="form-group">
+                <label class="col-sm-2 control-label">自定义css代码:</label>
+                <div class="col-sm-6">
+                    <textarea class="form-control" placeholder="随意发挥..." name="page_css_code">#option('page_css_code' ??)</textarea>
+                    <span style="color: #999">这里填写的是css代码，会自动输出到head标签内,记得加上style标签</span>
+                </div>
+            </div>
+            <!-- 自定义css样式end -->
+
+            <!-- 底部左侧信息start -->
+            <div class="form-group">
+                <label class="col-sm-2 control-label">底部左侧信息:</label>
+                <div class="col-sm-6">
+                    <input type="input" class="form-control" placeholder="可以写一下备案信息什么的..."
+                           name="page_footer_left" value="#option('page_footer_left' ??)">
+                    <span style="color: #999">如:© 2019 Perfree版权所有 豫ICP备xxxxxxxxxxxx号</span>
+                </div>
+            </div>
+            <!-- 底部左侧信息end -->
+
+            <!-- 底部右侧信息start -->
+            <div class="form-group">
+                <label class="col-sm-2 control-label">底部右侧信息:</label>
+                <div class="col-sm-6">
+                                                    <textarea class="form-control" placeholder="随意发挥..."
+                                                              name="page_footer_right" >#option('page_footer_right' ??)</textarea>
+                    <span style="color: #999">随意发挥,支持html</span>
+                </div>
+            </div>
+            <!-- 底部右侧信息end -->
+
+            <!-- 自定义js代码start -->
+            <div class="form-group">
+                <label class="col-sm-2 control-label">自定义js代码:</label>
+                <div class="col-sm-6">
+                                                    <textarea class="form-control" placeholder="随意发挥,支持jquery..."
+                                                              name="page_js_code">#option('page_js_code' ??)</textarea>
+                    <span style="color: #999">这里填写的是Js代码，会自动输出到body标签内,记得加上script标签</span>
+                </div>
+            </div>
+            <!-- 自定义js代码end -->
+
+            <!-- 全局右侧广告代码start -->
+            <div class="form-group">
+                <label class="col-sm-2 control-label">全局右侧广告:</label>
+                <div class="col-sm-6">
+                                                    <textarea class="form-control" placeholder="随意发挥..."
+                                                              name="page_ad_code">#option('page_ad_code' ??)</textarea>
+                    <span style="color: #999">这里可以填写谷歌,百度等广告代码</span>
+                </div>
+            </div>
+            <!-- 全局右侧广告代码end -->
+
+        </div>
+    </div>
+</div>

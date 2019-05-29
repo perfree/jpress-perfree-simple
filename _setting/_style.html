@@ -1,0 +1,108 @@
+<div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingTwo">
+        <h4 class="panel-title">
+            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                <span class="glyphicon glyphicon-cloud"></span> 外观设置
+            </a>
+        </h4>
+    </div>
+    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+        <div class="panel-body">
+            <!-- 配色样式start -->
+            <div class="form-group">
+                <label class="col-sm-2 control-label">主题配色:</label>
+                <div class="col-sm-6">
+                    <select class="form-control" name="page_theme_style">
+                        <option value="#option('page_theme_style' ??)" style="display: none">#option('page_theme_style','请选择')</option>
+                        <option value="">默认</option>
+                        <option value="gray">gray</option>
+                        <option value="black">black</option>
+                        <option value="515a6e">515a6e</option>
+                    </select>
+                    <span style="color: #999">前台页面配色样式</span>
+                </div>
+            </div>
+            <!-- 配色样式end -->
+            <!-- 代码样式start -->
+            <div class="form-group">
+                <label class="col-sm-2 control-label">代码样式:</label>
+                <div class="col-sm-6">
+                    <select class="form-control" name="page_code_style">
+                        <option value="#option('page_code_style' ??)" style="display: none">#option('page_code_style','请选择')</option>
+                        #include("./_codeStyle.html")
+                    </select>
+                    <span style="color: #999">前台解析代码的高亮样式</span>
+                </div>
+            </div>
+            <!-- 代码样式end -->
+            <!-- 代码行号start -->
+            <div class="form-group">
+                <label class="col-sm-2 control-label">代码行号:</label>
+                <div class="col-sm-6">
+                    <select class="form-control" name="page_code_line">
+                        <option value="#option('page_code_line' ??)" style="display: none">#option('page_code_line','请选择')</option>
+                        <option value="开启">开启</option>
+                        <option value="不开启">不开启</option>
+                    </select>
+                    <span style="color: #999">代码行号展示,默认开启</span>
+                </div>
+            </div>
+            <!-- 代码行号end -->
+            <!-- 文章缩略图样式start -->
+            <div class="form-group">
+                <label class="col-sm-2 control-label">缩略图获取:</label>
+                <div class="col-sm-6">
+                    <select class="form-control" name="page_article_thumbnail">
+                        <option value="#option('page_article_thumbnail' ??)" style="display: none">#option('page_article_thumbnail','手动上传缩略图')</option>
+                        <option value="手动上传缩略图">手动上传缩略图</option>
+                        <option value="自动从文章获取">自动从文章获取</option>
+                    </select>
+                    <span style="color: #999">前台文章列表缩略图获取方式</span>
+                </div>
+            </div>
+            <!-- 文章缩略图样式end -->
+            <!-- 背景配色start -->
+            <div class="form-group">
+                <label class="col-sm-2 control-label">背景颜色:</label>
+                <div class="col-sm-6">
+                    <input type="input" class="form-control" placeholder="请填写颜色值"
+                           name="page_background_color" value="#option('page_background_color' ??)">
+                    <span style="color: #999">直接填写颜色代码，如#FFFFFF</span>
+                </div>
+            </div>
+            <!-- 背景配色end -->
+            <!-- 背景图start -->
+            <div class="form-group">
+                <label class="col-sm-2 control-label">网页背景图:</label>
+                <div class="col-sm-6">
+                    <button type="button"
+                            for-src="page_bacground-img"
+                            for-input="page_bacground-img_input"
+                            class="jp-image-browser btn btn-flat btn-default btn-xs">
+                        <i class="fa fa-fw fa-image"></i> 选择图片
+                    </button>
+                    #if(option('page_bacground-img') != null)
+                    <button type="button" class="btn btn-flat btn-default btn-xs" onclick="closeBackgroundImg();">
+                        <i class="fa fa-fw fa-image"></i> 取消背景图
+                    </button>
+                    #end
+                    <br/>
+                    #if(option('page_bacground-img') != null)
+                    <img src="#(CPATH)#option('page_bacground-img' ??)" id="page_bacground-img">
+                    #else
+                    <img id="page_bacground-img">
+                    #end
+                    <input type="hidden" id="page_bacground-img_input" name="page_bacground-img"
+                           value="#option('page_bacground-img' ??)">
+                </div>
+            </div>
+            <!-- 背景图end -->
+        </div>
+    </div>
+</div>
+<script>
+    function closeBackgroundImg() {
+        $("#page_bacground-img_input").val("");
+        $("#page_bacground-img").replaceWith("<img id='page_bacground-img'>");
+    }
+</script>

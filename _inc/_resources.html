@@ -1,0 +1,29 @@
+<!-- ico -->
+<link rel="icon" type="image/ico" href="#option('perfree_logo' ??)">
+<link rel="stylesheet" href="static/plugin/layui/css/layui.css" media="all">
+<link rel="stylesheet" href="static/plugin/font-awesome/css/font-awesome.min.css" media="all">
+<link rel="stylesheet" href="static/css/style.css" media="all">
+#if(option('page_theme_style') == null || option('page_theme_style') == "")
+<link rel="stylesheet" href="static/theme/white.css" media="all">
+#else
+<link rel="stylesheet" href="static/theme/#option('page_theme_style').css" media="all">
+#end
+<!-- 代码样式 -->
+<link rel="stylesheet" href="static/plugin/highlight/styles/#option('page_code_style','vs').css" media="all">
+<script src="static/plugin/jquery/jquery-3.2.1.min.js"></script>
+<script src="static/plugin/layer/layer.js"></script>
+<script src="static/plugin/layui/layui.js"></script>
+#if(option('page_pjax') == null || option('page_pjax') == true)
+<script src="static/plugin/pjax/pjax.js"></script>
+#end
+<script src="static/js/perfree.js"></script>
+<!-- 如后台配置了音乐播放器，则引入播放器文件 -->
+#if(option('music_server') != null && option('music_type') != null && option('music_id') != null)
+    <link rel="stylesheet" href="static/plugin/music/APlayer.min.css">
+    <script src="static/plugin/music/APlayer.min.js"></script>
+    <script src="static/plugin/music/Meting.min.js"></script>
+#end
+<!-- 自定义网页头部代码 -->
+#option('page_head_code' ??)
+<!-- 自定义css代码 -->
+#option('page_css_code' ??)

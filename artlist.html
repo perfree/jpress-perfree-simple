@@ -1,28 +1,28 @@
-#include("./_layout.html")
+#include("./_inc/_layout.html")
 #@layout()
 #define content()
     <div class="layui-col-xs12 layui-col-sm7 layui-col-md8 perfree-content-left">
         <div class="article-box">
-            <!-- 一言组件 -->
-            <div class="layui-card phone-yiyan-box">
-                <div class="layui-card-body page-title-body">
-                    <h2>#(WEB_NAME ??)</h2>
-                    <div id="saying"><script>saying()</script></div>
-                </div>
-            </div>
-            <!-- 一言组件 -->
            #articlePage(pageSize=6)
                 #for(article : articlePage.list)
                     <div class="layui-card">
                         <div class="layui-card-body">
-                            #if(article.thumbnail != null)
-                            <div class="article-img">
-                                <img src="#(article.thumbnail ?? 'img/1.jpg')" alt="#(article.title ??)" width="100%" height="300px"/>
-                            </div>
+                            #if(option('page_article_thumbnail') == null || option('page_article_thumbnail') == '手动上传缩略图')
+                                #if(article.thumbnail != null)
+                                <a class="article-img pjax" href="#(article.url ??)">
+                                    <img src="#(article.thumbnail ??)" alt="#(article.title ??)" width="100%" height="300px"/>
+                                </a>
+                                #end
+                            #else
+                                #if(article.showImage != null)
+                                <a class="article-img pjax" href="#(article.url ??)">
+                                    <img src="#(article.showImage ??)" alt="#(article.title ??)" width="100%" height="300px"/>
+                                </a>
+                                #end
                             #end
                             <div class="article-box-content">
                                 <h2 class="article-title">
-                                    <a href="#(article.url ??)">#(article.title ??)</a>
+                                    <a href="#(article.url ??)" class="pjax">#(article.title ??)</a>
                                 </h2>
                                 <p class="article-content">#maxLength(article.text,100)</p>
                                 <hr class="layui-bg-gray">
@@ -32,6 +32,15 @@
                                     <i class="fa fa-comment-o"></i> #(article.comment_count ??)&nbsp;
                                     <i class="fa fa-clock-o"></i> #date(article.created, "yyyy-MM-dd")
                                 </span>
+                                <a class="read-all-btn pjax" href="#(article.url ??)">阅读全文</a>
+                            </div>
+                        </div>
+                    </div>
+                #else
+                    <div class="layui-card">
+                        <div class="layui-card-body">
+                            <div class="no-article">
+                                <i class="fa fa-bug" aria-hidden="true"></i> 这家伙很懒，还没发表文章~
                             </div>
                         </div>
                     </div>
@@ -41,7 +50,7 @@
                         <div class="layui-card-body">
                             <div class="perfree-page-box">
                                 #for(page : pages)
-                                <a class="page-item #(page.style)" href="#(page.url ??)">#(page.text ??)</a>
+                                <a class="page-item #(page.style) pjax" href="#(page.url ??)">#(page.text ??)</a>
                                 #end
                             </div>
                         </div>
