@@ -18,20 +18,20 @@
                     <div class="layui-card-body">
                         #if(option('page_article_thumbnail') == null || option('page_article_thumbnail') == '手动上传缩略图')
                             #if(article.thumbnail != null)
-                            <a class="article-img pjax" href="#(article.url ??)">
+                            <a class="article-img pjax" href="#(WEB_DOMAIN ??)#(article.url ??)">
                                 <img src="#(article.thumbnail ??)" alt="#(article.title ??)" width="100%" height="300px"/>
                             </a>
                             #end
                         #else
                             #if(article.showImage != null)
-                            <a class="article-img pjax" href="#(article.url ??)">
+                            <a class="article-img pjax" href="#(WEB_DOMAIN ??)#(article.url ??)">
                                 <img src="#(article.showImage ??)" alt="#(article.title ??)" width="100%" height="300px"/>
                             </a>
                             #end
                         #end
                         <div class="article-box-content">
                             <h2 class="article-title">
-                                <span class="top-tip">置顶</span><a href="#(article.url ??)" class="pjax">#(article.title ??)</a>
+                                <span class="top-tip">置顶</span><a href="#(WEB_DOMAIN ??)#(article.url ??)" class="pjax">#(article.title ??)</a>
                             </h2>
                             <p class="article-content">#maxLength(article.text,100)</p>
                             <hr class="layui-bg-gray">
@@ -41,7 +41,7 @@
                                                     <i class="fa fa-comment-o"></i> #(article.comment_count ??)&nbsp;
                                                     <i class="fa fa-clock-o"></i> #date(article.created, "yyyy-MM-dd")
                                                 </span>
-                            <a class="read-all-btn pjax" href="#(article.url ??)">阅读全文</a>
+                            <a class="read-all-btn pjax" href="#(WEB_DOMAIN ??)#(article.url ??)">阅读全文</a>
                         </div>
                     </div>
                 </div>
@@ -51,37 +51,39 @@
             #articlePage(pageSize=6)
                 <!-- 文章列表start -->
                 #for(article : articlePage.list)
-                    <div class="layui-card list-article-box">
-                        <div class="layui-card-body">
-                            #if(option('page_article_thumbnail') == null || option('page_article_thumbnail') == '手动上传缩略图')
-                                #if(article.thumbnail != null)
-                                    <a class="article-img pjax" href="#(article.url ??)">
-                                        <img src="#(article.thumbnail ??)" alt="#(article.title ??)" width="100%" height="300px"/>
-                                    </a>
+                    #if(article.flag != "top")
+                        <div class="layui-card list-article-box">
+                            <div class="layui-card-body">
+                                #if(option('page_article_thumbnail') == null || option('page_article_thumbnail') == '手动上传缩略图')
+                                    #if(article.thumbnail != null)
+                                        <a class="article-img pjax" href="#(WEB_DOMAIN ??)#(article.url ??)">
+                                            <img src="#(article.thumbnail ??)" alt="#(article.title ??)" width="100%" height="300px"/>
+                                        </a>
+                                    #end
+                                #else
+                                    #if(article.showImage != null)
+                                        <a class="article-img pjax" href="#(WEB_DOMAIN ??)#(article.url ??)">
+                                            <img src="#(article.showImage ??)" alt="#(article.title ??)" width="100%" height="300px"/>
+                                        </a>
+                                    #end
                                 #end
-                            #else
-                                #if(article.showImage != null)
-                                    <a class="article-img pjax" href="#(article.url ??)">
-                                        <img src="#(article.showImage ??)" alt="#(article.title ??)" width="100%" height="300px"/>
-                                    </a>
-                                #end
-                            #end
-                            <div class="article-box-content">
-                                <h2 class="article-title">
-                                    <a href="#(article.url ??)" class="pjax">#(article.title ??)</a>
-                                </h2>
-                                <p class="article-content">#maxLength(article.text,100)</p>
-                                <hr class="layui-bg-gray">
-                                <span class="article-msg">
-                                    <i class="fa fa-user-o"></i> #(article.user.nickname ??)&nbsp;
-                                    <i class="fa fa-eye"></i> #(article.view_count ??)&nbsp;
-                                    <i class="fa fa-comment-o"></i> #(article.comment_count ??)&nbsp;
-                                    <i class="fa fa-clock-o"></i> #date(article.created, "yyyy-MM-dd")
-                                </span>
-                                <a class="read-all-btn pjax" href="#(article.url ??)">阅读全文</a>
+                                <div class="article-box-content">
+                                    <h2 class="article-title">
+                                        <a href="#(WEB_DOMAIN ??)#(article.url ??)" class="pjax">#(article.title ??)</a>
+                                    </h2>
+                                    <p class="article-content">#maxLength(article.text,100)</p>
+                                    <hr class="layui-bg-gray">
+                                    <span class="article-msg">
+                                        <i class="fa fa-user-o"></i> #(article.user.nickname ??)&nbsp;
+                                        <i class="fa fa-eye"></i> #(article.view_count ??)&nbsp;
+                                        <i class="fa fa-comment-o"></i> #(article.comment_count ??)&nbsp;
+                                        <i class="fa fa-clock-o"></i> #date(article.created, "yyyy-MM-dd")
+                                    </span>
+                                    <a class="read-all-btn pjax" href="#(WEB_DOMAIN ??)#(article.url ??)">阅读全文</a>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    #end
                 #else
                     <div class="layui-card">
                         <div class="layui-card-body">
@@ -97,7 +99,7 @@
                         #articlePaginate(firstGotoIndex=true)
                             <div class="perfree-page-box">
                                 #for(page : pages)
-                                    <a class="page-item #(page.style) pjax" href="#(page.url ??)">#(page.text ??)</a>
+                                    <a class="page-item #(page.style) pjax" href="#(WEB_DOMAIN ??)#(page.url ??)">#(page.text ??)</a>
                                 #end
                             </div>
                         #end

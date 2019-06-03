@@ -43,12 +43,12 @@
 			#end
 			<div class="switch-article">
 				#previousArticle()
-				<a href="#(previous.url)" title="#(previous.title)" class="pre-article pjax">
+				<a href="#(WEB_DOMAIN ??)#(previous.url)" title="#(previous.title)" class="pre-article pjax">
 					<i class="fa fa-angle-double-left" aria-hidden="true"></i> 上一篇
 				</a>
 				#end
 				#nextArticle()
-				<a href="#(next.url)" title="#(next.title)" class="next-article pjax">
+				<a href="#(WEB_DOMAIN ??)#(next.url)" title="#(next.title)" class="next-article pjax">
 					下一篇 <i class="fa fa-angle-double-right" aria-hidden="true"></i>
 				</a>
 				#end
@@ -56,6 +56,26 @@
 		</div>
 	</div>
 	<!-- 文章end -->
+	#relevantArticles(article)
+		<div class="layui-card">
+			<div class="layui-card-header" style="padding: 0 20px;">推荐文章</div>
+			<div class="layui-card-body relevant-body">
+				#for(article :relevantArticles)
+					<a href="#(WEB_DOMAIN ??)#(article.url)" title="#(article.title)" class="relevant-box">
+						#if(article.showImage == null)
+							<img src="static/img/#(for.count).jpg" class="relevant-img">
+						#else
+							<img src="#(article.showImage)" class="relevant-img">
+						#end
+						<div class="relevant-right">
+							<h2 class="relevant-title">#(article.title)</h2>
+							<span class="relevant-article-msg"><i class="fa fa-clock-o"></i> #date(article.created, "yyyy-MM-dd")&nbsp;&nbsp;<i class="fa fa-eye"></i> #(article.view_count ??)</span>
+						</div>
+					</a>
+				#end
+			</div>
+		</div>
+	#end
 
 	<div class="layui-card">
 		<div class="layui-card-header" style="padding: 0 20px;">发表评论</div>
@@ -118,7 +138,7 @@
 							<div class="layui-card-body">
 								<div class="perfree-page-box">
 									#for(page : pages)
-									<a class="page-item #(page.style)" href="#(page.url ??)">#(page.text ??)</a>
+									<a class="page-item #(page.style)" href="#(WEB_DOMAIN ??)#(page.url ??)">#(page.text ??)</a>
 									#end
 								</div>
 							</div>

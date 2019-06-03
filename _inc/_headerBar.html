@@ -17,7 +17,7 @@
                     #if(menu.hasChild())
                         <dl class="layui-nav-child">
                             #for(childMenu : menu.getChilds())
-                                <dd lay-unselect><a href="#(childMenu.url ??)" class="pjax"> #(childMenu.text ??)</a></dd>
+                                <dd lay-unselect><a href="#(WEB_DOMAIN ??)#(childMenu.url ??)" class="pjax"> #(childMenu.text ??)</a></dd>
                             #end
                         </dl>
                     #end
@@ -25,8 +25,8 @@
             #end
             #if(USER == null)
                 <li class="layui-nav-item login-box" lay-unselect>
-                    <a href="/user/login" class="login-btn pjax"> 登录</a>|
-                    <a href="/user/register" class="register-btn pjax"> 注册</a>
+                    <a href="#(WEB_DOMAIN ??)/user/login" class="login-btn pjax"> 登录</a>|
+                    <a href="#(WEB_DOMAIN ??)/user/register" class="register-btn pjax"> 注册</a>
                 </li>
             #else
                 <li class="layui-nav-item">
@@ -39,7 +39,7 @@
                             <a href="/ucenter/pwd" target="_blank">修改密码</a>
                         </dd>
                         <dd class="header-logout" lay-unselect>
-                            <a href="#(CPATH)/ucenter/doLogout?csrf_token=#(CSRF_TOKEN)"> 退出登录 </a>
+                            <a href="#(WEB_DOMAIN ??)/ucenter/doLogout?csrf_token=#(CSRF_TOKEN)"> 退出登录 </a>
                         </dd>
                     </dl>
                 </li>
@@ -73,11 +73,11 @@
         </div>
         <div class="phone-my-message-box">
             #if(USER == null)
-                <a href="/user/login" class="login-btn"> 登录</a>
+                <a href="#(WEB_DOMAIN ??)/user/login" class="login-btn"> 登录</a>
                 <span class="my-message-tarde">|</span>
-                <a href="/user/register" class="register-btn"> 注册</a>
+                <a href="#(WEB_DOMAIN ??)/user/register" class="register-btn"> 注册</a>
             #else
-                <a href="/ucenter" class="my-name-img"><img src="#(USER.avatar??)" class="layui-nav-img">#(USER.nickname??)</a>
+                <a href="#(WEB_DOMAIN ??)/ucenter" class="my-name-img"><img src="#(USER.avatar??)" class="layui-nav-img">#(USER.nickname??)</a>
             #end
         </div>
     </div>
@@ -95,7 +95,7 @@
             #if(menu.hasChild())
             <dl class="layui-nav-child">
                 #for(childMenu : menu.getChilds())
-                <dd lay-unselect><a href="#(childMenu.url ??)" class="pjax nav-link"> #(childMenu.text ??)</a></dd>
+                <dd lay-unselect><a href="#(WEB_DOMAIN ??)#(childMenu.url ??)" class="pjax nav-link"> #(childMenu.text ??)</a></dd>
                 #end
             </dl>
             #end

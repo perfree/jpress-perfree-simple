@@ -22,7 +22,7 @@
                             #end
                             <div class="article-box-content">
                                 <h2 class="article-title">
-                                    <a href="#(article.url ??)">#(article.title ??)</a>
+                                    <a href="#(WEB_DOMAIN ??)#(article.url ??)">#(article.title ??)</a>
                                 </h2>
                                 <p class="article-content">#maxLength(article.text,100)</p>
                                 <hr class="layui-bg-gray">
@@ -49,7 +49,7 @@
                         <div class="layui-card-body">
                             <div class="perfree-page-box">
                                 #for(page : pages)
-                                <a class="page-item #(page.style)" href="#(page.url ??)">#(page.text ??)</a>
+                                <a class="page-item #(page.style)" href="#(WEB_DOMAIN ??)#(page.url ??)">#(page.text ??)</a>
                                 #end
                             </div>
                         </div>

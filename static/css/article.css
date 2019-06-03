@@ -238,3 +238,37 @@ code.has-numbering {
 	margin-top: 10px;
 	text-align: center;
 }
+.relevant-body{
+	padding: 10px 20px 20px 20px;
+}
+.relevant-box{
+	display: block;
+	position: relative;
+	margin-top: 3px;
+	padding: 4px;
+}
+.relevant-img{
+	width: 45px;
+	height: 45px;
+}
+.relevant-right{
+	position: absolute;
+	left: 55px;
+	top: 0px;
+}
+.relevant-title{
+	color: #657180;
+	font-size: 16px;
+	margin-top: 13px;
+	line-height: 16px;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+.relevant-article-msg{
+	color: #98a6ad;
+	line-height: 13px;
+}
+.relevant-box:hover{
+	background: #f5f7f9;
+}

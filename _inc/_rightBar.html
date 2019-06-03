@@ -52,7 +52,7 @@
             </div>
             <div class="layui-card-body hot-article-body">
                 #for(article : articles)
-                    <a class="hot-article-box pjax" href="#(article.url)">
+                    <a class="hot-article-box pjax" href="#(WEB_DOMAIN ??)#(article.url)">
                         #if(for.odd)
                             <img src="#(article.thumbnail ?? 'static/img/3.jpg')" width="20%" height="50px" class="hot-article-img"/>
                         #else
@@ -76,7 +76,7 @@
             </div>
             <div class="layui-card-body tag-body">
                 #for(tag : tags)
-                    <a href="#(tag.url)" class="layui-btn layui-btn-normal tag pjax" title="#(tag.title)">#(tag.title)</a>
+                    <a href="#(WEB_DOMAIN ??)#(tag.url)" class="layui-btn layui-btn-normal tag pjax" title="共#(tag.count ??)篇文章">#(tag.title)</a>
                 #end
             </div>
         </div>
@@ -84,7 +84,7 @@
     <!-- 标签end -->
 
     <!-- 广告start -->
-    <div class="layui-card #if(option('page_ad_code') == null) perfree-hide #end">
+    <div class="layui-card #if(option('page_ad_code') == null) perfree-hide #end" style="margin-bottom: 20px;">
         <div class="layui-card-header">
             <i class="fa fa-bullhorn"></i>
             <span style="margin-left: 3px;">广告</span>

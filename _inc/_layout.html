@@ -67,9 +67,12 @@
     //设置pjax
     var pjax = new Pjax({
         elements: ".pjax,form",
+        cacheBust: false,
+        debug: false,
         selectors: [
             "title",
             "meta[name=description]",
+            "meta[name=keywords]",
             ".loadJs",
             ".perfree-content-left",
             ".right-hot-article-box",
